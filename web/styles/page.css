@@ -1,0 +1,31 @@
+page {
+    background: white;
+    display: block;
+    margin: 0 auto 0.5cm;
+    width: 21cm;
+    height: 29.7cm;
+
+    box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+
+    >* {
+        margin: 0 1cm;
+
+        &:first-child {
+            padding-top: 0.7cm;
+        }
+
+        &:last-child {
+            padding-bottom: 0.7cm;
+        }
+    }
+}
+
+@media print {
+
+    body,
+    page {
+        background: white;
+        margin: 0;
+        box-shadow: 0;
+    }
+}

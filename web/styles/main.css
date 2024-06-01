@@ -1,0 +1,133 @@
+@font-face {
+    font-family: "Taroca";
+    src: url(../assets/fonts/Taroca-Regular.ttf);
+    src: url("https://db.onlinewebfonts.com/t/8cbc00a7aa9657bac8e951da2d68c7d1.eot");
+    src: url("https://db.onlinewebfonts.com/t/8cbc00a7aa9657bac8e951da2d68c7d1.eot?#iefix")format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/8cbc00a7aa9657bac8e951da2d68c7d1.woff2")format("woff2"),
+        url("https://db.onlinewebfonts.com/t/8cbc00a7aa9657bac8e951da2d68c7d1.woff")format("woff"),
+        url("https://db.onlinewebfonts.com/t/8cbc00a7aa9657bac8e951da2d68c7d1.ttf")format("truetype"),
+        url("https://db.onlinewebfonts.com/t/8cbc00a7aa9657bac8e951da2d68c7d1.svg#Taroca OT W00 Regular")format("svg");
+}
+
+:root {
+    --color-base-brown: rgb(111, 71, 62);
+    --color-header-green: rgb(0, 42, 23);
+    --color-base-brown-50pct: rgba(111, 71, 62, 0.5);
+}
+
+body {
+    background: rgb(204, 204, 204);
+    font-family: Helvetica;
+    font-size: 1em;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+input:focus {
+    outline: none;
+}
+
+span.section-heading {
+    display: flex;
+    flex-direction: row;
+    font-family: Taroca;
+    align-items: center;
+    font-size: 0.8em;
+    color: var(--color-header-green);
+    margin-bottom: -0.1cm;
+
+    > span.header-text {
+        min-width: fit-content;
+    }
+
+    > span.header-line {
+        height: 3px;
+        background-color: var(--color-header-green);
+        margin-left: 5px;
+        width: 100%;
+    }
+}
+
+span.container-input {
+    border: 2px solid var(--color-base-brown);
+    display: grid;
+
+    >input {
+        font-size: 1em;
+        border: none;
+        width: calc(100% - 4px);
+    }
+
+    &.secondary {
+        border-width: 1px;
+
+        > input {
+            margin-top: 0.7em;
+        }
+
+        > span.assistive-text {
+            position: absolute;
+            font-size: 0.65em;
+            margin-left: 0.05cm;
+        }
+    }
+}
+
+div#general-information {
+    display: grid;
+    column-gap: 0.2cm;
+    grid-template-columns: 33fr 33fr 33fr;
+    grid-template-rows: auto auto;
+
+    > div {
+        width: 100%;
+        display: grid;
+        row-gap: 0.1cm;
+    }
+
+    > div#sheet-logo {
+        > img {
+            width: inherit;
+        }
+        > span {
+            font-family: "Taroca";
+            color: var(--color-base-brown);
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: -0.8em;
+        }
+    }
+
+    > div#name-block {
+
+        input#character-name {
+            margin: 4px 0;
+        }
+
+        > :last-child {
+            grid-template-columns: auto auto;
+
+            span#player-name-assistive-text {
+                font-size: 0.65em;
+                margin: 2px 2px;
+                align-self: last baseline;
+            }
+
+            > input {
+                margin: unset;
+                font-size: 0.8em;
+            }
+        }
+    }
+}
