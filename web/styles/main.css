@@ -38,7 +38,7 @@ input:focus {
     outline: none;
 }
 
-span.section-heading {
+span.block-heading {
     display: flex;
     flex-direction: row;
     font-family: Taroca;
@@ -47,11 +47,11 @@ span.section-heading {
     color: var(--color-header-green);
     margin-bottom: -0.1cm;
 
-    > span.header-text {
+    >span.header-text {
         min-width: fit-content;
     }
 
-    > span.header-line {
+    >span.header-line {
         height: 3px;
         background-color: var(--color-header-green);
         margin-left: 5px;
@@ -72,11 +72,11 @@ span.container-input {
     &.secondary {
         border-width: 1px;
 
-        > input {
+        >input {
             margin-top: 0.7em;
         }
 
-        > span.assistive-text {
+        >span.assistive-text {
             position: absolute;
             font-size: 0.65em;
             margin-left: 0.05cm;
@@ -87,20 +87,22 @@ span.container-input {
 div#general-information {
     display: grid;
     column-gap: 0.2cm;
-    grid-template-columns: 33fr 33fr 33fr;
+    grid-template-columns: 33fr 33fr 16.7fr 16.7fr;
     grid-template-rows: auto auto;
 
-    > div {
+    >div {
         width: 100%;
-        display: grid;
+        display: flex;
+        flex-direction: column;
         row-gap: 0.1cm;
     }
 
-    > div#sheet-logo {
-        > img {
+    >div#sheet-logo {
+        >img {
             width: inherit;
         }
-        > span {
+
+        >span {
             font-family: "Taroca";
             color: var(--color-base-brown);
             font-size: 1.2em;
@@ -109,7 +111,7 @@ div#general-information {
         }
     }
 
-    > div#name-block {
+    >div#name-block {
 
         input#character-name {
             margin: 4px 0;
@@ -124,10 +126,71 @@ div#general-information {
                 align-self: last baseline;
             }
 
-            > input {
+            >input {
                 margin: unset;
                 font-size: 0.8em;
             }
         }
+    }
+
+    >div#level-block {
+        >div#level-and-xp {
+            display: flex;
+            height: 100%;
+
+            >span#level-container {
+                width: 40%;
+                height: 100%;
+                position: relative;
+    
+                &::before {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    background-image: url("../assets/images/level-star.png");
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    position: absolute;
+                    filter: drop-shadow(0 0 1px #ffd900);
+                }
+    
+                >input {
+                    width: 100%;
+                    height: 100%;
+                    border: 0;
+                    padding: 0;
+                    background: transparent;
+                    text-align: center;
+                }
+            }
+    
+            >span#xp-container {
+                width: calc(60% - 5px);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+                margin-left: 5px;
+
+                &::before {
+                    content: "XP";
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    text-align: center;
+                    font-size: 0.8em;
+                    margin-top: 15%;
+                }
+    
+                >input {
+                    width: calc(100% - 3px);
+                    padding: 0;
+                    border: 1.5px solid black;
+                    text-align: center;
+                }
+            }
+        }
+
     }
 }
