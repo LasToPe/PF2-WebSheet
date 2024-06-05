@@ -146,7 +146,7 @@ div#general-information {
                 width: 40%;
                 height: 100%;
                 position: relative;
-    
+
                 &::before {
                     content: "";
                     width: 100%;
@@ -158,7 +158,7 @@ div#general-information {
                     position: absolute;
                     filter: drop-shadow(0 0 1px #ffd900);
                 }
-    
+
                 >input {
                     width: 100%;
                     height: 100%;
@@ -169,7 +169,7 @@ div#general-information {
                     position: relative;
                 }
             }
-    
+
             >span#xp-container {
                 width: calc(60% - 5px);
                 display: flex;
@@ -187,13 +187,94 @@ div#general-information {
                     font-size: 0.8em;
                     margin-top: 15%;
                 }
-    
+
                 >input {
                     width: calc(100% - 3px);
                     padding: 0;
                     border: 1.5px solid black;
                     text-align: center;
                     position: relative;
+                }
+            }
+        }
+
+    }
+
+    >div#hero-point-block {
+
+        >div#hero-point-fields {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            height: 33%;
+            position: relative;
+
+            >span.hero-point-hexagon {
+                position: relative;
+                width: 28%;
+
+                &::before {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    background-image: url(../assets/images/hexagon.png);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    position: absolute;
+                }
+
+                >input[type="checkbox"] {
+                    position: absolute;
+                    opacity: 0;
+
+                    +label {
+                        position: relative;
+                        cursor: pointer;
+                        display: block;
+                        height: 100%;
+                        
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            border-radius: .2em;
+                        }
+    
+                        &::after {
+                            content: "✕";
+                            position: absolute;
+                            text-align: center;
+                            line-height: 0;
+                            width: 100%;
+                            top: 50%;
+                        }
+                    }
+                    
+                    &:not(:checked) + label::after {
+                        opacity: 0;
+                    }
+                
+                    &:checked + label::after {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        >div#hero-point-description {
+            font-size: 0.4em;
+            margin-top: -0.05cm;
+
+            >p {
+                margin: 0;
+                padding-left: 2em;
+                text-indent: -2em;
+
+                span.strong {
+                    font-weight: 750;
                 }
             }
         }
