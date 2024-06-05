@@ -94,7 +94,7 @@ div#general-information {
         width: 100%;
         display: flex;
         flex-direction: column;
-        row-gap: 0.1cm;
+        row-gap: 0.08cm;
     }
 
     >div#sheet-logo {
@@ -279,5 +279,22 @@ div#general-information {
             }
         }
 
+    }
+
+    >div#ancestry-block {
+        >span#heritage-traits-size {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            column-gap: 0.05cm;
+
+            >:last-child {
+                width: 16%;
+
+                input {
+                    text-align: center;
+                }
+            }
+        }
     }
 }
