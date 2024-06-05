@@ -98,6 +98,8 @@ div#general-information {
     }
 
     >div#sheet-logo {
+        justify-content: center;
+
         >img {
             width: inherit;
         }
@@ -107,14 +109,16 @@ div#general-information {
             color: var(--color-base-brown);
             font-size: 1.2em;
             text-align: center;
-            margin-top: -0.8em;
+            margin-top: -0.6em;
         }
     }
 
     >div#name-block {
 
         input#character-name {
-            margin: 4px 0;
+            margin: 8px 0;
+            padding: 0 4px;
+            width: calc(100% - 8px);
         }
 
         > :last-child {
