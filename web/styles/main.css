@@ -297,4 +297,8 @@ div#general-information {
             }
         }
     }
+
+    >div#class-block {
+        grid-column: span 2;
+    }
 }
