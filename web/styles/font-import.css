@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300 800;
+    font-stretch: 87.5%;
+    src: url(../assets/fonts/OpenSans_SemiCondensed.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: "Taroca";
+    src: url(../assets/fonts/Taroca.woff2)format('woff2');
+}

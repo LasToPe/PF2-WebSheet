@@ -1,14 +1,3 @@
-@font-face {
-    font-family: "Taroca";
-    src: url(../assets/fonts/Taroca-Regular.ttf);
-    src: url("https://db.onlinewebfonts.com/t/8cbc00a7aa9657bac8e951da2d68c7d1.eot");
-    src: url("https://db.onlinewebfonts.com/t/8cbc00a7aa9657bac8e951da2d68c7d1.eot?#iefix")format("embedded-opentype"),
-        url("https://db.onlinewebfonts.com/t/8cbc00a7aa9657bac8e951da2d68c7d1.woff2")format("woff2"),
-        url("https://db.onlinewebfonts.com/t/8cbc00a7aa9657bac8e951da2d68c7d1.woff")format("woff"),
-        url("https://db.onlinewebfonts.com/t/8cbc00a7aa9657bac8e951da2d68c7d1.ttf")format("truetype"),
-        url("https://db.onlinewebfonts.com/t/8cbc00a7aa9657bac8e951da2d68c7d1.svg#Taroca OT W00 Regular")format("svg");
-}
-
 :root {
     --color-base-brown: rgb(111, 71, 62);
     --color-header-green: rgb(0, 42, 23);
@@ -17,7 +6,7 @@
 
 body {
     background: rgb(204, 204, 204);
-    font-family: Helvetica;
+    font-family: "Open Sans";
     font-size: 1em;
 }
 
