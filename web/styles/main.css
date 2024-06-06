@@ -60,7 +60,7 @@ span.block-heading {
 }
 
 span.container-input {
-    border: 2px solid var(--color-base-brown);
+    border: 1.5px solid var(--color-base-brown);
     display: grid;
 
     >input {
