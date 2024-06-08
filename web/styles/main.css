@@ -48,7 +48,7 @@ span.block-heading {
     }
 }
 
-span.container-input {
+span.basic-input-container {
     border: 1.5px solid var(--color-base-brown);
     display: grid;
 
