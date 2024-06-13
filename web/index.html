@@ -211,6 +211,296 @@
                 </div>
             </div>
         </div>
+
+        <!--Defenses and Hit Points sections-->
+        <div id="defenses-and-hitpoints">
+            <div id="defenses-block">
+                <span class="block-heading">
+                    <span class="header-text">Defenses</span>
+                    <span class="header-line"></span>
+                </span>
+
+                <div id="armor-class-area">
+                    <div id="armor-container">
+                        <span>Armor Class</span>
+                        <span id="armor-class-input-container">
+                            <input type="number">
+                        </span>
+                        <div class="calc-input-container armor">
+                            <input type="number" value="10" readonly>
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels armor">
+                            <label>Base</label>
+                            <label>Dex*</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                        <span>* Use armor's Dex cap if lower</span>
+                    </div>
+
+                    <div id="shield-container">
+                        <span>Shield</span>
+                        <div id="shield-stats">
+                            <span id="ac-shield-input-container">
+                                <input type="number">
+                            </span>
+
+                            <span class="shield-stat-label hardness">Hardness</span>
+                            <span class="shield-stat-label max-hp">Max HP</span>
+                            <span class="shield-stat-label bt">BT</span>
+                            <span class="shield-stat-label hp">HP</span>
+
+                            <span id="shield-hardness-container">
+                                <input type="number">
+                            </span>
+
+                            <span id="shield-max-hp-bt-container">
+                                <input type="number">
+                                <input type="number">
+                            </span>
+
+                            <span id="shield-hp-container">
+                                <input type="number">
+                            </span>
+                        </div>
+                    </div>
+
+                    <div id="armor-proficiency-container">
+                        <span>Armor Proficiencies</span>
+
+                        <div>
+                            <span class="prof-container">
+                                <span class="ac-prof-label">Unarmored</span>
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="unarmored-prof-trained">
+                                    <label for="unarmored-prof-trained">T</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="unarmored-prof-expert">
+                                    <label for="unarmored-prof-expert">E</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="unarmored-prof-master">
+                                    <label for="unarmored-prof-master">M</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="unarmored-prof-legendary">
+                                    <label for="unarmored-prof-legendary">L</label>
+                                </span>
+                            </span>
+
+                            <span class="prof-container">
+                                <span class="ac-prof-label">Light</span>
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="light-prof-trained">
+                                    <label for="light-prof-trained">T</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="light-prof-expert">
+                                    <label for="light-prof-expert">E</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="light-prof-master">
+                                    <label for="light-prof-master">M</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="light-prof-legendary">
+                                    <label for="light-prof-legendary">L</label>
+                                </span>
+                            </span>
+
+                            <span class="prof-container">
+                                <span class="ac-prof-label">Medium</span>
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="medium-prof-trained">
+                                    <label for="medium-prof-trained">T</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="medium-prof-expert">
+                                    <label for="medium-prof-expert">E</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="medium-prof-master">
+                                    <label for="medium-prof-master">M</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="medium-prof-legendary">
+                                    <label for="medium-prof-legendary">L</label>
+                                </span>
+                            </span>
+
+                            <span class="prof-container">
+                                <span class="ac-prof-label">Heavy</span>
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="heavy-prof-trained">
+                                    <label for="heavy-prof-trained">T</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="heavy-prof-expert">
+                                    <label for="heavy-prof-expert">E</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="heavy-prof-master">
+                                    <label for="heavy-prof-master">M</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="heavy-prof-legendary">
+                                    <label for="heavy-prof-legendary">L</label>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="saves-area">
+                    <div class="save-container">
+                        <span>Fortitude</span>
+                        <div class="save-and-prof">
+                            <span class="save-input-container">
+                                <input type="number">
+                            </span>
+                            <span class="prof-container">
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="fort-prof-trained">
+                                    <label for="fort-prof-trained">T</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="fort-prof-expert">
+                                    <label for="fort-prof-expert">E</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="fort-prof-master">
+                                    <label for="fort-prof-master">M</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="fort-prof-legendary">
+                                    <label for="fort-prof-legendary">L</label>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="calc-input-container save">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels save">
+                            <label>Con</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <div class="save-container">
+                        <span>Reflex</span>
+                        <div class="save-and-prof">
+                            <span class="save-input-container">
+                                <input type="number">
+                            </span>
+                            <span class="prof-container">
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="ref-prof-trained">
+                                    <label for="ref-prof-trained">T</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="ref-prof-expert">
+                                    <label for="ref-prof-expert">E</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="ref-prof-master">
+                                    <label for="ref-prof-master">M</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="ref-prof-legendary">
+                                    <label for="ref-prof-legendary">L</label>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="calc-input-container save">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels save">
+                            <label>Dex</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <div class="save-container">
+                        <span>Will</span>
+                        <div class="save-and-prof">
+                            <span class="save-input-container">
+                                <input type="number">
+                            </span>
+                            <span class="prof-container">
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="will-prof-trained">
+                                    <label for="will-prof-trained">T</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="will-prof-expert">
+                                    <label for="will-prof-expert">E</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="will-prof-master">
+                                    <label for="will-prof-master">M</label>
+                                </span>
+
+                                <span class="prof-check-container">
+                                    <input type="checkbox" id="will-prof-legendary">
+                                    <label for="will-prof-legendary">L</label>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="calc-input-container save">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels save">
+                            <label>Wis</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <span id="defenses-notes-container" class="basic-input-container secondary">
+                        <span class="assistive-text">Defenses Notes</span>
+                        <input type="text">
+                    </span>
+                </div>
+            </div>
+        </div>
     </page>
 </body>
 
