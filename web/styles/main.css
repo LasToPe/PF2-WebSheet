@@ -503,7 +503,8 @@ div#attributes {
                         padding-left: calc(2 * 4px + 0.7em);
                         font-size: 0.6em;
 
-                        &::before, &::after {
+                        &::before,
+                        &::after {
                             content: "";
                             left: 4px;
                             bottom: 0.2em;
