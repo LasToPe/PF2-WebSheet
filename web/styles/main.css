@@ -373,14 +373,6 @@ div#general-information {
                             display: block;
                             height: 100%;
 
-                            &::before {
-                                content: "";
-                                position: absolute;
-                                width: 100%;
-                                height: 100%;
-                                border-radius: .2em;
-                            }
-
                             &::after {
                                 content: "✕";
                                 position: absolute;
