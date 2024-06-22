@@ -551,12 +551,723 @@
                     <span class="assistive-text">Resistances and Immunities</span>
                     <input type="text">
                 </span>
-                
+
                 <span class="basic-input-container secondary">
                     <span class="assistive-text">Conditions</span>
                     <input type="text">
                 </span>
 
+            </div>
+        </div>
+
+        <div id="statistics-2-columns">
+            <div id="skills">
+                <span class="block-heading">
+                    <span class="header-text">Skills</span>
+                    <span class="header-line"></span>
+                </span>
+                <div id="skills-container">
+                    <!-- #region acrobatics -->
+                    <label class="skill-label">Acrobatics</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="acrobatics-prof-trained" type="checkbox">
+                            <label for="acrobatics-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="acrobatics-prof-expert" type="checkbox">
+                            <label for="acrobatics-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="acrobatics-prof-master" type="checkbox">
+                            <label for="acrobatics-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="acrobatics-prof-legendary" type="checkbox">
+                            <label for="acrobatics-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-4-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">-</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Dex</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                            <label>Armor</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region arcana -->
+                    <label class="skill-label">Arcana</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="arcana-prof-trained" type="checkbox">
+                            <label for="arcana-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="arcana-prof-expert" type="checkbox">
+                            <label for="arcana-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="arcana-prof-master" type="checkbox">
+                            <label for="arcana-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="arcana-prof-legendary" type="checkbox">
+                            <label for="arcana-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Int</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region athlethics -->
+                    <label class="skill-label">Athletics</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="athletics-prof-trained" type="checkbox">
+                            <label for="athletics-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="athletics-prof-expert" type="checkbox">
+                            <label for="athletics-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="athletics-prof-master" type="checkbox">
+                            <label for="athletics-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="athletics-prof-legendary" type="checkbox">
+                            <label for="athletics-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-4-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">-</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Str</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                            <label>Armor</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region crafting -->
+                    <label class="skill-label">Crafting</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="crafting-prof-trained" type="checkbox">
+                            <label for="crafting-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="crafting-prof-expert" type="checkbox">
+                            <label for="crafting-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="crafting-prof-master" type="checkbox">
+                            <label for="crafting-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="crafting-prof-legendary" type="checkbox">
+                            <label for="crafting-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Int</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region deception -->
+                    <label class="skill-label">Deception</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="deception-prof-trained" type="checkbox">
+                            <label for="deception-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="deception-prof-expert" type="checkbox">
+                            <label for="deception-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="deception-prof-master" type="checkbox">
+                            <label for="deception-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="deception-prof-legendary" type="checkbox">
+                            <label for="deception-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Cha</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region diplomacy -->
+                    <label class="skill-label">Diplomacy</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="diplomacy-prof-trained" type="checkbox">
+                            <label for="diplomacy-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="diplomacy-prof-expert" type="checkbox">
+                            <label for="diplomacy-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="diplomacy-prof-master" type="checkbox">
+                            <label for="diplomacy-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="diplomacy-prof-legendary" type="checkbox">
+                            <label for="diplomacy-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Cha</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region intimidation -->
+                    <label class="skill-label">Intimidation</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="intimidation-prof-trained" type="checkbox">
+                            <label for="intimidation-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="intimidation-prof-expert" type="checkbox">
+                            <label for="intimidation-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="intimidation-prof-master" type="checkbox">
+                            <label for="intimidation-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="intimidation-prof-legendary" type="checkbox">
+                            <label for="intimidation-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Cha</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region lore-1 -->
+                    <label class="skill-label">Lore</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="lore-1-prof-trained" type="checkbox">
+                            <label for="lore-1-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="lore-1-prof-expert" type="checkbox">
+                            <label for="lore-1-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="lore-1-prof-master" type="checkbox">
+                            <label for="lore-1-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="lore-1-prof-legendary" type="checkbox">
+                            <label for="lore-1-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Int</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region lore-2 -->
+                    <label class="skill-label">Lore</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="lore-2-prof-trained" type="checkbox">
+                            <label for="lore-2-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="lore-2-prof-expert" type="checkbox">
+                            <label for="lore-2-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="lore-2-prof-master" type="checkbox">
+                            <label for="lore-2-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="lore-2-prof-legendary" type="checkbox">
+                            <label for="lore-2-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Int</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region medicine -->
+                    <label class="skill-label">Medicine</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="medicine-prof-trained" type="checkbox">
+                            <label for="medicine-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="medicine-prof-expert" type="checkbox">
+                            <label for="medicine-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="medicine-prof-master" type="checkbox">
+                            <label for="medicine-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="medicine-prof-legendary" type="checkbox">
+                            <label for="medicine-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Wis</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region nature -->
+                    <label class="skill-label">Nature</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="nature-prof-trained" type="checkbox">
+                            <label for="nature-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="nature-prof-expert" type="checkbox">
+                            <label for="nature-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="nature-prof-master" type="checkbox">
+                            <label for="nature-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="nature-prof-legendary" type="checkbox">
+                            <label for="nature-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Wis</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region occultism -->
+                    <label class="skill-label">Occultism</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="occultism-prof-trained" type="checkbox">
+                            <label for="occultism-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="occultism-prof-expert" type="checkbox">
+                            <label for="occultism-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="occultism-prof-master" type="checkbox">
+                            <label for="occultism-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="occultism-prof-legendary" type="checkbox">
+                            <label for="occultism-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Int</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region performance -->
+                    <label class="skill-label">Performance</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="performance-prof-trained" type="checkbox">
+                            <label for="performance-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="performance-prof-expert" type="checkbox">
+                            <label for="performance-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="performance-prof-master" type="checkbox">
+                            <label for="performance-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="performance-prof-legendary" type="checkbox">
+                            <label for="performance-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Cha</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region religion -->
+                    <label class="skill-label">Religion</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="religion-prof-trained" type="checkbox">
+                            <label for="religion-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="religion-prof-expert" type="checkbox">
+                            <label for="religion-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="religion-prof-master" type="checkbox">
+                            <label for="religion-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="religion-prof-legendary" type="checkbox">
+                            <label for="religion-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Wis</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region society -->
+                    <label class="skill-label">Society</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="society-prof-trained" type="checkbox">
+                            <label for="society-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="society-prof-expert" type="checkbox">
+                            <label for="society-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="society-prof-master" type="checkbox">
+                            <label for="society-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="society-prof-legendary" type="checkbox">
+                            <label for="society-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Int</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region stealth -->
+                    <label class="skill-label">Stealth</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="stealth-prof-trained" type="checkbox">
+                            <label for="stealth-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="stealth-prof-expert" type="checkbox">
+                            <label for="stealth-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="stealth-prof-master" type="checkbox">
+                            <label for="stealth-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="stealth-prof-legendary" type="checkbox">
+                            <label for="stealth-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-4-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">-</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Dex</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                            <label>Armor</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region survival -->
+                    <label class="skill-label">Survival</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="survival-prof-trained" type="checkbox">
+                            <label for="survival-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="survival-prof-expert" type="checkbox">
+                            <label for="survival-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="survival-prof-master" type="checkbox">
+                            <label for="survival-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="survival-prof-legendary" type="checkbox">
+                            <label for="survival-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-3-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Wis</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region thievery -->
+                    <label class="skill-label">Thievery</label>
+                    <span class="skill-total-input-container">
+                        <input type="number">
+                    </span>
+                    <span class="prof-container">
+                        <span class="prof-check-container">
+                            <input id="thievery-prof-trained" type="checkbox">
+                            <label for="thievery-prof-trained">T</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="thievery-prof-expert" type="checkbox">
+                            <label for="thievery-prof-expert">E</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="thievery-prof-master" type="checkbox">
+                            <label for="thievery-prof-master">M</label>
+                        </span>
+                        <span class="prof-check-container">
+                            <input id="thievery-prof-legendary" type="checkbox">
+                            <label for="thievery-prof-legendary">L</label>
+                        </span>
+                    </span>
+                    <div class="skill-calc-container">
+                        <div class="calc-input-container skill-4-part">
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">-</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels">
+                            <label>Dex</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                            <label>Armor</label>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                </div>
+                <span id="skill-notes" class="basic-input-container secondary">
+                    <span class="assistive-text">Skill Notes</span>
+                    <textarea></textarea>
+                </span>
             </div>
         </div>
     </page>

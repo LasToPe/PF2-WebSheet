@@ -985,3 +985,104 @@ div#defenses-and-hitpoints {
         }
     }
 }
+
+div#statistics-2-columns {
+    display: grid;
+    grid-template-columns: 50fr 50fr;
+    column-gap: 0.1cm;
+}
+
+div#skills {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 70fr 30fr;
+    column-gap: 0.1cm;
+    row-gap: 0.1cm;
+
+    >span.block-heading {
+        grid-column: 1/-1;
+    }
+
+    >div#skills-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        column-gap: 0.1cm;
+
+        >label.skill-label {
+            text-align: right;
+            font-size: 0.8em;
+            font-weight: bold;
+            align-content: center;
+        }
+
+        >span.skill-total-input-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            &::before {
+                content: "";
+                width: 100%;
+                height: 100%;
+                background-image: url(../assets/images/skill-bg.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                position: absolute;
+            }
+
+            >input {
+                border: none;
+                background: none;
+                width: calc(100% - 4px);
+                height: calc(100% - 2px);
+                text-align: center;
+                position: relative;
+            }
+        }
+
+        >span.prof-container {
+            align-self: center;
+        }
+
+        >div.skill-calc-container {
+            >div.calc-input-container.skill-3-part {
+                margin-right: 25%;
+
+                >input {
+                    width: 33%;
+                }
+
+                +div.calc-labels {
+                    width: 75%;
+
+                    >label {
+                        width: 33%;
+                    }
+                }
+
+            }
+
+            >div.calc-input-container.skill-4-part {
+
+                >input,
+                +div.calc-labels>label {
+                    width: 25%;
+                }
+
+            }
+        }
+    }
+
+
+    >span#skill-notes {
+        display: block;
+
+        >textarea {
+            resize: none;
+            border: none;
+            height: calc(100% - 4px - 0.7em);
+            width: calc(100% - 4px);
+        }
+    }
+}
