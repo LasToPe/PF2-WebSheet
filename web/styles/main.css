@@ -23,6 +23,10 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+textarea {
+    font-family: "Open Sans";
+}
+
 input:focus,
 textarea:focus {
     outline: none;
@@ -63,7 +67,8 @@ span.basic-input-container {
     &.secondary {
         border-width: 1px;
 
-        >input {
+        >input,
+        >textarea {
             margin-top: 0.7em;
         }
 
@@ -79,7 +84,6 @@ span.basic-input-container {
 div.calc-input-container {
     display: flex;
     border: 1.5px solid var(--color-base-brown);
-    justify-content: space-between;
     margin-top: 0.1cm;
 
     >input {
@@ -93,19 +97,17 @@ div.calc-input-container {
         font-size: 0.4em;
         color: var(--color-base-brown);
         position: relative;
-        height: 50%;
-        top: 50%;
+        align-self: center;
         line-height: 0;
     }
 
     &+div.calc-labels {
         display: flex;
-        justify-content: space-between;
 
         >label {
             font-weight: bold;
             text-align: center;
-            font-size: 0.6em;
+            font-size: 0.5em;
         }
     }
 }
