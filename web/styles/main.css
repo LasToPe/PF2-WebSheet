@@ -940,7 +940,8 @@ div#defenses-and-hitpoints {
                                 text-align: center;
                                 line-height: 0;
                                 width: 100%;
-                                top: 50%;
+                                top: 45%;
+                                left: -0.3px;
                                 font-size: 0.7em;
                             }
                         }
