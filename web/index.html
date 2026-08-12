@@ -14,7 +14,119 @@
 <body>
     <page>
         <!--General information section-->
-        <div id="general-information" include="./modules/general-information.html"></div>
+        <div id="general-information">
+            <div id="sheet-logo">
+                <img src="./assets/images/PF2Logo.png" alt="pathfinder second edition logo." />
+                <span>Character Sheet</span>
+            </div>
+
+            <div id="name-block">
+                <span class="block-heading">
+                    <span class="header-text">Character Name</span>
+                    <span class="header-line"></span>
+                </span>
+                <span class="basic-input-container">
+                    <input id="character-name" type="text">
+                </span>
+                <span class="basic-input-container secondary">
+                    <span id="player-name-assistive-text">Player Name</span>
+                    <input type="text">
+                </span>
+            </div>
+
+            <div id="level-and-hero-points">
+                <div id="level-block">
+                    <span class="block-heading">
+                        <span class="header-text">Level</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <div id="level-and-xp">
+                        <span id="level-container">
+                            <input type="number" min="1" max="20">
+                        </span>
+                        <span id="xp-container">
+                            <input type="number">
+                        </span>
+                    </div>
+                </div>
+
+                <div id="hero-point-block">
+                    <span class="block-heading">
+                        <span class="header-text">Hero Points</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <div id="hero-point-fields">
+                        <span class="hero-point-hexagon">
+                            <input type="checkbox" id="hero-point-1">
+                            <label for="hero-point-1"></label>
+                        </span>
+                        <span class="hero-point-hexagon">
+                            <input type="checkbox" id="hero-point-2">
+                            <label for="hero-point-2"></label>
+                        </span>
+                        <span class="hero-point-hexagon">
+                            <input type="checkbox" id="hero-point-3">
+                            <label for="hero-point-3"></label>
+                        </span>
+                    </div>
+                    <div id="hero-point-description">
+                        <p>
+                            <span class="strong">Gain 1</span> at the start of each session and when granted by the GM.
+                        </p>
+                        <p><span class="strong">Spend 1</span> to reroll a check.</p>
+                        <p><span class="strong">Spend All</span> to avoid death.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ancestry-block">
+                <span class="block-heading">
+                    <span class="header-text">Ancestry</span>
+                    <span class="header-line"></span>
+                </span>
+                <span class="basic-input-container">
+                    <input type="text">
+                </span>
+                <span id="heritage-traits-size">
+                    <span class="basic-input-container secondary">
+                        <span class="assistive-text">Heritage and Traits</span>
+                        <input type="text">
+                    </span>
+                    <span class="basic-input-container secondary">
+                        <span class="assistive-text">Size</span>
+                        <input type="text">
+                    </span>
+                </span>
+            </div>
+
+            <div id="background-block">
+                <span class="block-heading">
+                    <span class="header-text">Background</span>
+                    <span class="header-line"></span>
+                </span>
+                <span class="basic-input-container">
+                    <input type="text">
+                </span>
+                <span class="basic-input-container secondary">
+                    <span class="assistive-text">Background Notes</span>
+                    <input type="text">
+                </span>
+            </div>
+
+            <div id="class-block">
+                <span class="block-heading">
+                    <span class="header-text">Class</span>
+                    <span class="header-line"></span>
+                </span>
+                <span class="basic-input-container">
+                    <input type="text">
+                </span>
+                <span class="basic-input-container secondary">
+                    <span class="assistive-text">Class Notes</span>
+                    <input type="text">
+                </span>
+            </div>
+        </div>
 
         <!--Attributes section-->
         <div id="attributes">
@@ -23,83 +135,22 @@
                 <span class="header-line"></span>
             </span>
 
-            <div id="strength-block">
-                <span class="attribute-container">
-                    <input type="number">
-                </span>
-                <div class="attribute-label-and-partial">
-                    <label class="attribute-label">Strength</label>
-                    <span class="partial-boost-container">
-                        <input type="checkbox" id="strength-partial-boost">
-                        <label for="strength-partial-boost">Partial Boost</label>
+            <template id="attribute-template">
+                <div id="{{id}}-block">
+                    <span class="attribute-container">
+                        <input type="number">
                     </span>
+                    <div class="attribute-label-and-partial">
+                        <label class="attribute-label">{{label}}</label>
+                        <span class="partial-boost-container">
+                            <input type="checkbox" id="{{id}}-partial-boost">
+                            <label for="{{id}}-partial-boost">Partial Boost</label>
+                        </span>
+                    </div>
                 </div>
-            </div>
+            </template>
 
-            <div id="dexterity-block">
-                <span class="attribute-container">
-                    <input type="number">
-                </span>
-                <div class="attribute-label-and-partial">
-                    <label class="attribute-label">Dexterity</label>
-                    <span class="partial-boost-container">
-                        <input type="checkbox" id="dexterity-partial-boost">
-                        <label for="dexterity-partial-boost">Partial Boost</label>
-                    </span>
-                </div>
-            </div>
-
-            <div id="constitution-block">
-                <span class="attribute-container">
-                    <input type="number">
-                </span>
-                <div class="attribute-label-and-partial">
-                    <label class="attribute-label">Constitution</label>
-                    <span class="partial-boost-container">
-                        <input type="checkbox" id="constitution-partial-boost">
-                        <label for="constitution-partial-boost">Partial Boost</label>
-                    </span>
-                </div>
-            </div>
-
-            <div id="intelligence-block">
-                <span class="attribute-container">
-                    <input type="number">
-                </span>
-                <div class="attribute-label-and-partial">
-                    <label class="attribute-label">Intelligence</label>
-                    <span class="partial-boost-container">
-                        <input type="checkbox" id="intelligence-partial-boost">
-                        <label for="intelligence-partial-boost">Partial Boost</label>
-                    </span>
-                </div>
-            </div>
-
-            <div id="wisdom-block">
-                <span class="attribute-container">
-                    <input type="number">
-                </span>
-                <div class="attribute-label-and-partial">
-                    <label class="attribute-label">Wisdom</label>
-                    <span class="partial-boost-container">
-                        <input type="checkbox" id="wisdom-partial-boost">
-                        <label for="wisdom-partial-boost">Partial Boost</label>
-                    </span>
-                </div>
-            </div>
-
-            <div id="charisma-block">
-                <span class="attribute-container">
-                    <input type="number">
-                </span>
-                <div class="attribute-label-and-partial">
-                    <label class="attribute-label">Charisma</label>
-                    <span class="partial-boost-container">
-                        <input type="checkbox" id="charisma-partial-boost">
-                        <label for="charisma-partial-boost">Partial Boost</label>
-                    </span>
-                </div>
-            </div>
+            <script type="module" src="modules/attributes.js"></script>
         </div>
 
         <!--Defenses and Hit Points sections-->
@@ -164,226 +215,84 @@
                     <div id="armor-proficiency-container">
                         <span>Armor Proficiencies</span>
 
-                        <div>
-                            <span class="prof-container">
-                                <span class="ac-prof-label">Unarmored</span>
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="unarmored-prof-trained">
-                                    <label for="unarmored-prof-trained">T</label>
-                                </span>
+                        <div id="armor-proficiencies">
+                            <template id="armor-prof-template">
+                                <span class="prof-container">
+                                    <span class="ac-prof-label">{{label}}</span>
+                                    <span class="prof-check-container">
+                                        <input type="checkbox" id="{{id}}-prof-trained">
+                                        <label for="{{id}}-prof-trained">T</label>
+                                    </span>
 
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="unarmored-prof-expert">
-                                    <label for="unarmored-prof-expert">E</label>
-                                </span>
+                                    <span class="prof-check-container">
+                                        <input type="checkbox" id="{{id}}-prof-expert">
+                                        <label for="{{id}}-prof-expert">E</label>
+                                    </span>
 
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="unarmored-prof-master">
-                                    <label for="unarmored-prof-master">M</label>
-                                </span>
+                                    <span class="prof-check-container">
+                                        <input type="checkbox" id="{{id}}-prof-master">
+                                        <label for="{{id}}-prof-master">M</label>
+                                    </span>
 
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="unarmored-prof-legendary">
-                                    <label for="unarmored-prof-legendary">L</label>
+                                    <span class="prof-check-container">
+                                        <input type="checkbox" id="{{id}}-prof-legendary">
+                                        <label for="{{id}}-prof-legendary">L</label>
+                                    </span>
                                 </span>
-                            </span>
+                            </template>
 
-                            <span class="prof-container">
-                                <span class="ac-prof-label">Light</span>
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="light-prof-trained">
-                                    <label for="light-prof-trained">T</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="light-prof-expert">
-                                    <label for="light-prof-expert">E</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="light-prof-master">
-                                    <label for="light-prof-master">M</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="light-prof-legendary">
-                                    <label for="light-prof-legendary">L</label>
-                                </span>
-                            </span>
-
-                            <span class="prof-container">
-                                <span class="ac-prof-label">Medium</span>
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="medium-prof-trained">
-                                    <label for="medium-prof-trained">T</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="medium-prof-expert">
-                                    <label for="medium-prof-expert">E</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="medium-prof-master">
-                                    <label for="medium-prof-master">M</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="medium-prof-legendary">
-                                    <label for="medium-prof-legendary">L</label>
-                                </span>
-                            </span>
-
-                            <span class="prof-container">
-                                <span class="ac-prof-label">Heavy</span>
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="heavy-prof-trained">
-                                    <label for="heavy-prof-trained">T</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="heavy-prof-expert">
-                                    <label for="heavy-prof-expert">E</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="heavy-prof-master">
-                                    <label for="heavy-prof-master">M</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="heavy-prof-legendary">
-                                    <label for="heavy-prof-legendary">L</label>
-                                </span>
-                            </span>
+                            <script type="module" src="modules/armor-proficiencies.js"></script>
                         </div>
                     </div>
                 </div>
 
                 <div id="saves-area">
-                    <div class="save-container">
-                        <span>Fortitude</span>
-                        <div class="save-and-prof">
-                            <span class="save-input-container">
+                    <template id="save-template">
+                        <div class="save-container">
+                            <span>{{label}}</span>
+                            <div class="save-and-prof">
+                                <span class="save-input-container">
+                                    <input type="number">
+                                </span>
+                                <span class="prof-container">
+                                    <span class="prof-check-container">
+                                        <input type="checkbox" id="{{id}}-prof-trained">
+                                        <label for="{{id}}-prof-trained">T</label>
+                                    </span>
+
+                                    <span class="prof-check-container">
+                                        <input type="checkbox" id="{{id}}-prof-expert">
+                                        <label for="{{id}}-prof-expert">E</label>
+                                    </span>
+
+                                    <span class="prof-check-container">
+                                        <input type="checkbox" id="{{id}}-prof-master">
+                                        <label for="{{id}}-prof-master">M</label>
+                                    </span>
+
+                                    <span class="prof-check-container">
+                                        <input type="checkbox" id="{{id}}-prof-legendary">
+                                        <label for="{{id}}-prof-legendary">L</label>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="calc-input-container save">
                                 <input type="number">
-                            </span>
-                            <span class="prof-container">
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="fort-prof-trained">
-                                    <label for="fort-prof-trained">T</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="fort-prof-expert">
-                                    <label for="fort-prof-expert">E</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="fort-prof-master">
-                                    <label for="fort-prof-master">M</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="fort-prof-legendary">
-                                    <label for="fort-prof-legendary">L</label>
-                                </span>
-                            </span>
-                        </div>
-                        <div class="calc-input-container save">
-                            <input type="number">
-                            <span class="plus-minus-spacer">+</span>
-                            <input type="number">
-                            <span class="plus-minus-spacer">+</span>
-                            <input type="number">
-                        </div>
-                        <div class="calc-labels save">
-                            <label>Con</label>
-                            <label>Prof</label>
-                            <label>Item</label>
-                        </div>
-                    </div>
-                    <div class="save-container">
-                        <span>Reflex</span>
-                        <div class="save-and-prof">
-                            <span class="save-input-container">
+                                <span class="plus-minus-spacer">+</span>
                                 <input type="number">
-                            </span>
-                            <span class="prof-container">
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="ref-prof-trained">
-                                    <label for="ref-prof-trained">T</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="ref-prof-expert">
-                                    <label for="ref-prof-expert">E</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="ref-prof-master">
-                                    <label for="ref-prof-master">M</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="ref-prof-legendary">
-                                    <label for="ref-prof-legendary">L</label>
-                                </span>
-                            </span>
-                        </div>
-                        <div class="calc-input-container save">
-                            <input type="number">
-                            <span class="plus-minus-spacer">+</span>
-                            <input type="number">
-                            <span class="plus-minus-spacer">+</span>
-                            <input type="number">
-                        </div>
-                        <div class="calc-labels save">
-                            <label>Dex</label>
-                            <label>Prof</label>
-                            <label>Item</label>
-                        </div>
-                    </div>
-                    <div class="save-container">
-                        <span>Will</span>
-                        <div class="save-and-prof">
-                            <span class="save-input-container">
+                                <span class="plus-minus-spacer">+</span>
                                 <input type="number">
-                            </span>
-                            <span class="prof-container">
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="will-prof-trained">
-                                    <label for="will-prof-trained">T</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="will-prof-expert">
-                                    <label for="will-prof-expert">E</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="will-prof-master">
-                                    <label for="will-prof-master">M</label>
-                                </span>
-
-                                <span class="prof-check-container">
-                                    <input type="checkbox" id="will-prof-legendary">
-                                    <label for="will-prof-legendary">L</label>
-                                </span>
-                            </span>
+                            </div>
+                            <div class="calc-labels save">
+                                <label>{{attr}}</label>
+                                <label>Prof</label>
+                                <label>Item</label>
+                            </div>
                         </div>
-                        <div class="calc-input-container save">
-                            <input type="number">
-                            <span class="plus-minus-spacer">+</span>
-                            <input type="number">
-                            <span class="plus-minus-spacer">+</span>
-                            <input type="number">
-                        </div>
-                        <div class="calc-labels save">
-                            <label>Wis</label>
-                            <label>Prof</label>
-                            <label>Item</label>
-                        </div>
-                    </div>
+                    </template>
+
+                    <script type="module" src="modules/saves.js"></script>
+
                     <span id="defenses-notes-container" class="basic-input-container secondary">
                         <span class="assistive-text">Defenses Notes</span>
                         <input type="text">
@@ -1159,8 +1068,6 @@
             </div>
         </div>
     </page>
-
-    <script src="./scripts/index.js"></script>
 </body>
 
 </html>

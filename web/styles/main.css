@@ -32,7 +32,7 @@ textarea:focus {
     outline: none;
 }
 
-span.block-heading {
+.block-heading {
     display: flex;
     flex-direction: row;
     font-family: Taroca;
@@ -42,19 +42,19 @@ span.block-heading {
     margin-bottom: -0.1cm;
     height: 14px;
 
-    >span.header-text {
-        min-width: fit-content;
+    .header-text {
+        white-space: nowrap;
     }
 
-    >span.header-line {
+    .header-line {
         height: 3px;
         background-color: var(--color-header-green);
         margin-left: 5px;
-        width: 100%;
+        flex-grow: 1;
     }
 }
 
-span.basic-input-container {
+.basic-input-container {
     border: 1.5px solid var(--color-base-brown);
     display: grid;
 
@@ -72,7 +72,7 @@ span.basic-input-container {
             margin-top: 0.7em;
         }
 
-        >span.assistive-text {
+        .assistive-text {
             position: absolute;
             font-size: 0.65em;
             margin-left: 0.05cm;
@@ -211,235 +211,259 @@ span.prof-container {
     }
 }
 
-div#general-information {
+/* #region General Information */
+
+#general-information {
     display: grid;
-    column-gap: 0.2cm;
-    grid-template-columns: 33fr 33fr 33fr;
+    column-gap: 0.5rem;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto auto;
 
     >div {
         width: 100%;
         display: flex;
         flex-direction: column;
-        row-gap: 0.08cm;
+        row-gap: 0.25rem;
+    }
+}
+
+#sheet-logo {
+    justify-content: center;
+
+    >img {
+        width: inherit;
     }
 
-    >div#sheet-logo {
-        justify-content: center;
+    >span {
+        font-family: "Taroca";
+        color: var(--color-base-brown);
+        font-size: 1.2em;
+        text-align: center;
+        margin-top: -0.6em;
+    }
+}
 
-        >img {
-            width: inherit;
-        }
+#name-block {
 
-        >span {
-            font-family: "Taroca";
-            color: var(--color-base-brown);
-            font-size: 1.2em;
-            text-align: center;
-            margin-top: -0.6em;
-        }
+    #character-name {
+        margin: 8px 0;
+        padding: 0 4px;
+        width: calc(100% - 8px);
     }
 
-    >div#name-block {
+    > :last-child {
+        grid-template-columns: auto auto;
 
-        input#character-name {
-            margin: 8px 0;
-            padding: 0 4px;
-            width: calc(100% - 8px);
+        #player-name-assistive-text {
+            font-size: 0.65em;
+            margin: 2px 2px;
+            align-self: last baseline;
         }
 
-        > :last-child {
-            grid-template-columns: auto auto;
+        >input {
+            margin: unset;
+            font-size: 0.8em;
+        }
+    }
+}
 
-            span#player-name-assistive-text {
-                font-size: 0.65em;
-                margin: 2px 2px;
-                align-self: last baseline;
+#level-and-hero-points {
+    display: flex;
+    flex-direction: row !important;
+    column-gap: 0.5rem;
+}
+
+#level-block {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#level-and-xp {
+    display: flex;
+    height: 100%;
+}
+
+#level-container {
+    width: 40%;
+    height: 100%;
+    position: relative;
+
+    &::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        border: 1.5px solid black;
+        transform: translate(-50%, -50%) rotate(45deg);
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+
+    /* &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: 2px solid black;
+        transform: rotate(45deg); 
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-image: url("../assets/images/level-star.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        filter: drop-shadow(0 0 1px #ffd900);
+    } */
+
+    >input {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        text-align: center;
+        position: relative;
+    }
+}
+
+#xp-container {
+    width: calc(60% - 5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    margin-left: 5px;
+
+    &::before {
+        content: "XP";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 0.8em;
+        margin-top: 15%;
+    }
+
+    >input {
+        width: calc(100% - 3px);
+        padding: 0;
+        border: 1.5px solid black;
+        text-align: center;
+        position: relative;
+    }
+}
+
+#hero-point-block {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.08cm;
+
+    >div#hero-point-description {
+        font-size: 0.4em;
+        margin-top: -0.05cm;
+
+        >p {
+            margin: 0;
+            padding-left: 2em;
+            text-indent: -2em;
+
+            span.strong {
+                font-weight: 750;
             }
-
-            >input {
-                margin: unset;
-                font-size: 0.8em;
-            }
         }
     }
 
-    >div#level-and-hero-points {
+}
+
+#hero-point-fields {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 33%;
+    position: relative;
+}
+
+.hero-point-hexagon {
+    position: relative;
+    width: 28%;
+
+    &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-image: url(../assets/images/hexagon.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+    }
+
+    >input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+
+        +label {
+            position: relative;
+            cursor: pointer;
+            display: block;
+            height: 100%;
+
+            &::after {
+                content: "✕";
+                position: absolute;
+                text-align: center;
+                line-height: 0;
+                width: 100%;
+                top: 50%;
+            }
+        }
+
+        &:not(:checked)+label::after {
+            opacity: 0;
+        }
+
+        &:checked+label::after {
+            opacity: 1;
+        }
+    }
+}
+
+#ancestry-block {
+    #heritage-traits-size {
+        width: 100%;
         display: flex;
         flex-direction: row;
-        column-gap: 0.2cm;
+        column-gap: 0.05cm;
 
-        >div#level-block {
-            width: 50%;
-            display: flex;
-            flex-direction: column;
+        >:last-child {
+            width: 16%;
 
-            >div#level-and-xp {
-                display: flex;
-                height: 100%;
-
-                >span#level-container {
-                    width: 40%;
-                    height: 100%;
-                    position: relative;
-
-                    &::before {
-                        content: "";
-                        width: 100%;
-                        height: 100%;
-                        background-image: url("../assets/images/level-star.png");
-                        background-position: center;
-                        background-repeat: no-repeat;
-                        background-size: contain;
-                        position: absolute;
-                        filter: drop-shadow(0 0 1px #ffd900);
-                    }
-
-                    >input {
-                        width: 100%;
-                        height: 100%;
-                        border: 0;
-                        padding: 0;
-                        background: transparent;
-                        text-align: center;
-                        position: relative;
-                    }
-                }
-
-                >span#xp-container {
-                    width: calc(60% - 5px);
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    position: relative;
-                    margin-left: 5px;
-
-                    &::before {
-                        content: "XP";
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        text-align: center;
-                        font-size: 0.8em;
-                        margin-top: 15%;
-                    }
-
-                    >input {
-                        width: calc(100% - 3px);
-                        padding: 0;
-                        border: 1.5px solid black;
-                        text-align: center;
-                        position: relative;
-                    }
-                }
-            }
-
-        }
-
-        >div#hero-point-block {
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            row-gap: 0.08cm;
-
-            >div#hero-point-fields {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                width: 100%;
-                height: 33%;
-                position: relative;
-
-                >span.hero-point-hexagon {
-                    position: relative;
-                    width: 28%;
-
-                    &::before {
-                        content: "";
-                        width: 100%;
-                        height: 100%;
-                        background-image: url(../assets/images/hexagon.png);
-                        background-position: center;
-                        background-repeat: no-repeat;
-                        background-size: contain;
-                        position: absolute;
-                    }
-
-                    >input[type="checkbox"] {
-                        position: absolute;
-                        opacity: 0;
-
-                        +label {
-                            position: relative;
-                            cursor: pointer;
-                            display: block;
-                            height: 100%;
-
-                            &::after {
-                                content: "✕";
-                                position: absolute;
-                                text-align: center;
-                                line-height: 0;
-                                width: 100%;
-                                top: 50%;
-                            }
-                        }
-
-                        &:not(:checked)+label::after {
-                            opacity: 0;
-                        }
-
-                        &:checked+label::after {
-                            opacity: 1;
-                        }
-                    }
-                }
-            }
-
-            >div#hero-point-description {
-                font-size: 0.4em;
-                margin-top: -0.05cm;
-
-                >p {
-                    margin: 0;
-                    padding-left: 2em;
-                    text-indent: -2em;
-
-                    span.strong {
-                        font-weight: 750;
-                    }
-                }
-            }
-
-        }
-    }
-
-    >div#ancestry-block {
-        >span#heritage-traits-size {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            column-gap: 0.05cm;
-
-            >:last-child {
-                width: 16%;
-
-                input {
-                    text-align: center;
-                }
+            input {
+                text-align: center;
             }
         }
     }
 }
 
-div#attributes {
-    display: grid;
-    grid-template-columns: 16.7fr 16.7fr 16.7fr 16.7fr 16.7fr 16.7fr;
-    grid-template-rows: auto auto;
-    column-gap: 0.2cm;
-    row-gap: 0.1cm;
+/* #endregion */
 
-    >span.block-heading {
+/* #region Attributes */
+
+#attributes {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 0.5rem;
+    row-gap: 0.25rem;
+
+    >.block-heading {
         grid-column: span 6;
     }
 
@@ -447,90 +471,86 @@ div#attributes {
         display: grid;
         grid-template-columns: auto minmax(0, 1fr);
         column-gap: 1px;
-
-        >span.attribute-container {
-            width: calc(28px + 3px);
-            height: calc(24px + 3px);
-            position: relative;
-
-            &::before {
-                content: "";
-                position: absolute;
-                width: calc(100% - 3px);
-                height: calc(100% - 3px);
-                border: 1.5px solid black;
-                border-radius: 0 0 8px 8px;
-                align-self: center;
-                box-shadow: inset 0 0 0 1.5px var(--color-base-brown);
-            }
-
-            >input {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                border: none;
-                background: none;
-                text-align: center;
-                padding: 0;
-            }
-        }
-
-        >div.attribute-label-and-partial {
-            display: flex;
-            flex-direction: column;
-
-            >label.attribute-label {
-                font-weight: bold;
-                line-height: 1em;
-                font-size: 0.9em;
-            }
-
-            >span.partial-boost-container {
-                position: relative;
-
-
-                >input[type="checkbox"] {
-                    opacity: 0;
-                    position: absolute;
-
-                    +label {
-                        position: relative;
-                        cursor: pointer;
-                        display: block;
-                        padding-left: calc(2 * 4px + 0.7em);
-                        font-size: 0.6em;
-
-                        &::before,
-                        &::after {
-                            content: "";
-                            left: 4px;
-                            bottom: 0.2em;
-                            width: 0.7em;
-                            height: 0.7em;
-                            border: 0.7px solid black;
-                            border-radius: 50%;
-                            position: absolute;
-                        }
-
-                        &::after {
-                            background-color: var(--color-base-brown);
-                        }
-                    }
-
-                    &:not(:checked)+label::after {
-                        background-color: transparent;
-                    }
-
-                    &:checked+label::after {
-                        background-color: var(--color-base-brown);
-                    }
-                }
-
-            }
-        }
-
     }
 }
+
+.attribute-label-and-partial {
+    display: flex;
+    flex-direction: column;
+}
+
+.attribute-label {
+    font-weight: bold;
+    line-height: 1em;
+    font-size: 0.9em;
+}
+
+.attribute-container {
+    width: 28px;
+    height: 24px;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 1.5px solid black;
+        border-radius: 0 0 8px 8px;
+        box-shadow: inset 0 0 0 1.5px var(--color-base-brown);
+        box-sizing: border-box;
+    }
+
+    >input {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: none;
+        text-align: center;
+        padding: 0;
+    }
+}
+
+.partial-boost-container {
+    position: relative;
+
+    >input[type="checkbox"] {
+        opacity: 0;
+        position: absolute;
+
+        +label {
+            position: relative;
+            cursor: pointer;
+            display: block;
+            padding-left: calc(2 * 4px + 0.7em);
+            font-size: 0.6em;
+
+            &::before,
+            &::after {
+                content: "";
+                left: 4px;
+                bottom: 0.2em;
+                width: 0.7em;
+                height: 0.7em;
+                border: 0.7px solid black;
+                border-radius: 50%;
+                position: absolute;
+            }
+
+            &::after {
+                background-color: var(--color-base-brown);
+                opacity: 0;
+            }
+        }
+
+        &:checked+label::after {
+            opacity: 1;
+        }
+    }
+}
+
+/* #endregion */
 
 div#defenses-and-hitpoints {
     display: grid;
