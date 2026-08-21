@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./styles/page.css" />
     <link rel="stylesheet" href="./styles/main.css" />
 
+    <script type="module" src="./modules/proficiency-container.js"></script>
+
     <title>title</title>
 </head>
 
@@ -241,7 +243,11 @@
                                 </span>
                             </template>
 
-                            <script type="module" src="modules/armor-proficiencies.js"></script>
+                            <!-- <span class="ac-prof-label">{{label}}</span> -->
+                            <prof-container id="unarmored" label="Unarmored"></prof-container>
+                            <prof-container id="light-armor" label="Light Armor"></prof-container>
+                            <prof-container id="medium-armor" label="Medium Armor"></prof-container>
+                            <prof-container id="heavy-armor" label="Heavy Armor"></prof-container>
                         </div>
                     </div>
                 </div>
