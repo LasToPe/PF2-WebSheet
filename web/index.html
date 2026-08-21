@@ -252,7 +252,12 @@
                     </div>
                 </div>
 
-                <div id="saves-area">
+                <div id="saves-area">                    
+                    <span id="defenses-notes-container" class="basic-input-container secondary">
+                        <span class="assistive-text">Defenses Notes</span>
+                        <input type="text">
+                    </span>
+
                     <template id="save-template">
                         <div class="save-container">
                             <span>{{label}}</span>
@@ -260,27 +265,7 @@
                                 <span class="save-input-container">
                                     <input type="number">
                                 </span>
-                                <span class="prof-container">
-                                    <span class="prof-check-container">
-                                        <input type="checkbox" id="{{id}}-prof-trained">
-                                        <label for="{{id}}-prof-trained">T</label>
-                                    </span>
-
-                                    <span class="prof-check-container">
-                                        <input type="checkbox" id="{{id}}-prof-expert">
-                                        <label for="{{id}}-prof-expert">E</label>
-                                    </span>
-
-                                    <span class="prof-check-container">
-                                        <input type="checkbox" id="{{id}}-prof-master">
-                                        <label for="{{id}}-prof-master">M</label>
-                                    </span>
-
-                                    <span class="prof-check-container">
-                                        <input type="checkbox" id="{{id}}-prof-legendary">
-                                        <label for="{{id}}-prof-legendary">L</label>
-                                    </span>
-                                </span>
+                                <prof-container id="{{id}}"></prof-container>
                             </div>
                             <div class="calc-input-container save">
                                 <input type="number">
@@ -298,11 +283,6 @@
                     </template>
 
                     <script type="module" src="modules/saves.js"></script>
-
-                    <span id="defenses-notes-container" class="basic-input-container secondary">
-                        <span class="assistive-text">Defenses Notes</span>
-                        <input type="text">
-                    </span>
                 </div>
             </div>
             <div id="hit-points-block">

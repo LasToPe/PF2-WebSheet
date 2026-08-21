@@ -5,7 +5,6 @@ function injectSaves() {
         { id: 'will', label: 'Will', attr: 'Wis' }
     ];
 
-    const container = document.getElementById('saves-area');
     const template = document.getElementById('save-template');
 
     const fragment = document.createDocumentFragment();
@@ -25,10 +24,9 @@ function injectSaves() {
         wrapper.innerHTML = '';
     });
 
-    // Insert before the notes container and the script tag if possible, 
-    // or just append and let the notes container stay at the bottom.
-    // In index.html, notes container is after the script tag.
-    container.appendChild(fragment);
+    const savesArea = document.getElementById('saves-area');
+    const notesContainer = document.getElementById('defenses-notes-container');
+    savesArea.insertBefore(fragment, notesContainer);
 }
 
 injectSaves();
