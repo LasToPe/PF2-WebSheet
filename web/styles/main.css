@@ -1130,3 +1130,63 @@ div#defenses-and-hitpoints {
     resize: none;
     box-sizing: border-box;
 }
+
+#perception-block {
+    display: grid;
+    grid-template-columns: 2fr 1fr 4fr;
+    height: fit-content;
+    row-gap: 0.1cm;
+}
+
+#perception-block .block-heading {
+    grid-column: span 3;
+    /* margin-bottom: 0.1cm; */
+}
+
+#perception-total-input-container {
+    display: flex;
+    position: relative;
+}
+
+#perception-total-input-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid black;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1.5px var(--color-base-brown);
+    pointer-events: none;
+}
+
+#perception-total-input-container input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    text-align: center;
+    position: relative;
+}
+
+#perception-block prof-container {
+    align-self: center;
+}
+
+#perception-block .calc-container input,
+#perception-block .calc-container label {
+    width: 33%;
+}
+
+#perception-notes {
+    grid-column: span 3;
+    display: flex;
+    height: fit-content;
+}
+
+#perception-notes textarea {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    resize: none;
+    box-sizing: border-box;
+}
