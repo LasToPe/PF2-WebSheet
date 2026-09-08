@@ -1012,7 +1012,7 @@ div#defenses-and-hitpoints {
     column-gap: 0.1cm;
 }
 
- /* #region skills */
+/* #region skills */
 
 #skills {
     display: grid;
@@ -1112,17 +1112,21 @@ div#defenses-and-hitpoints {
 #languages-perception-and-speed {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 0.1cm;
-    row-gap: 0.1cm;
-}
-
-#languages {
-    display: flex;
-    flex-direction: column;
+    grid-template-rows: repeat(3, auto);
     gap: 0.1cm;
+    height: fit-content;
+    grid-auto-flow: dense;
 }
 
-#languages textarea {
+.languages {
+    grid-column: 1;
+}
+
+.languages.basic-input-container {
+    grid-row: span 2;
+}
+
+.languages textarea {
     display: block;
     width: 100%;
     height: 100%;
@@ -1131,16 +1135,13 @@ div#defenses-and-hitpoints {
     box-sizing: border-box;
 }
 
-#perception-block {
-    display: grid;
-    grid-template-columns: 2fr 1fr 4fr;
-    height: fit-content;
-    row-gap: 0.1cm;
+.perception {
+    grid-column: 2;
 }
 
-#perception-block .block-heading {
-    grid-column: span 3;
-    /* margin-bottom: 0.1cm; */
+#perception-inputs {
+    display: grid;
+    grid-template-columns: 2fr 1fr 4fr;
 }
 
 #perception-total-input-container {
@@ -1167,17 +1168,16 @@ div#defenses-and-hitpoints {
     position: relative;
 }
 
-#perception-block prof-container {
+#perception-inputs prof-container {
     align-self: center;
 }
 
-#perception-block .calc-container input,
-#perception-block .calc-container label {
+#perception-inputs .calc-container input,
+#perception-inputs .calc-container label {
     width: 33%;
 }
 
 #perception-notes {
-    grid-column: span 3;
     display: flex;
     height: fit-content;
 }
@@ -1191,55 +1191,34 @@ div#defenses-and-hitpoints {
     box-sizing: border-box;
 }
 
-#speed-block {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    height: fit-content;
-    row-gap: 0.1cm;
-}
-
-#speed-block .block-heading {
-    grid-column: span 2;
+.speed {
+    grid-column: 3;
 }
 
 #speed-input-container {
     display: flex;
     position: relative;
-    margin: 0.15em 0;
-}
-
-#speed-input-container::before {
-    content: '';
-    width: 100%;
-    height: 120%;
-    background-image: url(../assets/images/speed-arrow.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    top: -10%;
 }
 
 #speed-input-container input {
-    width: 100%;
+    width: 65%;
     height: 100%;
-    border: none;
+    border: 1.5px solid black;
+    box-shadow: inset 0 0 0 1.5px var(--color-base-brown);
     background: none;
     position: relative;
     box-sizing: border-box;
     text-align: center;
-    padding: 18% 20% 19% 15%;
 }
 
 #speed-label {
     align-self: end;
-    margin-left: -40%;
+    margin-left: 0.1cm;
     font-weight: bold;
     font-size: 0.7rem;
 }
 
 #speed-notes {
-    grid-column: span 2;
     display: flex;
     height: fit-content;
 }

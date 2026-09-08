@@ -382,20 +382,24 @@
                 </span>
             </div>
             <div id="languages-perception-and-speed">
-                <div id="languages">
-                    <span class="block-heading">
-                        <span class="header-text">Languages</span>
-                        <span class="header-line"></span>
-                    </span>
-                    <span class="basic-input-container">
-                        <textarea></textarea>
-                    </span>
-                </div>
-                <div id="perception-block">
-                    <span class="block-heading">
-                        <span class="header-text">Perception</span>
-                        <span class="header-line"></span>
-                    </span>
+
+                <!-- #region Languages -->
+                <span class="block-heading languages">
+                    <span class="header-text">Languages</span>
+                    <span class="header-line"></span>
+                </span>
+                <span class="basic-input-container languages">
+                    <textarea></textarea>
+                </span>
+                <!-- #endregion -->
+
+                <!-- #region Perception -->
+                <span class="block-heading perception">
+                    <span class="header-text">Perception</span>
+                    <span class="header-line"></span>
+                </span>
+
+                <div id="perception-inputs" class="perception">
 
                     <span id="perception-total-input-container">
                         <input type="number">
@@ -411,7 +415,7 @@
                             <span class="plus-minus-spacer">+</span>
                             <input type="number">
                         </div>
-    
+
                         <div class="calc-labels">
                             <label>Wis</label>
                             <label>Prof</label>
@@ -419,29 +423,30 @@
                         </div>
                     </div>
 
-                    <!-- Notes Section -->
-                    <span id="perception-notes" class="basic-input-container secondary">
-                        <span class="assistive-text">Senses and Notes</span>
-                        <textarea></textarea>
-                    </span>
                 </div>
 
-                <div id="speed-block">
-                    <span class="block-heading">
-                        <span class="header-text">Speed</span>
-                        <span class="header-line"></span>
-                    </span>
+                <span id="perception-notes" class="basic-input-container secondary perception">
+                    <span class="assistive-text">Senses and Notes</span>
+                    <textarea></textarea>
+                </span>
+                <!-- #endregion -->
 
-                    <span id="speed-input-container">
-                        <input type="number">
-                    </span>
-                    <span id="speed-label">feet</span>
+                <!-- #region Speed -->
+                <span class="block-heading speed">
+                    <span class="header-text">Speed</span>
+                    <span class="header-line"></span>
+                </span>
 
-                    <span id="speed-notes" class="basic-input-container secondary">
-                        <span class="assistive-text">Special Movement</span>
-                        <textarea></textarea>
-                    </span>
-                </div>
+                <span id="speed-input-container" class="speed">
+                    <input type="number">
+                    <span id="speed-label" class="speed">feet</span>
+                </span>
+
+                <span id="speed-notes" class="basic-input-container secondary speed">
+                    <span class="assistive-text">Special Movement</span>
+                    <textarea></textarea>
+                </span>
+                <!-- #endregion -->
             </div>
         </div>
     </page>
