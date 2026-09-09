@@ -1008,13 +1008,15 @@ div#defenses-and-hitpoints {
 
 #statistics-2-columns {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
     column-gap: 0.1cm;
 }
 
 /* #region skills */
 
 #skills {
+    grid-row: span 2;
     display: grid;
     grid-template-columns: 70fr 30fr;
     column-gap: 0.1cm;
@@ -1118,6 +1120,8 @@ div#defenses-and-hitpoints {
     grid-auto-flow: dense;
 }
 
+/* #region Languages */
+
 .languages {
     grid-column: 1;
 }
@@ -1134,6 +1138,10 @@ div#defenses-and-hitpoints {
     resize: none;
     box-sizing: border-box;
 }
+
+/* #endregion */
+
+/* #region Perception */
 
 .perception {
     grid-column: 2;
@@ -1191,6 +1199,10 @@ div#defenses-and-hitpoints {
     box-sizing: border-box;
 }
 
+/* #endregion */
+
+/* #region Speed */
+
 .speed {
     grid-column: 3;
 }
@@ -1231,3 +1243,5 @@ div#defenses-and-hitpoints {
     resize: none;
     box-sizing: border-box;
 }
+
+/* #endregion */
