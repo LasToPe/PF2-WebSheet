@@ -1,3 +1,7 @@
+import { renderTemplate } from "../scripts/template-renderer.js";
+
+injectAttributes();
+
 function injectAttributes() {
     const ATTRIBUTES_DATA = [
         { id: 'strength', label: 'Strength', key: 'str' },
@@ -9,27 +13,8 @@ function injectAttributes() {
     ];
 
     const container = document.getElementById('attributes');
-    const template = document.getElementById('attribute-template');
 
-    const fragment = document.createDocumentFragment();
-
-    // Temp div used to parse HTML strings back into DOM nodes
-    const wrapper = document.createElement('div');
-
-    ATTRIBUTES_DATA.forEach(attr => {
-        wrapper.appendChild(template.content.cloneNode(true));
-        let htmlString = wrapper.innerHTML;
-        
-        htmlString = htmlString
-        .replaceAll('{{id}}', attr.id)
-        .replaceAll('{{label}}', attr.label);
-        
-        wrapper.innerHTML = htmlString;
-        fragment.appendChild(wrapper.firstElementChild);
-        wrapper.innerHTML = ''; // reset for next iteration
-    });
+    const fragment = renderTemplate('attribute-template', ATTRIBUTES_DATA, ['id', 'label', 'key']);
 
     container.appendChild(fragment);
 }
-
-injectAttributes();
