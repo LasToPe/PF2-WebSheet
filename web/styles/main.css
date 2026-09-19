@@ -1245,3 +1245,165 @@ div#defenses-and-hitpoints {
 }
 
 /* #endregion */
+
+/* #region Strikes */
+
+#strikes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1cm;
+}
+
+.weapon-block {
+    display: grid;
+    grid-template-columns: 5fr 2fr 3fr 5fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 0.1cm;
+}
+
+.weapon-block label {
+    font-size: 0.85em;
+    font-weight: bold;
+    margin-bottom: -3px;
+    align-self: end;
+}
+
+label[for='weapon-name'] {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#weapon-name {
+    width: 100%;
+    border: 2px solid black;
+    box-sizing: border-box;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.weapon-attack {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    align-items: end;
+    gap: 0.1cm;
+    grid-column: 2;
+    grid-row: 1/3;
+}
+
+.attack-total {
+    height: 100%;
+    width: 110%;
+    margin-left: -5%;
+    position: relative;
+    grid-column: 2;
+    grid-row: 1/3;
+}
+
+.attack-total::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid black;
+    border-radius: 10%;
+    box-shadow: inset 0 0 0 1.5px var(--color-base-brown);
+    pointer-events: none;
+}
+
+.attack-total input {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.weapon-block .calc-container {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.weapon-block .calc-input-container {
+    margin-top: 0;
+}
+
+.weapon-block .calc-container input,
+.weapon-block .calc-container label {
+    width: 33%;
+}
+
+label[for='weapon-damage'] {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+.weapon-damage {
+    display: flex;
+    grid-column: 4;
+    grid-row: 2;
+}
+
+.weapon-damage input[type=text] {
+    width: 100%;
+    border: 2px solid black;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.damage-types {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.damage-types input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+}
+
+.damage-types label {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    padding-left: calc(2 * 2px + 0.6em);
+    font-size: 0.5em;
+    font-weight: bold;
+
+    &::before,
+    &::after {
+        content: "";
+        left: 1px;
+        top: 50%;
+        width: 0.7em;
+        height: 0.7em;
+        border: 0.7px solid black;
+        border-radius: 50%;
+        position: absolute;
+        transform: translateY(-50%);
+    }
+
+    &::after {
+        background-color: var(--color-base-brown);
+        opacity: 0;
+    }
+
+    &:has(input:checked)::after {
+        opacity: 1;
+    }
+}
+
+.weapon-notes {
+    grid-row: 3;
+    grid-column: 1 / -1;
+    display: flex;
+}
+
+.weapon-notes .assistive-text {
+    position: relative !important;
+    align-self: center;
+}
+
+.weapon-notes input {
+    margin: unset !important;
+}
