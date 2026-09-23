@@ -1268,12 +1268,12 @@ div#defenses-and-hitpoints {
     align-self: end;
 }
 
-label[for='weapon-name'] {
+.weapon-block label:has(~ .weapon-name) {
     grid-column: 1;
     grid-row: 1;
 }
 
-#weapon-name {
+.weapon-name {
     width: 100%;
     border: 2px solid black;
     box-sizing: border-box;

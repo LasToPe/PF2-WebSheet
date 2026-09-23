@@ -455,60 +455,64 @@
                     <span class="header-line"></span>
                 </span>
 
-                <div class="weapon-block">
+                <template id="weapon-block-template">
+                    <div class="weapon-block">
 
-                    <!-- Weapon Name -->
-                    <label for="weapon-name">Weapon</label>
-                    <input id="weapon-name" type="text" />
+                        <!-- Weapon Name -->
+                        <label>Weapon</label>
+                        <input class="weapon-name" type="text" />
 
-                    <!-- Attack Modifier & Breakdown -->
-                    <div class="attack-total">
-                        <input type="text" name="attack_total" class="attack-total-input" />
-                    </div>
-
-                    <div class="calc-container">
-                        <div class="calc-input-container">
-                            <input type="number">
-                            <span class="plus-minus-spacer">+</span>
-                            <input type="number">
-                            <span class="plus-minus-spacer">+</span>
-                            <input type="number">
+                        <!-- Attack Modifier & Breakdown -->
+                        <div class="attack-total">
+                            <input type="text" name="{{id}}-attack_total" class="attack-total-input" />
                         </div>
 
-                        <div class="calc-labels">
-                            <label>Str</label>
-                            <label>Prof</label>
-                            <label>Item</label>
+                        <div class="calc-container">
+                            <div class="calc-input-container">
+                                <input type="number">
+                                <span class="plus-minus-spacer">+</span>
+                                <input type="number">
+                                <span class="plus-minus-spacer">+</span>
+                                <input type="number">
+                            </div>
+
+                            <div class="calc-labels">
+                                <label>{{attr}}</label>
+                                <label>Prof</label>
+                                <label>Item</label>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Damage & Damage Type -->
-                    <label for="weapon-damage">Damage</label>
-                    <div class="weapon-damage">
-                        <input type="text" name="weapon_damage" class="weapon-damage-input" />
+                        <!-- Damage & Damage Type -->
+                        <label for="weapon-damage">Damage</label>
+                        <div class="weapon-damage">
+                            <input type="text" name="{{id}}-weapon_damage" class="weapon-damage-input" />
 
-                        <div class="damage-types">
-                            <label class="type-check">
-                                <input type="radio" name="damage_type" value="B" />
-                                <span>B</span>
-                            </label>
-                            <label class="type-check">
-                                <input type="radio" name="damage_type" value="P" />
-                                <span>P</span>
-                            </label>
-                            <label class="type-check">
-                                <input type="radio" name="damage_type" value="S" />
-                                <span>S</span>
-                            </label>
+                            <div class="damage-types">
+                                <label class="type-check">
+                                    <input type="radio" name="{{id}}-damage-type" value="B" />
+                                    <span>B</span>
+                                </label>
+                                <label class="type-check">
+                                    <input type="radio" name="{{id}}-damage-type" value="P" />
+                                    <span>P</span>
+                                </label>
+                                <label class="type-check">
+                                    <input type="radio" name="{{id}}-damage-type" value="S" />
+                                    <span>S</span>
+                                </label>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Bottom Row: Traits and Notes -->
-                    <span class="basic-input-container secondary weapon-notes">
-                        <span class="assistive-text">Traits and Notes</span>
-                        <input type="text" />
-                    </span>
-                </div>
+                        <!-- Bottom Row: Traits and Notes -->
+                        <span class="basic-input-container secondary weapon-notes">
+                            <span class="assistive-text">Traits and Notes</span>
+                            <input type="text" />
+                        </span>
+                    </div>
+                </template>
+
+                <script type="module" src="modules/weapons.js"></script>
             </div>
         </div>
     </page>
