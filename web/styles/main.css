@@ -1284,15 +1284,6 @@ div#defenses-and-hitpoints {
     grid-row: 2;
 }
 
-.weapon-attack {
-    display: grid;
-    grid-template-columns: 2fr 3fr;
-    align-items: end;
-    gap: 0.1cm;
-    grid-column: 2;
-    grid-row: 1/3;
-}
-
 .attack-total {
     height: 100%;
     width: 110%;
