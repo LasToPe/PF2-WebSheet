@@ -1403,3 +1403,53 @@ label[for='weapon-damage'] {
 }
 
 /* #endregion */
+
+/* #region Weapon Proficiencies and Critical Spec */
+
+#weapon-statistics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    column-gap: 0.1cm;
+
+    grid-template-areas:
+        "prof-title prof-title   crit-title"
+        "prof-cols  weapon-other crit-spec";
+}
+
+.section-heading {
+    font-size: 0.6rem;
+}
+
+.prof-title {
+    font-weight: bold;
+    grid-area: prof-title;
+}
+
+.critical-title {
+    grid-area: crit-title;
+}
+
+.proficiency-columns {
+    display: flex;
+    gap: 6px;
+    grid-area: prof-cols;
+}
+
+#weapon-other-notes {
+    grid-area: weapon-other;
+}
+
+#weapon-other-notes>textarea,
+#critical-specializations-notes>textarea {
+    margin: unset;
+    border: none;
+    resize: none;
+    box-sizing: border-box;
+}
+
+#critical-specializations-notes {
+    grid-area: crit-spec;
+}
+
+/* #endregion */
