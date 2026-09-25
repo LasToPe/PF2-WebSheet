@@ -381,91 +381,32 @@
                     <textarea></textarea>
                 </span>
             </div>
-            <div id="languages-perception-and-speed">
+            <div id="combat-column">
+                <div id="languages-perception-and-speed">
 
-                <!-- #region Languages -->
-                <span class="block-heading languages">
-                    <span class="header-text">Languages</span>
-                    <span class="header-line"></span>
-                </span>
-                <span class="basic-input-container languages">
-                    <textarea></textarea>
-                </span>
-                <!-- #endregion -->
+                    <!-- #region Languages -->
+                    <span class="block-heading languages">
+                        <span class="header-text">Languages</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <span class="basic-input-container languages">
+                        <textarea></textarea>
+                    </span>
+                    <!-- #endregion -->
 
-                <!-- #region Perception -->
-                <span class="block-heading perception">
-                    <span class="header-text">Perception</span>
-                    <span class="header-line"></span>
-                </span>
-
-                <div id="perception-inputs" class="perception">
-
-                    <span id="perception-total-input-container">
-                        <input type="number">
+                    <!-- #region Perception -->
+                    <span class="block-heading perception">
+                        <span class="header-text">Perception</span>
+                        <span class="header-line"></span>
                     </span>
 
-                    <prof-container id="perception"></prof-container>
+                    <div id="perception-inputs" class="perception">
 
-                    <div class="calc-container">
-                        <div class="calc-input-container">
+                        <span id="perception-total-input-container">
                             <input type="number">
-                            <span class="plus-minus-spacer">+</span>
-                            <input type="number">
-                            <span class="plus-minus-spacer">+</span>
-                            <input type="number">
-                        </div>
+                        </span>
 
-                        <div class="calc-labels">
-                            <label>Wis</label>
-                            <label>Prof</label>
-                            <label>Item</label>
-                        </div>
-                    </div>
-
-                </div>
-
-                <span id="perception-notes" class="basic-input-container secondary perception">
-                    <span class="assistive-text">Senses and Notes</span>
-                    <textarea></textarea>
-                </span>
-                <!-- #endregion -->
-
-                <!-- #region Speed -->
-                <span class="block-heading speed">
-                    <span class="header-text">Speed</span>
-                    <span class="header-line"></span>
-                </span>
-
-                <span id="speed-input-container" class="speed">
-                    <input type="number">
-                    <span id="speed-label" class="speed">feet</span>
-                </span>
-
-                <span id="speed-notes" class="basic-input-container secondary speed">
-                    <span class="assistive-text">Special Movement</span>
-                    <textarea></textarea>
-                </span>
-                <!-- #endregion -->
-            </div>
-            <div id="strikes">
-
-                <span class="block-heading strikes">
-                    <span class="header-text">Strikes</span>
-                    <span class="header-line"></span>
-                </span>
-
-                <template id="weapon-block-template">
-                    <div class="weapon-block">
-
-                        <!-- Weapon Name -->
-                        <label>Weapon</label>
-                        <input class="weapon-name" type="text" />
-
-                        <!-- Attack Modifier & Breakdown -->
-                        <div class="attack-total">
-                            <input type="text" name="{{id}}-attack_total" class="attack-total-input" />
-                        </div>
+                        <prof-container id="perception"></prof-container>
 
                         <div class="calc-container">
                             <div class="calc-input-container">
@@ -477,42 +418,103 @@
                             </div>
 
                             <div class="calc-labels">
-                                <label>{{attr}}</label>
+                                <label>Wis</label>
                                 <label>Prof</label>
                                 <label>Item</label>
                             </div>
                         </div>
 
-                        <!-- Damage & Damage Type -->
-                        <label for="weapon-damage">Damage</label>
-                        <div class="weapon-damage">
-                            <input type="text" name="{{id}}-weapon_damage" class="weapon-damage-input" />
-
-                            <div class="damage-types">
-                                <label class="type-check">
-                                    <input type="radio" name="{{id}}-damage-type" value="B" />
-                                    <span>B</span>
-                                </label>
-                                <label class="type-check">
-                                    <input type="radio" name="{{id}}-damage-type" value="P" />
-                                    <span>P</span>
-                                </label>
-                                <label class="type-check">
-                                    <input type="radio" name="{{id}}-damage-type" value="S" />
-                                    <span>S</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Bottom Row: Traits and Notes -->
-                        <span class="basic-input-container secondary weapon-notes">
-                            <span class="assistive-text">Traits and Notes</span>
-                            <input type="text" />
-                        </span>
                     </div>
-                </template>
 
-                <script type="module" src="modules/weapons.js"></script>
+                    <span id="perception-notes" class="basic-input-container secondary perception">
+                        <span class="assistive-text">Senses and Notes</span>
+                        <textarea></textarea>
+                    </span>
+                    <!-- #endregion -->
+
+                    <!-- #region Speed -->
+                    <span class="block-heading speed">
+                        <span class="header-text">Speed</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <span id="speed-input-container" class="speed">
+                        <input type="number">
+                        <span id="speed-label" class="speed">feet</span>
+                    </span>
+
+                    <span id="speed-notes" class="basic-input-container secondary speed">
+                        <span class="assistive-text">Special Movement</span>
+                        <textarea></textarea>
+                    </span>
+                    <!-- #endregion -->
+                </div>
+                <div id="strikes">
+
+                    <span class="block-heading strikes">
+                        <span class="header-text">Strikes</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <template id="weapon-block-template">
+                        <div class="weapon-block">
+
+                            <!-- Weapon Name -->
+                            <label>Weapon</label>
+                            <input class="weapon-name" type="text" />
+
+                            <!-- Attack Modifier & Breakdown -->
+                            <div class="attack-total">
+                                <input type="text" name="{{id}}-attack_total" class="attack-total-input" />
+                            </div>
+
+                            <div class="calc-container">
+                                <div class="calc-input-container">
+                                    <input type="number">
+                                    <span class="plus-minus-spacer">+</span>
+                                    <input type="number">
+                                    <span class="plus-minus-spacer">+</span>
+                                    <input type="number">
+                                </div>
+
+                                <div class="calc-labels">
+                                    <label>{{attr}}</label>
+                                    <label>Prof</label>
+                                    <label>Item</label>
+                                </div>
+                            </div>
+
+                            <!-- Damage & Damage Type -->
+                            <label for="weapon-damage">Damage</label>
+                            <div class="weapon-damage">
+                                <input type="text" name="{{id}}-weapon_damage" class="weapon-damage-input" />
+
+                                <div class="damage-types">
+                                    <label class="type-check">
+                                        <input type="radio" name="{{id}}-damage-type" value="B" />
+                                        <span>B</span>
+                                    </label>
+                                    <label class="type-check">
+                                        <input type="radio" name="{{id}}-damage-type" value="P" />
+                                        <span>P</span>
+                                    </label>
+                                    <label class="type-check">
+                                        <input type="radio" name="{{id}}-damage-type" value="S" />
+                                        <span>S</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Row: Traits and Notes -->
+                            <span class="basic-input-container secondary weapon-notes">
+                                <span class="assistive-text">Traits and Notes</span>
+                                <input type="text" />
+                            </span>
+                        </div>
+                    </template>
+
+                    <script type="module" src="modules/weapons.js"></script>
+                </div>
             </div>
         </div>
     </page>

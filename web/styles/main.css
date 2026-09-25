@@ -1009,14 +1009,12 @@ div#defenses-and-hitpoints {
 #statistics-2-columns {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, auto);
     column-gap: 0.1cm;
 }
 
 /* #region skills */
 
 #skills {
-    grid-row: span 2;
     display: grid;
     grid-template-columns: 70fr 30fr;
     column-gap: 0.1cm;
@@ -1111,12 +1109,17 @@ div#defenses-and-hitpoints {
 
 /* #endregion */
 
+#combat-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1cm;
+}
+
 #languages-perception-and-speed {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, auto);
     gap: 0.1cm;
-    height: fit-content;
     grid-auto-flow: dense;
 }
 
@@ -1407,3 +1410,5 @@ label[for='weapon-damage'] {
 .weapon-notes input {
     margin: unset !important;
 }
+
+/* #endregion */
