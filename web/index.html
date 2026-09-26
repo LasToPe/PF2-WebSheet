@@ -353,23 +353,25 @@
 
                     <!-- Template for skill elements -->
                     <template id="skill-template">
-                        <label class="skill-label">{{label}}</label>
-                        <span class="skill-total-input-container">
-                            <input type="number">
-                        </span>
-                        <prof-container id="{{id}}" label="{{label}}"></prof-container>
-                        <div class="skill-calc-container">
-                            <div class="calc-input-container skill-3-part">
+                        <div class="skill-block">
+                            <label class="skill-label">{{label}}</label>
+                            <span class="skill-total-input-container">
                                 <input type="number">
-                                <span class="plus-minus-spacer">+</span>
-                                <input type="number">
-                                <span class="plus-minus-spacer">+</span>
-                                <input type="number">
-                            </div>
-                            <div class="calc-labels">
-                                <label>{{attr}}</label>
-                                <label>Prof</label>
-                                <label>Item</label>
+                            </span>
+                            <prof-container id="{{id}}" label="{{label}}"></prof-container>
+                            <div class="skill-calc-container">
+                                <div class="calc-input-container skill-3-part">
+                                    <input type="number">
+                                    <span class="plus-minus-spacer">+</span>
+                                    <input type="number">
+                                    <span class="plus-minus-spacer">+</span>
+                                    <input type="number">
+                                </div>
+                                <div class="calc-labels">
+                                    <label>{{attr}}</label>
+                                    <label>Prof</label>
+                                    <label>Item</label>
+                                </div>
                             </div>
                         </div>
                     </template>

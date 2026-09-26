@@ -1016,7 +1016,8 @@ div#defenses-and-hitpoints {
 
 #skills {
     display: grid;
-    grid-template-columns: 70fr 30fr;
+    grid-template-columns: 7fr 3fr;
+    grid-template-rows: min-content auto;
     column-gap: 0.1cm;
     row-gap: 0.1cm;
     width: 100%;
@@ -1030,6 +1031,13 @@ div#defenses-and-hitpoints {
 #skills-container {
     display: grid;
     grid-template-columns: auto auto auto auto;
+    
+}
+
+.skill-block {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
     column-gap: 0.1cm;
     align-items: center;
 }
