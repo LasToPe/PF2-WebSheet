@@ -10,3 +10,8 @@
     font-family: "Taroca";
     src: url(../assets/fonts/Taroca.woff2)format('woff2');
 }
+
+@font-face {
+    font-family: "Pathfinder-Icons";
+    src: url(../assets/fonts/Pathfinder-Icons.ttf)format('woff2');
+}
