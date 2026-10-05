@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./styles/font-import.css" />
     <link rel="stylesheet" href="./styles/page.css" />
     <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/page-2.css" />
 
     <script type="module" src="./modules/proficiency-container.js"></script>
 
@@ -14,7 +15,7 @@
 </head>
 
 <body>
-    <page>
+    <page id="page-1-statistics">
         <!--General information section-->
         <div id="general-information">
             <div id="sheet-logo">
@@ -615,6 +616,72 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </page>
+
+    <page id="page-2-abilities-inventory">
+
+        <div id="page-2-container">
+            <section id="feats-and-abilities">
+                <header class="abilities-headers">
+                    <span class="block-heading">
+                        <span class="header-text">Ancestry and General Feats</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <span class="block-heading">
+                        <span class="header-text">Class Abilities</span>
+                        <span class="header-line"></span>
+                    </span>
+                </header>
+
+                <div class="abilities-table">
+                    <!-- Level 1 (Multi-row container) -->
+                    <div class="feat-row level-1-row">
+                        <div class="level-indicator">
+                            <span class="level-label">Level</span>
+                            <span class="rhombus-badge"><span>1</span></span>
+                        </div>
+
+                        <div class="feat-cell-group ancestry-group">
+                            <div class="feat-subcell">
+                                <span class="feat-type-label">Ancestry and Heritage Abilities</span>
+                                <textarea class="feat-input-multi"></textarea>
+                            </div>
+                            <div class="feat-subcell">
+                                <span class="feat-type-label">Ancestry Feat</span>
+                                <textarea class="feat-input-multi"></textarea>
+                            </div>
+                            <div class="feat-subcell">
+                                <span class="feat-type-label">Background Skill Feat</span>
+                                <textarea class="feat-input-multi"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="feat-cell-group class-group">
+                            <div class="feat-subcell full-height">
+                                <span class="feat-type-label">Class Feats and Features</span>
+                                <textarea class="feat-input-multi"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <template id="feat-row-template">
+                        <div class="feat-row">
+                            <span class="rhombus-badge"><span>{{level}}</span></span>
+                            <div class="feat-cell">
+                                <span class="feat-type-label">{{featType}}</span>
+                                <span class="boost-tag">Boosts</span>
+                                <textarea class="feat-input-multi"></textarea>
+                            </div>
+                            <div class="feat-cell">
+                                <span class="feat-type-label">{{classFeatType}}</span>
+                                <textarea class="feat-input-multi"></textarea>
+                            </div>
+                        </div>
+                    </template>
+
+                    <script type="module" src="./modules/feats.js"></script>
+            </section>
         </div>
     </page>
 </body>

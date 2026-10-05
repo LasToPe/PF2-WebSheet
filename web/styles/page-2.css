@@ -1,0 +1,220 @@
+@scope (#page-2-abilities-inventory) {
+
+    /* ==========================================================================
+   Page 2 Styles: Feats, Abilities & Inventory
+   Reused Design Tokens:
+     - var(--color-base-brown)
+     - var(--color-header-green)
+     - var(--color-base-brown-50pct)
+     - Fonts: 'Taroca', 'Open Sans'
+     - Component: .block-heading, .header-text, .header-line
+   ========================================================================== */
+
+    #page-2-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 0.2cm;
+        box-sizing: border-box;
+        height: 100%;
+    }
+
+    /* ==========================================================================
+   Left / Center: Feats and Class Abilities
+   ========================================================================== */
+
+    #feats-and-abilities {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Header tracks match table columns: 24px badge gutter + two equal 1fr columns */
+    .abilities-headers {
+        display: grid;
+        grid-template-columns: 15px 1fr 1fr;
+        margin-bottom: 0.1cm;
+    }
+
+    .abilities-headers>.block-heading:first-child {
+        grid-column: 2;
+        padding-right: 0.15cm;
+    }
+
+    .abilities-headers>.block-heading:last-child {
+        grid-column: 3;
+        padding-left: 0.15cm;
+    }
+
+    /* Master Grid */
+    .abilities-table {
+        display: grid;
+        grid-template-columns: 15px 1fr 1fr;
+        height: 100%;
+        border: 1.5px solid var(--color-base-brown);
+        border-top: none;
+        background-color: #ffffff;
+    }
+
+    /* Subgrid Rows: Inherit the 3 tracks from .abilities-table */
+    .feat-row {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+        align-items: stretch;
+        border-top: 1px solid var(--color-base-brown);
+        min-height: 22px;
+    }
+
+    .feat-row.level-1-row {
+        min-height: 125px;
+    }
+
+    /* Explicit Track Mapping (Guarantees no column shifts) */
+    .feat-row> :nth-child(1) {
+        grid-column: 1;
+    }
+
+    .feat-row> :nth-child(2) {
+        grid-column: 2;
+    }
+
+    .feat-row> :nth-child(3) {
+        grid-column: 3;
+    }
+
+    /* Track 1: Rhombus Badge in normal flow (NO position: absolute) */
+    .rhombus-badge {
+        position: relative;
+        justify-self: center;
+        align-self: center;
+        width: 15px;
+        height: 15px;
+        background-color: var(--color-base-brown);
+        transform: translateX(-50%) rotate(45deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 0 1.5px #ffffff;
+        z-index: 2;
+    }
+
+    .rhombus-badge>span {
+        transform: rotate(-45deg);
+        color: #ffffff;
+        font-size: 0.65rem;
+        font-weight: bold;
+        line-height: 1;
+        display: block;
+        user-select: none;
+    }
+
+    .level-1-row .level-indicator {
+        position: relative;
+        justify-self: center;
+        align-self: start;
+        margin-top: -0.5px;
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+    }
+
+    .level-1-row .level-indicator .level-label {
+        transform: translateX(-2ch);
+        font-size: 0.5rem;
+        font-weight: bold;
+        color: white;
+        background-color: var(--color-base-brown);
+        padding: 0.5px 1.5px 12px;
+        margin-bottom: -7.5px;
+        text-transform: uppercase;
+    }
+
+    /* Tracks 2 & 3: Cells and Dividers */
+    .feat-cell {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 0 6px;
+        min-width: 0;
+        /* Prevents overflow blowout in CSS Grid */
+    }
+
+    /* Vertical divider running down the center between columns 2 and 3 */
+    .feat-cell:first-of-type::after,
+    .feat-cell-group.ancestry-group::after {
+        content: "";
+        position: absolute;
+        height: calc(100% - 8px);
+        right: 0;
+        width: 1px;
+        background-color: rgba(111, 71, 62, 0.3);
+        margin: 4px 0;
+    }
+
+    .feat-cell-group {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    .feat-subcell {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 2px 6px;
+    }
+
+    .feat-subcell.full-height {
+        height: 100%;
+    }
+
+    /* In-Cell Labels and Text Inputs */
+    .feat-type-label {
+        position: absolute;
+        top: 2px;
+        left: 6px;
+        font-size: 0.55rem;
+        pointer-events: none;
+        white-space: nowrap;
+        z-index: 1;
+    }
+
+    .boost-tag {
+        position: absolute;
+        top: 2px;
+        right: 6px;
+        font-size: 0.55rem;
+        pointer-events: none;
+    }
+
+    .feat-input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        padding: 8px 0 0 0;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        box-sizing: border-box;
+    }
+
+    .feat-input-multi {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        padding: 0.7rem 0 0 0;
+        resize: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        line-height: 1.2;
+        box-sizing: border-box;
+    }
+
+    .feat-input:focus-visible,
+    .feat-input-multi:focus-visible {
+        background-color: rgba(111, 71, 62, 0.05);
+    }
+
+}

@@ -1,25 +1,17 @@
 page {
     background: white;
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin: 0 auto 0.5cm;
     width: 21cm;
     height: 29.7cm;
+    padding: 1cm;
 
     box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
 
     >* {
-        margin: 0 1cm;
-
-        &:first-child {
-            padding-top: 0.7cm;
-        }
-
         &:not(:first-child) {
             margin-top: 0.1cm;
-        }
-
-        &:last-child {
-            padding-bottom: 0.7cm;
         }
     }
 }
