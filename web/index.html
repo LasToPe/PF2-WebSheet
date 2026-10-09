@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./styles/font-import.css" />
     <link rel="stylesheet" href="./styles/page.css" />
     <link rel="stylesheet" href="./styles/main.css" />
+
     <link rel="stylesheet" href="./styles/page-2.css" />
 
     <script type="module" src="./modules/proficiency-container.js"></script>
@@ -681,6 +682,125 @@
                     </template>
 
                     <script type="module" src="./modules/feats.js"></script>
+            </section>
+
+            <section id="inventory-and-wealth">
+                <span class="block-heading">
+                    <span class="header-text">Inventory</span>
+                    <span class="header-line"></span>
+                </span>
+
+                <!-- Held Items (10 items) -->
+                <div class="inventory-card">
+                    <div class="inventory-table-header held-consumables">
+                        <span>Held Items</span>
+                        <span>Bulk</span>
+                    </div>
+                    <div id="held-items-container" class="inventory-rows-container">
+                        <!-- Built with template and module script -->
+                    </div>
+                </div>
+
+                <!-- Consumables (10 items) -->
+                <div class="inventory-card">
+                    <div class="inventory-table-header held-consumables">
+                        <span>Consumables</span>
+                        <span>Bulk</span>
+                    </div>
+                    <div id="consumables-container" class="inventory-rows-container">
+                        <!-- Built with template and module script -->
+                    </div>
+                </div>
+
+                <!-- Worn Items (Fills available space, 10 invested slots) -->
+                <div class="inventory-card worn-card">
+                    <div class="inventory-table-header worn">
+                        <span>Worn Items</span>
+                        <span>Invested</span>
+                        <span>Bulk</span>
+                    </div>
+                    <div id="worn-items-container" class="inventory-rows-container worn-container">
+                        <!-- Built with template and module script -->
+                    </div>
+                </div>
+
+                <!-- Bulk Section -->
+                <div id="bulk-section">
+                    <span class="block-heading">
+                        <span class="header-text">Bulk</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <div class="bulk-content">
+                        <div class="bulk-badge-container">
+                            <span class="bulk-badge-title">Bulk</span>
+                            <input type="number" class="bulk-total-input" min="0" />
+                        </div>
+                        <div class="bulk-reminders">
+                            <p><strong>Light Items</strong> 10 light Bulk items = 1 Bulk</p>
+                            <p><strong>Encumbered Bulk</strong> 5 + Str</p>
+                            <p><strong>Maximum Bulk</strong> 10 + Str</p>
+                            <p><strong>Maximum Invested</strong> 10</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wealth Section -->
+                <div id="wealth-section">
+                    <span class="block-heading">
+                        <span class="header-text">Wealth</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <div class="coins-grid">
+                        <div class="coin-block">
+                            <label>CP</label>
+                            <span class="coin-input-circle copper">
+                                <input type="number" min="0" />
+                            </span>
+                        </div>
+                        <div class="coin-block">
+                            <label>SP</label>
+                            <span class="coin-input-circle silver">
+                                <input type="number" min="0" />
+                            </span>
+                        </div>
+                        <div class="coin-block">
+                            <label>GP</label>
+                            <span class="coin-input-circle gold">
+                                <input type="number" min="0" />
+                            </span>
+                        </div>
+                        <div class="coin-block">
+                            <label>PP</label>
+                            <span class="coin-input-circle platinum">
+                                <input type="number" min="0" />
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Gems and Artwork (5 items) -->
+                    <div class="inventory-card gems-card">
+                        <div class="inventory-table-header gems">
+                            <span>Gems and Artwork</span>
+                            <span>Price</span>
+                            <span>Bulk</span>
+                        </div>
+                        <div id="gems-container" class="inventory-rows-container">
+                            <!-- Built with template and module script -->
+                        </div>
+                    </div>
+                </div>
+
+                <template id="inventory-row-template">
+                    <div class="inventory-row">
+                        <input type="text" class="item-desc-input" />
+                        <input type="text" class="item-price-input" />
+                        <span class="invested-cell">
+                            <input type="checkbox" />
+                        </span>
+                        <input type="text" class="item-bulk-input" />
+                    </div>
+                </template>
+                <script type="module" src="./modules/inventory.js"></script>
             </section>
         </div>
     </page>

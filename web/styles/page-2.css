@@ -1,15 +1,5 @@
 @scope (#page-2-abilities-inventory) {
 
-    /* ==========================================================================
-   Page 2 Styles: Feats, Abilities & Inventory
-   Reused Design Tokens:
-     - var(--color-base-brown)
-     - var(--color-header-green)
-     - var(--color-base-brown-50pct)
-     - Fonts: 'Taroca', 'Open Sans'
-     - Component: .block-heading, .header-text, .header-line
-   ========================================================================== */
-
     #page-2-container {
         display: grid;
         grid-template-columns: 2fr 1fr;
@@ -215,6 +205,306 @@
     .feat-input:focus-visible,
     .feat-input-multi:focus-visible {
         background-color: rgba(111, 71, 62, 0.05);
+    }
+
+    /* ==========================================================================
+       RIGHT: INVENTORY & WEALTH (STRETCHES FULL HEIGHT)
+       ========================================================================== */
+    #inventory-and-wealth {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.1cm;
+        height: 100%;
+        /* Stretches column to match left side */
+        min-height: 0;
+        box-sizing: border-box;
+    }
+
+    /* Common Card Styles */
+    .inventory-card {
+        border: 1.5px solid var(--color-base-brown);
+        display: grid;
+        grid-template-columns: auto min-content;
+        background-color: #ffffff;
+        box-sizing: border-box;
+    }
+
+    /* Worn Items stretches to absorb all remaining vertical space */
+    .inventory-card.worn-card {
+        flex: 1 1 0;
+        min-height: 0;
+        grid-template-columns: auto min-content min-content;
+        grid-template-rows: min-content;
+    }
+
+    /* Uniform Column Alignment:
+       Bulk columns are locked to 42px on the right edge across all tables */
+    .held-consumables,
+    .worn,
+    .gems {
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+    }
+
+    /* Headers */
+    .inventory-table-header {
+        display: grid;
+        font-size: 0.6rem;
+        font-weight: bold;
+        padding: 1px 4px;
+        align-items: center;
+        background-color: #ffffff;
+    }
+
+    .inventory-table-header>span:not(:first-child) {
+        text-align: center;
+        border-left: 1px solid var(--color-base-brown);
+        padding: 0 4px;
+    }
+
+    /* Rows Containers */
+    .inventory-rows-container {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+    }
+
+    .inventory-rows-container.worn-container {
+        flex: 1 1 0;
+        min-height: 0;
+    }
+
+    /* Single-Line Row Component */
+    .inventory-row {
+        display: grid;
+        height: 16px;
+        min-height: 16px;
+        box-sizing: border-box;
+        align-items: stretch;
+    }
+
+    .inventory-card.worn-card .inventory-row {
+        flex: 1 1 0;
+        /* Evenly distributes remaining space among worn rows */
+        height: auto;
+    }
+
+    .inventory-rows-container .inventory-row:last-child {
+        border-bottom: none;
+    }
+
+    /* Input Cells */
+    .item-desc-input,
+    .item-price-input,
+    .item-bulk-input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.65rem;
+        padding: 0 4px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .item-desc-input {
+        text-align: left;
+    }
+
+    .item-price-input {
+        border-left: 1px solid var(--color-base-brown);
+        /* Reused token */
+        text-align: center;
+    }
+
+    .item-bulk-input {
+        border-left: 1px solid var(--color-base-brown);
+        /* Reused token */
+        text-align: center;
+    }
+
+    /* Interactive States */
+    .inventory-row:hover {
+        background-color: rgba(111, 71, 62, 0.03);
+    }
+
+    .item-desc-input:focus-visible,
+    .item-price-input:focus-visible,
+    .item-bulk-input:focus-visible {
+        outline: none;
+        background-color: rgba(0, 42, 23, 0.06);
+        /* Tint using --color-header-green */
+    }
+
+    /* Invested Column Checkboxes */
+    .invested-cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid var(--color-base-brown);
+        /* Reused token */
+        height: 100%;
+    }
+
+    .invested-cell input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 10px;
+        height: 10px;
+        border: 1px solid var(--color-base-brown);
+        /* Reused token */
+        background-color: #ffffff;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        place-content: center;
+        transition: background-color 0.15s ease;
+    }
+
+    .invested-cell input[type="checkbox"]::after {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background-color: var(--color-base-brown);
+        /* Reused token */
+        opacity: 0;
+        transition: opacity 0.1s ease;
+    }
+
+    .invested-cell input[type="checkbox"]:checked::after {
+        opacity: 1;
+    }
+
+    .invested-cell input[type="checkbox"]:hover {
+        border-color: var(--color-header-green);
+        /* Reused token */
+    }
+
+    .invested-cell input[type="checkbox"]:focus-visible {
+        outline: 1.5px solid var(--color-header-green);
+        /* Reused token */
+        outline-offset: 1px;
+    }
+
+    /* Bulk Sub-Section */
+    #bulk-section {
+        margin-top: 0.05cm;
+    }
+
+    .bulk-content {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        column-gap: 0.2cm;
+        align-items: center;
+        margin-top: 0.05cm;
+    }
+
+    .bulk-badge-container {
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: transparent;
+    }
+
+    .bulk-badge-title {
+        font-size: 0.65rem;
+        font-weight: bold;
+        line-height: 1;
+    }
+
+    .bulk-total-input {
+        width: 40px;
+        height: 40px;
+        border: 2px solid black;
+        border-radius: 6px;
+        box-shadow: inset 0 0 0 1.5px var(--color-base-brown);
+        text-align: center;
+        font-size: 1.05rem;
+        font-weight: bold;
+        background: transparent;
+    }
+
+    .bulk-reminders {
+        font-size: 0.7rem;
+    }
+
+    .bulk-reminders p {
+        margin: 0;
+    }
+
+    .bulk-reminders strong {
+        font-weight: bold;
+    }
+
+    /* Wealth Sub-Section */
+    #wealth-section {
+        margin-top: 0.05cm;
+    }
+
+    .coins-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 0.15cm;
+        margin: 0.05cm 0;
+    }
+
+    .coin-block {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .coin-block label {
+        font-size: 0.65rem;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+    }
+
+    .coin-input-circle {
+        width: 50px;
+        height: 50px;
+        border: 2px solid black;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        margin-top: 2px;
+    }
+
+    .coin-input-circle.copper {
+        box-shadow: inset 0 0 0 1.5px var(--color-base-brown);
+    }
+
+    .coin-input-circle.silver {
+        box-shadow: inset 0 0 0 1.5px silver;
+    }
+
+    .coin-input-circle.gold {
+        box-shadow: inset 0 0 0 1.5px gold;
+    }
+
+    .coin-input-circle.platinum {
+        box-shadow: inset 0 0 0 1.5px lightblue;
+    }
+
+    .coin-input-circle input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    .gems-card {
+        margin-top: 0.08cm;
+        grid-template-columns: auto min-content min-content;
     }
 
 }
