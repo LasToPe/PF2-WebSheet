@@ -6,48 +6,31 @@ function injectInventoryRows() {
     const INVENTORY_SECTIONS = [
         {
             containerId: "held-items-container",
+            templateId: "inventory-row-template",
             prefix: "held",
-            count: 10
+            count: 15
         },
         {
             containerId: "consumables-container",
+            templateId: "inventory-row-template",
             prefix: "consumable",
             count: 10
         },
         {
             containerId: "worn-items-container",
+            templateId: "inventory-row-template-worn",
             prefix: "worn",
             count: 15
         },
         {
             containerId: "gems-container",
-            prefix: "gem",
+            templateId: "inventory-row-template-gems",
+            prefix: "gems",
             count: 5
         }
     ];
 
-    const handleRowType = (clone, data) => {
-        if (data.id.includes('held') || data.id.includes('consumable')) {
-            clone.querySelector('.inventory-row').classList.add('held-consumables');
-            clone.querySelector('.invested-cell')?.remove();
-            clone.querySelector('.item-price-input')?.remove();
-            return;
-        }
-
-        if (data.id.includes('worn')) {
-            clone.querySelector('.inventory-row').classList.add('worn');
-            clone.querySelector('.item-price-input')?.remove();
-            return;
-        }
-
-        if (data.id.includes('gem')) {
-            clone.querySelector('.inventory-row').classList.add('gems');
-            clone.querySelector('.invested-cell')?.remove();
-            return;
-        }
-    }
-
-    INVENTORY_SECTIONS.forEach(({ containerId, prefix, count }) => {
+    INVENTORY_SECTIONS.forEach(({ containerId, templateId, prefix, count }) => {
         const container = document.getElementById(containerId);
         if (!container) return;
 
@@ -55,7 +38,7 @@ function injectInventoryRows() {
             id: `inventory-${prefix}-${index + 1}`
         }));
 
-        const fragment = renderTemplate('inventory-row-template', rowData, ["id"], handleRowType);
+        const fragment = renderTemplate(templateId, rowData, ["id"]);
         container.appendChild(fragment);
     });
 }

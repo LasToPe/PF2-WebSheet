@@ -791,13 +791,25 @@
                 </div>
 
                 <template id="inventory-row-template">
-                    <div class="inventory-row">
-                        <input type="text" class="item-desc-input" />
-                        <input type="text" class="item-price-input" />
+                    <div class="inventory-row held-consumables">
+                        <input type="text" id="{{id}}-description" class="item-desc-input" />
+                        <input type="text" id="{{id}}-bulk" class="item-bulk-input" />
+                    </div>
+                </template>
+                <template id="inventory-row-template-worn">
+                    <div class="inventory-row worn">
+                        <input type="text" id="{{id}}-description" class="item-desc-input" />
                         <span class="invested-cell">
-                            <input type="checkbox" />
+                            <input id="{{id}}-invested" type="checkbox" />
                         </span>
-                        <input type="text" class="item-bulk-input" />
+                        <input type="text" id="{{id}}-bulk" class="item-bulk-input" />
+                    </div>
+                </template>
+                <template id="inventory-row-template-gems">
+                    <div class="inventory-row gems">
+                        <input type="text" id="{{id}}-description" class="item-desc-input" />
+                        <input type="text" id="{{id}}-price" class="item-price-input" />
+                        <input type="text" id="{{id}}-bulk" class="item-bulk-input" />
                     </div>
                 </template>
                 <script type="module" src="./modules/inventory.js"></script>
