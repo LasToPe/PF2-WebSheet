@@ -1,0 +1,269 @@
+@scope (#page-3-notes-and-actions) {
+
+    .table-cell {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .cell-label {
+        margin: 2px 0 0 4px;
+        font-size: 0.55rem;
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+        white-space: nowrap;
+        z-index: 1;
+    }
+
+    .table-cell input[type="text"] {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        padding: 1px 4px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.65rem;
+        box-sizing: border-box;
+    }
+
+    .table-cell .cell-textarea {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        padding: 2px 4px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.65rem;
+        line-height: 1.25;
+        resize: none;
+        box-sizing: border-box;
+    }
+
+    .table-cell input[type="text"]:focus-visible,
+    .table-cell .cell-textarea:focus-visible,
+    .sketch-input:focus-visible {
+        outline: none;
+        background-color: rgba(0, 42, 23, 0.04);
+    }
+
+    #character-identity-grid {
+        display: grid;
+        grid-template-columns: 3fr 7fr;
+        column-gap: 0.25cm;
+        align-items: stretch;
+    }
+
+    /* Sketch Card */
+    #character-sketch-section {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        gap: 0.1cm;
+    }
+
+    .sketch-frame {
+        border: 1.5px solid black;
+        background-color: #ffffff;
+        flex: 1 1 0;
+        min-height: 0;
+    }
+
+    /* Bio Section */
+    #character-bio-section {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.1cm;
+    }
+
+    #origin-appearance-block {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.1cm;
+    }
+
+    /* Origin & Appearance Grid */
+    .origin-table {
+        display: grid;
+        grid-template-columns: 18% 18% 18% 8% 20% 9% 9%;
+        border-collapse: collapse;
+        border: 1px solid var(--color-base-brown);
+        box-sizing: border-box;
+    }
+
+    .origin-table>.table-cell:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        height: calc(100% - 4px);
+        right: 0;
+        width: 1px;
+        background-color: rgba(111, 71, 62, 0.3);
+        margin: 2px 0;
+    }
+
+    .appearance-table {
+        border-collapse: collapse;
+        border: 1px solid var(--color-base-brown);
+        box-sizing: border-box;
+    }
+
+    /* Personality Grid */
+    #personality-block {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1cm;
+    }
+
+    .personality-table {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.05cm;
+    }
+
+    .personality-table .table-cell {
+        border: 1px solid var(--color-base-brown);
+    }
+
+    .span-half {
+        grid-column: span 1;
+    }
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+
+    #campaign-notes-section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1cm;
+    }
+
+    #campaign-notes-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 0.25cm;
+    }
+
+    .general-notes-table {
+        display: flex;
+        height: 100%;
+        border-collapse: collapse;
+        border: 1px solid var(--color-base-brown);
+        box-sizing: border-box;
+    }
+
+    .social-notes-table {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        row-gap: 0.05cm;
+    }
+
+    .social-notes-table .table-cell {
+        border: 1px solid var(--color-base-brown);
+    }
+
+    #actions-and-reactions-grid {
+        --card-count: 4;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 0.25cm;
+        grid-template-rows: auto repeat(var(--card-count), 1fr);
+    }
+
+    #actions-activities-section,
+    #free-reactions-section {
+        display: grid;
+        grid-row: 1 / -1;
+        grid-template-rows: subgrid;
+    }
+
+    #actions-and-reactions-grid .block-heading {
+        grid-row: 1;
+        margin-bottom: 0;
+    }
+
+    .action-card-stack {
+        display: grid;
+        grid-row: 2 / -1;
+        grid-template-rows: subgrid;
+        row-gap: 0.1cm;
+    }
+
+    .action-card {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--color-base-brown);
+        min-height: 0;
+        box-sizing: border-box;
+    }
+
+    .action-card-header {
+        display: grid;
+        grid-template-columns: 35% 15% 35% 15%;
+    }
+
+    .action-effects-cell {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .action-effects-cell .cell-textarea {
+        flex: 1 1 auto;
+        min-height: 0;
+        height: 100%;
+        resize: none;
+    }
+
+    /* Free Actions & Reactions Specifics */
+    .reaction-header {
+        grid-template-columns: 35% 15% 35% 15%;
+    }
+
+    .reaction-icon-cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1px 2px;
+    }
+
+    .reaction-selector {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1px;
+    }
+
+    .action-type-option {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        cursor: pointer;
+        user-select: none;
+        line-height: 1;
+        font-size: 0.65rem;
+    }
+
+    .action-type-option input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        margin: 0;
+        pointer-events: none;
+    }
+
+    .radio-marker {
+        width: 0.5rem;
+        height: 0.5rem;
+        border: 1px solid var(--color-base-brown);
+        border-radius: 50%;
+        display: inline-block;
+        background-color: #ffffff;
+        box-sizing: border-box;
+    }
+
+    .action-type-option input[type="radio"]:checked+.radio-marker {
+        background-color: var(--color-base-brown);
+    }
+}

@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="./styles/main.css" />
 
     <link rel="stylesheet" href="./styles/page-2.css" />
-
+    <link rel="stylesheet" href="./styles/page-3.css" />
+    
     <script type="module" src="./modules/proficiency-container.js"></script>
 
     <title>title</title>
@@ -815,6 +816,233 @@
                 <script type="module" src="./modules/inventory.js"></script>
             </section>
         </div>
+    </page>
+
+    <page id="page-3-notes-and-actions">
+        <!-- Top Section: Sketch & Character Biography -->
+        <div id="character-identity-grid">
+            <!-- Character Sketch -->
+            <section id="character-sketch-section">
+                <span class="block-heading">
+                    <span class="header-text">Character Sketch</span>
+                    <span class="header-line"></span>
+                </span>
+                <div class="sketch-frame">
+                    <!-- Image area for later... -->
+                </div>
+            </section>
+
+            <!-- Origin, Appearance & Personality -->
+            <section id="character-bio-section">
+                <!-- Origin and Appearance -->
+                <div id="origin-appearance-block">
+                    <span class="block-heading">
+                        <span class="header-text">Origin and Appearance</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <div class="origin-table">
+                        <div class="table-cell">
+                            <label class="cell-label">Ethnicity</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell">
+                            <label class="cell-label">Nationality</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell">
+                            <label class="cell-label">Birthplace</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell">
+                            <label class="cell-label">Age</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell">
+                            <label class="cell-label">Gender & Pronouns</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell">
+                            <label class="cell-label">Height</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell">
+                            <label class="cell-label">Weight</label>
+                            <input type="text" />
+                        </div>
+                    </div>
+                    <div class="appearance-table">
+                        <div class="table-cell">
+                            <label class="cell-label">Appearance</label>
+                            <textarea class="cell-textarea"></textarea>
+                        </div>                        
+                    </div>
+                </div>
+
+                <!-- Personality -->
+                <div id="personality-block">
+                    <span class="block-heading">
+                        <span class="header-text">Personality</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <div class="personality-table">
+                        <div class="table-cell span-half">
+                            <label class="cell-label">Attitude</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell span-half">
+                            <label class="cell-label">Deity or Philosophy</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell span-half edicts-cell">
+                            <label class="cell-label">Edicts</label>
+                            <textarea class="cell-textarea" rows="6"></textarea>
+                        </div>
+                        <div class="table-cell span-half anathema-cell">
+                            <label class="cell-label">Anathema</label>
+                            <textarea class="cell-textarea" rows="6"></textarea>
+                        </div>
+                        <div class="table-cell full-width single-line-cell">
+                            <label class="cell-label">Likes</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell full-width single-line-cell">
+                            <label class="cell-label">Dislikes</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell full-width single-line-cell">
+                            <label class="cell-label">Catchphrases</label>
+                            <input type="text" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Middle Section: Campaign Notes -->
+        <section id="campaign-notes-section">
+            <span class="block-heading">
+                <span class="header-text">Campaign Notes</span>
+                <span class="header-line"></span>
+            </span>
+            <div id="campaign-notes-grid">
+                <div class="details-table general-notes-table">
+                    <div class="table-cell full-width full-height">
+                        <label class="cell-label">Notes</label>
+                        <textarea class="cell-textarea notes-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="details-table social-notes-table">
+                    <div class="table-cell full-width social-cell">
+                        <label class="cell-label">Allies</label>
+                        <textarea class="cell-textarea"></textarea>
+                    </div>
+                    <div class="table-cell full-width social-cell">
+                        <label class="cell-label">Enemies</label>
+                        <textarea class="cell-textarea"></textarea>
+                    </div>
+                    <div class="table-cell full-width social-cell">
+                        <label class="cell-label">Organizations</label>
+                        <textarea class="cell-textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Section: Actions & Reactions -->
+        <div id="actions-and-reactions-grid">
+            <!-- Actions and Activities -->
+            <section id="actions-activities-section">
+                <span class="block-heading">
+                    <span class="header-text">Actions and Activities</span>
+                    <span class="header-line"></span>
+                </span>
+                <div id="actions-cards-container" class="action-card-stack">
+                    <!-- Injected via actions.js template -->
+                </div>
+            </section>
+
+            <!-- Free Actions and Reactions -->
+            <section id="free-reactions-section">
+                <span class="block-heading">
+                    <span class="header-text">Free Actions and Reactions</span>
+                    <span class="header-line"></span>
+                </span>
+                <div id="reactions-cards-container" class="action-card-stack">
+                    <!-- Injected via actions.js template -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Templates -->
+        <template id="action-activity-card-template">
+            <div class="action-card">
+                <div class="action-card-header">
+                    <div class="table-cell action-name-cell">
+                        <label class="cell-label" for="{{id}}-name">Name</label>
+                        <input type="text" id="{{id}}-name" />
+                    </div>
+                    <div class="table-cell action-cost-cell">
+                        <label class="cell-label">Actions</label>
+                        <input type="text" id="{{id}}-actions" />
+                    </div>
+                    <div class="table-cell action-traits-cell">
+                        <label class="cell-label">Traits</label>
+                        <input type="text" id="{{id}}-traits" />
+                    </div>
+                    <div class="table-cell action-page-cell">
+                        <label class="cell-label">Page #</label>
+                        <input type="text" id="{{id}}-page" />
+                    </div>
+                </div>
+                <div class="table-cell action-effects-cell">
+                    <label class="cell-label">Effects</label>
+                    <textarea id="{{id}}-effects" class="cell-textarea"></textarea>
+                </div>
+            </div>
+        </template>
+
+        <template id="free-reaction-card-template">
+            <div class="details-table action-card reaction-card">
+                <div class="action-card-header reaction-header">
+                    <div class="table-cell action-name-cell">
+                        <label class="cell-label">Name</label>
+                        <input type="text" id="{{id}}-name" />
+                    </div>
+                    <div class="table-cell reaction-icon-cell">
+                        <div class="reaction-selector">
+                            <label class="action-type-option">
+                                <input type="radio" name="{{id}}-type" value="free" />
+                                <span class="radio-marker"></span>
+                                <span class="action-icon free-action-symbol">[free-action]</span>
+                            </label>
+                            <label class="action-type-option">
+                                <input type="radio" name="{{id}}-type" value="reaction" />
+                                <span class="radio-marker"></span>
+                                <span class="action-icon reaction-symbol">[reaction]</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="table-cell action-traits-cell">
+                        <label class="cell-label">Traits</label>
+                        <input type="text" id="{{id}}-traits" />
+                    </div>
+                    <div class="table-cell action-page-cell">
+                        <label class="cell-label">Page #</label>
+                        <input type="text" id="{{id}}-page" />
+                    </div>
+                </div>
+                <div class="table-cell full-width reaction-trigger-cell">
+                    <label class="cell-label">Trigger</label>
+                    <input type="text" id="{{id}}-trigger" />
+                </div>
+                <div class="table-cell full-width action-effects-cell reaction-effects-cell">
+                    <label class="cell-label">Effects</label>
+                    <textarea id="{{id}}-effects" class="cell-textarea"></textarea>
+                </div>
+            </div>
+        </template>
+
+        <script type="module" src="./modules/actions.js"></script>
     </page>
 </body>
 
