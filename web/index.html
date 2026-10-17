@@ -10,7 +10,8 @@
 
     <link rel="stylesheet" href="./styles/page-2.css" />
     <link rel="stylesheet" href="./styles/page-3.css" />
-    
+    <link rel="stylesheet" href="./styles/page-4.css" />
+
     <script type="module" src="./modules/proficiency-container.js"></script>
 
     <title>title</title>
@@ -874,7 +875,7 @@
                         <div class="table-cell">
                             <label class="cell-label">Appearance</label>
                             <textarea class="cell-textarea"></textarea>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
 
@@ -1043,6 +1044,392 @@
         </template>
 
         <script type="module" src="./modules/actions.js"></script>
+    </page>
+
+    <page id="page-4-spells">
+        <div id="spells-layout">
+            <!-- ================================================================== -->
+            <!-- LEFT COLUMN: Traditions, Statistics, Cantrips, Focus, Innate Spells -->
+            <!-- ================================================================== -->
+            <div id="spells-left-column">
+
+                <!-- Magical Tradition Section -->
+                <section id="tradition-section">
+                    <span class="block-heading">
+                        <span class="header-text">Magical Tradition</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="tradition-content">
+                        <!-- Compass & Tradition Checkboxes -->
+                        <div class="tradition-compass-cluster">
+                            <!-- Left Labels (Arcane & Primal) -->
+                            <div class="tradition-labels-col left-labels">
+                                <label for="tradition-arcane" class="tradition-text-label">Arcane</label>
+                                <label for="tradition-primal" class="tradition-text-label">Primal</label>
+                            </div>
+
+                            <!-- Interactive 4-Quadrant Wheel -->
+                            <div class="tradition-wheel">
+                                <!-- Arcane (Top-Left) -->
+                                <input type="checkbox" id="tradition-arcane" class="quadrant-input"
+                                    name="tradition-arcane">
+                                <label for="tradition-arcane" class="quadrant-zone top-left" title="Arcane"></label>
+
+                                <!-- Occult (Top-Right) -->
+                                <input type="checkbox" id="tradition-occult" class="quadrant-input"
+                                    name="tradition-occult">
+                                <label for="tradition-occult" class="quadrant-zone top-right" title="Occult"></label>
+
+                                <!-- Primal (Bottom-Left) -->
+                                <input type="checkbox" id="tradition-primal" class="quadrant-input"
+                                    name="tradition-primal">
+                                <label for="tradition-primal" class="quadrant-zone bottom-left" title="Primal"></label>
+
+                                <!-- Divine (Bottom-Right) -->
+                                <input type="checkbox" id="tradition-divine" class="quadrant-input"
+                                    name="tradition-divine">
+                                <label for="tradition-divine" class="quadrant-zone bottom-right" title="Divine"></label>
+
+                                <!-- Crosshair Dividers -->
+                                <div class="wheel-divider-h" aria-hidden="true"></div>
+                                <div class="wheel-divider-v" aria-hidden="true"></div>
+                            </div>
+
+                            <!-- Right Labels (Occult & Divine) -->
+                            <div class="tradition-labels-col right-labels">
+                                <label for="tradition-occult" class="tradition-text-label">Occult</label>
+                                <label for="tradition-divine" class="tradition-text-label">Divine</label>
+                            </div>
+                        </div>
+
+                        <!-- Caster Type Radio Selection -->
+                        <div class="caster-type-selector">
+                            <label class="caster-radio-option">
+                                <input type="radio" name="caster-type" value="prepared">
+                                <span class="radio-marker"></span>
+                                <span>Prepared Caster</span>
+                            </label>
+                            <label class="caster-radio-option">
+                                <input type="radio" name="caster-type" value="spontaneous">
+                                <span class="radio-marker"></span>
+                                <span>Spontaneous Caster</span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Spell Statistics Section -->
+                <section id="spell-statistics-section">
+                    <span class="block-heading">
+                        <span class="header-text">Spell Statistics</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="statistics-grid">
+                        <!-- Spell Attack -->
+                        <div class="stat-calc-block spell-attack-block">
+                            <span class="stat-title">Spell Attack</span>
+                            <div class="stat-calc-row">
+                                <div class="star-badge-container">
+                                    <input type="number" class="stat-total-input">
+                                </div>
+                                <prof-container id="spell-attack" label=""></prof-container>
+                                <div class="stat-math-group">
+                                    <div class="calc-input-container">
+                                        <input type="number">
+                                        <span class="plus-minus-spacer">+</span>
+                                        <input type="number">
+                                    </div>
+                                    <div class="calc-labels">
+                                        <label>Key</label>
+                                        <label>Prof</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Spell DC -->
+                        <div class="stat-calc-block spell-dc-block">
+                            <span class="stat-title">Spell DC</span>
+                            <div class="stat-calc-row">
+                                <div class="dc-badge-container">
+                                    <input type="number" class="stat-total-input">
+                                </div>
+                                <prof-container id="spell-dc" label=""></prof-container>
+                                <div class="stat-math-group">
+                                    <div class="calc-input-container">
+                                        <input type="number" value="10" readonly>
+                                        <span class="plus-minus-spacer">+</span>
+                                        <input type="number">
+                                        <span class="plus-minus-spacer">+</span>
+                                        <input type="number">
+                                    </div>
+                                    <div class="calc-labels">
+                                        <label>Base</label>
+                                        <label>Key</label>
+                                        <label>Prof</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Cantrips Section -->
+                <section id="cantrips-section">
+                    <span class="block-heading">
+                        <span class="header-text">Cantrips</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="cantrips-meta-row">
+                        <div class="meta-field per-day">
+                            <label>Cantrips per Day</label>
+                            <div class="spells-per-day-container">
+                                <input type="number" min="0">
+                            </div>
+                        </div>
+
+                        <div class="meta-field rank">
+                            <div class="rank-labels">
+                                <label>Cantrip Rank</label>
+                                <span class="meta-assistive-text">1/2 your level rounded up</span>
+                            </div>
+                            <div class="rank-input-container">
+                                <input type="number" min="1" max="10">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spell-table cantrips-table">
+                        <div class="spell-table-header cantrips-header">
+                            <span>Name</span>
+                            <span>Actions</span>
+                            <span>Prep</span>
+                        </div>
+                        <div id="cantrips-rows-container" class="spell-rows-container">
+                            <!-- Rendered via JS Module -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Focus Spells Section -->
+                <section id="focus-spells-section">
+                    <span class="block-heading">
+                        <span class="header-text">Focus Spells</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="focus-meta-row">
+                        <div class="meta-field focus-points-field">
+                            <label>Focus Points</label>
+                            <div class="focus-points-bubbles">
+                                <label class="point-bubble">
+                                    <input type="checkbox" id="focus-pt-1">
+                                    <span class="bubble-marker"></span>
+                                </label>
+                                <label class="point-bubble">
+                                    <input type="checkbox" id="focus-pt-2">
+                                    <span class="bubble-marker"></span>
+                                </label>
+                                <label class="point-bubble">
+                                    <input type="checkbox" id="focus-pt-3">
+                                    <span class="bubble-marker"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="meta-field rank">
+                            <div class="rank-labels">
+                                <label>Focus Spell Rank</label>
+                                <span class="meta-assistive-text">1/2 your level rounded up</span>
+                            </div>
+                            <div class="rank-input-container focus">
+                                <input type="number" min="1" max="10">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="focus-rules-text">
+                        <p><span class="strong">Focus Pool</span> Equals the number of focus spells you have (maximum
+                            3).</p>
+                        <p><span class="strong">Refocus</span> Spend 10 minutes to regain 1 Focus Point.</p>
+                    </div>
+
+                    <div class="spell-table focus-table">
+                        <div class="spell-table-header focus-header">
+                            <span>Name</span>
+                            <span>Actions</span>
+                        </div>
+                        <div id="focus-rows-container" class="spell-rows-container">
+                            <!-- Rendered via JS Module -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Innate Spells Section -->
+                <section id="innate-spells-section">
+                    <span class="block-heading">
+                        <span class="header-text">Innate Spells</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="spell-table innate-table">
+                        <div class="spell-table-header innate-header">
+                            <span>Name</span>
+                            <span>Actions</span>
+                            <span>Freq</span>
+                        </div>
+                        <div id="innate-rows-container" class="spell-rows-container">
+                            <!-- Rendered via JS Module -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ================================================================== -->
+            <!-- RIGHT COLUMN: Spell Slots Tracker, Spells Columns, Rituals         -->
+            <!-- ================================================================== -->
+            <div id="spells-right-column">
+
+                <!-- Spell Slots Tracker -->
+                <section id="spell-slots-section">
+                    <span class="block-heading">
+                        <span class="header-text">Spell Slots</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="spell-slots-grid">
+                        <span class="slot-row-label">Spells per Day</span>
+                        <div class="slots-track books-track" id="spells-per-day-slots">
+                            <!-- 10 book inputs (Ranks 1 to 10) -->
+                        </div>
+
+                        <span class="slot-row-label">Spell Rank</span>
+                        <div class="slots-track rank-numbers-track">
+                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                        </div>
+
+                        <span class="slot-row-label">Spells Remaining</span>
+                        <div class="slots-track remaining-track" id="spells-remaining-slots">
+                            <!-- 10 box inputs (Ranks 1 to 10) -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Main Spells List (2 Columns) -->
+                <section id="main-spells-section">
+                    <span class="block-heading">
+                        <span class="header-text">Spells</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="spells-dual-container">
+                        <div class="spell-table main-spell-table">
+                            <div class="spell-table-header main-spell-header">
+                                <span>Name</span>
+                                <span>Actions</span>
+                                <span>Rank</span>
+                                <span>Prep</span>
+                            </div>
+                            <div id="spells-left-subcolumn" class="spell-rows-container">
+                                <!-- Rendered via JS Module -->
+                            </div>
+                        </div>
+
+                        <div class="spell-table main-spell-table">
+                            <div class="spell-table-header main-spell-header">
+                                <span>Name</span>
+                                <span>Actions</span>
+                                <span>Rank</span>
+                                <span>Prep</span>
+                            </div>
+                            <div id="spells-right-subcolumn" class="spell-rows-container">
+                                <!-- Rendered via JS Module -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Rituals Section (Bottom 2 Columns) -->
+                <section id="rituals-section">
+                    <span class="block-heading">
+                        <span class="header-text">Rituals</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="rituals-dual-container">
+                        <div class="spell-table ritual-table">
+                            <div class="spell-table-header ritual-header">
+                                <span>Name</span>
+                                <span>Rank</span>
+                                <span>Cost</span>
+                            </div>
+                            <div id="rituals-left-subcolumn" class="spell-rows-container">
+                                <!-- Rendered via JS Module -->
+                            </div>
+                        </div>
+
+                        <div class="spell-table ritual-table">
+                            <div class="spell-table-header ritual-header">
+                                <span>Name</span>
+                                <span>Rank</span>
+                                <span>Cost</span>
+                            </div>
+                            <div id="rituals-right-subcolumn" class="spell-rows-container">
+                                <!-- Rendered via JS Module -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Templates for Dynamic Injection -->
+        <template id="cantrip-row-template">
+            <div class="spell-row cantrips-row">
+                <input type="text" id="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-actions" class="spell-cell-actions">
+                <span class="prep-cell">
+                    <input type="checkbox" id="{{id}}-prep">
+                </span>
+            </div>
+        </template>
+
+        <template id="focus-spell-row-template">
+            <div class="spell-row focus-row">
+                <input type="text" id="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-actions" class="spell-cell-actions">
+            </div>
+        </template>
+
+        <template id="innate-spell-row-template">
+            <div class="spell-row innate-row">
+                <input type="text" id="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-actions" class="spell-cell-actions">
+                <input type="text" id="{{id}}-freq" class="spell-cell-freq">
+            </div>
+        </template>
+
+        <template id="main-spell-row-template">
+            <div class="spell-row main-spell-row">
+                <input type="text" id="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-actions" class="spell-cell-actions">
+                <input type="text" id="{{id}}-rank" class="spell-cell-rank">
+                <input type="number" id="{{id}}-prep">
+            </div>
+        </template>
+
+        <template id="ritual-row-template">
+            <div class="spell-row ritual-row">
+                <input type="text" id="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-rank" class="spell-cell-rank">
+                <input type="text" id="{{id}}-cost" class="spell-cell-cost">
+            </div>
+        </template>
+
+        <script type="module" src="./modules/spells.js"></script>
     </page>
 </body>
 

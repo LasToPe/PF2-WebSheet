@@ -1,0 +1,670 @@
+/* ==========================================================================
+   PAGE 4 - SPELLS & TRADITIONS
+   Reused Tokens:
+   - var(--color-base-brown)
+   - var(--color-header-green)
+   - var(--color-base-brown-50pct)
+   - .block-heading, .calc-input-container, .calc-labels, prof-container
+   ========================================================================== */
+
+@scope (#page-4-spells) {
+    --color-spell-inner: rgb(178, 158, 116);
+
+    #spells-layout {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 0.25cm;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    #spells-left-column,
+    #spells-right-column {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.1cm;
+        min-height: 0;
+        box-sizing: border-box;
+    }
+
+    .tradition-content {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.6cm;
+        margin-top: 0.08cm;
+    }
+
+    .tradition-compass-cluster {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .tradition-labels-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 32px;
+    }
+
+    .tradition-labels-col.left-labels {
+        text-align: right;
+    }
+
+    .tradition-labels-col.right-labels {
+        text-align: left;
+    }
+
+    .tradition-text-label {
+        font-size: 0.82rem;
+        font-weight: bold;
+        line-height: 1;
+        cursor: pointer;
+        user-select: none;
+        color: #000;
+        transition: color 0.15s ease;
+    }
+
+    /* 4-Quadrant Wheel Container */
+    .tradition-wheel {
+        position: relative;
+        width: 38px;
+        height: 38px;
+        border: 1.5px solid black;
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 1.5px var(--color-spell-inner);
+        background-color: #ffffff;
+        box-sizing: border-box;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+
+    /* Crosshair Dividers */
+    .wheel-divider-h {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        top: calc(50% - 1px);
+        left: 0;
+        background-color: var(--color-spell-inner);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .wheel-divider-v {
+        position: absolute;
+        height: 100%;
+        width: 2px;
+        left: calc(50% - 1px);
+        top: 0;
+        background-color: var(--color-spell-inner);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* Quadrant Checkbox and Hit-Areas */
+    .quadrant-input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .quadrant-zone {
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .quadrant-zone:hover {
+        background-color: rgba(111, 71, 62, 0.12);
+    }
+
+    /* Quadrant Positioning */
+    .quadrant-zone.top-left {
+        top: 2px;
+        left: 2px;
+    }
+
+    .quadrant-zone.top-right {
+        top: 2px;
+        right: 2px;
+    }
+
+    .quadrant-zone.bottom-left {
+        bottom: 2px;
+        left: 2px;
+    }
+
+    .quadrant-zone.bottom-right {
+        bottom: 2px;
+        right: 2px;
+    }
+
+    /* Checkmark Injection into Selected Quadrants */
+    .quadrant-input:checked+.quadrant-zone::after {
+        content: "✓";
+        font-size: 0.75rem;
+        font-weight: 900;
+        line-height: 1;
+    }
+
+    /* ==========================================================================
+       Prepared / Spontaneous Caster Radios
+       ========================================================================== */
+    .caster-type-selector {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2px;
+        /* Tightened vertical spacing */
+        justify-content: center;
+    }
+
+    .caster-radio-option {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.65rem;
+        font-weight: 500;
+        cursor: pointer;
+        user-select: none;
+        line-height: 1.1;
+        color: #000;
+    }
+
+    .caster-radio-option input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Custom Radio Outline matching sheet style */
+    .caster-radio-option .radio-marker {
+        width: 12px;
+        height: 12px;
+        border: 1.5px solid black;
+        border-radius: 50%;
+        display: grid;
+        place-content: center;
+        background-color: #ffffff;
+        box-sizing: border-box;
+        transition: border-color 0.15s ease;
+    }
+
+    .caster-radio-option:hover .radio-marker {
+        border-color: var(--color-base-brown);
+    }
+
+    .caster-radio-option input[type="radio"]:checked+.radio-marker::after {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: var(--color-base-brown);
+    }
+
+    .caster-radio-option input[type="radio"]:focus-visible+.radio-marker {
+        outline: 1.5px solid var(--color-header-green);
+        outline-offset: 1px;
+    }
+
+    /* ==========================================================================
+       Spell Statistics
+       ========================================================================== */
+    .statistics-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 0.1cm;
+        margin-top: 0.1cm;
+    }
+
+    .stat-calc-block {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stat-title {
+        font-size: 0.65rem;
+        font-weight: bold;
+        margin-bottom: 2px;
+        text-align: center;
+    }
+
+    .stat-calc-row {
+        display: flex;
+        gap: 3px;
+    }
+
+    .star-badge-container {
+        width: 40px;
+        height: 40px;
+        position: relative;
+        margin-top: -10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .star-badge-container::before {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        border: 1.5px solid black;
+        transform: rotate(45deg);
+        box-shadow: inset 0 0 0 1px var(--color-spell-inner);
+        pointer-events: none;
+    }
+
+    .star-badge-container::after {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        border: 1.5px solid black;
+        box-shadow: inset 0 0 0 1px var(--color-spell-inner);
+        pointer-events: none;
+    }
+
+    .dc-badge-container {
+        width: 30px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .dc-badge-container::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 1.5px solid black;
+        border-radius: 6px;
+        box-shadow: inset 0 0 0 1.5px var(--color-spell-inner);
+        pointer-events: none;
+    }
+
+    .stat-total-input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: bold;
+        z-index: 1;
+    }
+
+    .stat-math-group {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .stat-math-group .calc-input-container {
+        margin-top: 0;
+        height: 20px;
+    }
+
+    .stat-math-group .calc-input-container input {
+        width: 100%;
+        font-size: 0.75rem;
+    }
+
+    .stat-math-group .calc-labels label {
+        width: 100%;
+    }
+
+    /* ==========================================================================
+       Tables & Row Layouts
+       ========================================================================== */
+    .spell-table {
+        border: 1px solid var(--color-base-brown);
+        background-color: #ffffff;
+        box-sizing: border-box;
+    }
+
+    .spell-table-header {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+        height: min-content;
+        font-size: 0.55rem;
+        font-weight: bold;
+        background: #ffffff;
+        border-bottom: 1px solid var(--color-base-brown);
+        padding: 1px 2px;
+        align-items: center;
+    }
+
+    .spell-table-header span:not(:first-child) {
+        text-align: center;
+        border-left: 1px solid var(--color-base-brown-50pct);
+        padding: 0 4px;
+    }
+
+    .spell-rows-container {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+    }
+
+    .spell-row {
+        display: grid;
+        height: 20px;
+        align-items: center;
+        box-sizing: border-box;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+    }
+
+    .spell-row input[type="text"],
+    .spell-row input[type="number"] {
+        height: 100%;
+        border: none;
+        background: transparent;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.65rem;
+        padding: 0 3px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .spell-row input[type="text"]:not(:first-child),
+    .spell-row input[type="number"]:not(:first-child) {
+        border-left: 1px solid rgba(111, 71, 62, 0.25);
+        text-align: center;
+    }
+
+    .spell-row input:focus-visible {
+        outline: none;
+        background-color: rgba(0, 42, 23, 0.05);
+    }
+
+    .prep-cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(111, 71, 62, 0.25);
+        height: 100%;
+    }
+
+    .prep-cell input[type="checkbox"] {
+        appearance: none;
+        width: 10px;
+        height: 10px;
+        border: 1px solid var(--color-base-brown);
+        background: #fff;
+        margin: 0;
+        cursor: pointer;
+        display: grid;
+        place-content: center;
+    }
+
+    .prep-cell input[type="checkbox"]::after {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: var(--color-base-brown);
+        opacity: 0;
+    }
+
+    .prep-cell input[type="checkbox"]:checked::after {
+        opacity: 1;
+    }
+
+    /* ==========================================================================
+       Specific Sub-sections: Cantrips, Focus, Innate
+       ========================================================================== */
+    #cantrips-section {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 0;
+    }
+    
+    .cantrips-meta-row,
+    .focus-meta-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 4px 0 6px 0;
+    }
+
+    .meta-field {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 0.6rem;
+        gap: 8px;
+    }
+
+    .meta-assistive-text {
+        font-size: 0.45rem;
+        position: absolute;
+        margin-top: 0.8rem;
+    }
+
+    .spells-per-day-container {
+        position: relative;
+        width: 44px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .spells-per-day-container::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 1.5px solid black;
+        border-radius: 6px;
+        box-shadow: inset 0 0 0 1.5px var(--color-spell-inner);
+        pointer-events: none;
+    }
+
+    .spells-per-day-container input {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        text-align: center;
+        font-size: 0.85rem;
+    }
+
+    .rank-labels {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    .rank-input-container {
+        width: 28px;
+        height: 18px;
+        border: 1.5px solid var(--color-base-brown);
+        background: #fff;
+    }
+
+    .rank-input-container input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        text-align: center;
+        font-size: 0.75rem;
+        box-sizing: border-box;
+    }
+
+    /* Column Width Tracks */
+    .cantrips-table {
+        display: grid;
+        grid-template-columns: auto 5ch min-content;
+    }
+
+    .focus-table {
+        display: grid;
+        grid-template-columns: auto 5ch;
+    }
+
+    .innate-table {
+        display: grid;
+        grid-template-columns: auto 5ch 5ch;
+    }
+
+    /* Focus Points Circles */
+    .focus-points-bubbles {
+        display: flex;
+        gap: 4px;
+        margin-top: 2px;
+    }
+
+    .point-bubble {
+        cursor: pointer;
+        display: block;
+    }
+
+    .point-bubble input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .bubble-marker {
+        width: 13px;
+        height: 13px;
+        border: 1.5px solid black;
+        border-radius: 50%;
+        display: block;
+        background-color: #fff;
+    }
+
+    .point-bubble input:checked+.bubble-marker {
+        background-color: var(--color-base-brown);
+        box-shadow: inset 0 0 0 1.5px #ffffff;
+    }
+
+    .rank-input-container.focus {
+        border-color: var(--color-spell-inner);
+    }
+
+    .focus-rules-text {
+        font-size: 0.45rem;
+        margin-bottom: 0.05cm;
+        line-height: 1.25;
+    }
+
+    .focus-rules-text p {
+        margin: 0;
+    }
+
+    .focus-rules-text .strong {
+        font-weight: bold;
+    }
+
+    /* ==========================================================================
+       Right Column: Spell Slots Tracker
+       ========================================================================== */
+    .spell-slots-grid {
+        display: grid;
+        grid-template-columns: 85px 1fr;
+        grid-template-rows: repeat(3, auto);
+        row-gap: 2px;
+        align-items: center;
+        margin-top: 0.05cm;
+    }
+
+    .slot-row-label {
+        font-size: 0.55rem;
+        font-weight: bold;
+    }
+
+    .slots-track {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        column-gap: 3px;
+    }
+
+    .books-track .book-slot-box {
+        height: 18px;
+        border: 1.5px solid var(--color-base-brown);
+        border-radius: 3px 3px 1px 1px;
+        position: relative;
+    }
+
+    .books-track .book-slot-box::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        background-color: var(--color-base-brown);
+    }
+
+    .books-track .book-slot-box input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        text-align: center;
+        font-size: 0.7rem;
+        box-sizing: border-box;
+    }
+
+    .rank-numbers-track span {
+        text-align: center;
+        font-size: 0.65rem;
+        font-weight: bold;
+    }
+
+    .remaining-track .remaining-slot-box {
+        display: flex;
+        border: 1.5px solid var(--color-base-brown);
+        border-radius: 2px;
+    }
+
+    .remaining-track .remaining-slot-box input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        text-align: center;
+        font-size: 0.7rem;
+        box-sizing: border-box;
+    }
+
+    /* ==========================================================================
+       Right Column: Dual Spells & Rituals Tables
+       ========================================================================== */
+    .spells-dual-container,
+    .rituals-dual-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 0.15cm;
+        margin-top: 0.05cm;
+    }
+
+    #main-spells-section {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 0;
+    }
+
+    .main-spell-table {
+        display: grid;
+        grid-template-columns: auto 5ch 4ch 4ch;
+    }
+
+    .ritual-table {
+        display: grid;
+        grid-template-columns: auto 4ch 4ch;
+    }
+}
