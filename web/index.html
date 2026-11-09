@@ -33,11 +33,11 @@
                     <span class="header-line"></span>
                 </span>
                 <span class="basic-input-container">
-                    <input id="character-name" type="text">
+                    <input id="character-name" name="character-name" type="text">
                 </span>
                 <span class="basic-input-container secondary">
                     <span id="player-name-assistive-text">Player Name</span>
-                    <input type="text">
+                    <input id="player-name" name="player-name" type="text">
                 </span>
             </div>
 
@@ -49,10 +49,10 @@
                     </span>
                     <div id="level-and-xp">
                         <span id="level-container">
-                            <input type="number" min="1" max="20">
+                            <input id="level" name="level" data-stat="level" type="number" min="1" max="20">
                         </span>
                         <span id="xp-container">
-                            <input type="number">
+                            <input id="xp" name="xp" data-stat="xp" type="number">
                         </span>
                     </div>
                 </div>
@@ -92,16 +92,16 @@
                     <span class="header-line"></span>
                 </span>
                 <span class="basic-input-container">
-                    <input type="text">
+                    <input id="ancestry" name="ancestry" type="text">
                 </span>
                 <span id="heritage-traits-size">
                     <span class="basic-input-container secondary">
                         <span class="assistive-text">Heritage and Traits</span>
-                        <input type="text">
+                        <input id="heritage-traits" name="heritage-traits" type="text">
                     </span>
                     <span class="basic-input-container secondary">
                         <span class="assistive-text">Size</span>
-                        <input type="text">
+                        <input id="size" name="size" type="text">
                     </span>
                 </span>
             </div>
@@ -112,11 +112,11 @@
                     <span class="header-line"></span>
                 </span>
                 <span class="basic-input-container">
-                    <input type="text">
+                    <input id="background" name="background" type="text">
                 </span>
                 <span class="basic-input-container secondary">
                     <span class="assistive-text">Background Notes</span>
-                    <input type="text">
+                    <input id="background-notes" name="background-notes" type="text">
                 </span>
             </div>
 
@@ -126,11 +126,11 @@
                     <span class="header-line"></span>
                 </span>
                 <span class="basic-input-container">
-                    <input type="text">
+                    <input id="character-class" name="character-class" type="text">
                 </span>
                 <span class="basic-input-container secondary">
                     <span class="assistive-text">Class Notes</span>
-                    <input type="text">
+                    <input id="class-notes" name="class-notes" type="text">
                 </span>
             </div>
         </div>
@@ -145,12 +145,13 @@
             <template id="attribute-template">
                 <div id="{{id}}-block">
                     <span class="attribute-container">
-                        <input type="number">
+                        <input id="{{id}}-modifier" name="{{id}}" data-stat="{{id}}" data-calc="attr" type="number">
                     </span>
                     <div class="attribute-label-and-partial">
                         <label class="attribute-label">{{label}}</label>
                         <span class="partial-boost-container">
-                            <input type="checkbox" id="{{id}}-partial-boost">
+                            <input type="checkbox" id="{{id}}-partial-boost" name="{{id}}-partial-boost"
+                                data-stat="{{id}}" data-calc="partial-boost">
                             <label for="{{id}}-partial-boost">Partial Boost</label>
                         </span>
                     </div>
@@ -172,16 +173,17 @@
                     <div id="armor-container">
                         <span>Armor Class</span>
                         <span id="armor-class-input-container">
-                            <input type="number">
+                            <input id="ac-total" name="ac-total" data-stat="ac" data-calc="total" type="number"
+                                readonly>
                         </span>
                         <div class="calc-input-container armor">
-                            <input type="number" value="10" readonly>
+                            <input id="ac-base" data-stat="ac" data-calc="base" type="number" value="10" readonly>
                             <span class="plus-minus-spacer">+</span>
-                            <input type="number">
+                            <input id="ac-dex" data-stat="ac" data-calc="attr" data-attr="dex" type="number" readonly>
                             <span class="plus-minus-spacer">+</span>
-                            <input type="number">
+                            <input id="ac-prof" data-stat="ac" data-calc="prof" type="number" readonly>
                             <span class="plus-minus-spacer">+</span>
-                            <input type="number">
+                            <input id="ac-item" name="ac-item" data-stat="ac" data-calc="item" type="number">
                         </div>
                         <div class="calc-labels armor">
                             <label>Base</label>
@@ -196,7 +198,8 @@
                         <span>Shield</span>
                         <div id="shield-stats">
                             <span id="ac-shield-input-container">
-                                <input type="number">
+                                <input id="shield-ac" name="shield-ac" data-stat="shield" data-calc="ac-bonus"
+                                    type="number">
                             </span>
 
                             <span class="shield-stat-label hardness">Hardness</span>
@@ -205,16 +208,18 @@
                             <span class="shield-stat-label hp">HP</span>
 
                             <span id="shield-hardness-container">
-                                <input type="number">
+                                <input id="shield-hardness" name="shield-hardness" data-stat="shield"
+                                    data-calc="hardness" type="number">
                             </span>
 
                             <span id="shield-max-hp-bt-container">
-                                <input type="number">
-                                <input type="number">
+                                <input id="shield-max-hp" name="shield-max-hp" data-stat="shield" data-calc="max-hp"
+                                    type="number">
+                                <input id="shield-bt" name="shield-bt" data-stat="shield" data-calc="bt" type="number">
                             </span>
 
                             <span id="shield-hp-container">
-                                <input type="number">
+                                <input id="shield-hp" name="shield-hp" data-stat="shield" data-calc="hp" type="number">
                             </span>
                         </div>
                     </div>
@@ -223,31 +228,6 @@
                         <span>Armor Proficiencies</span>
 
                         <div id="armor-proficiencies">
-                            <template id="armor-prof-template">
-                                <span class="prof-container">
-                                    <span class="ac-prof-label">{{label}}</span>
-                                    <span class="prof-check-container">
-                                        <input type="checkbox" id="{{id}}-prof-trained">
-                                        <label for="{{id}}-prof-trained">T</label>
-                                    </span>
-
-                                    <span class="prof-check-container">
-                                        <input type="checkbox" id="{{id}}-prof-expert">
-                                        <label for="{{id}}-prof-expert">E</label>
-                                    </span>
-
-                                    <span class="prof-check-container">
-                                        <input type="checkbox" id="{{id}}-prof-master">
-                                        <label for="{{id}}-prof-master">M</label>
-                                    </span>
-
-                                    <span class="prof-check-container">
-                                        <input type="checkbox" id="{{id}}-prof-legendary">
-                                        <label for="{{id}}-prof-legendary">L</label>
-                                    </span>
-                                </span>
-                            </template>
-
                             <!-- <span class="ac-prof-label">{{label}}</span> -->
                             <prof-container id="unarmored" label="Unarmored"></prof-container>
                             <prof-container id="light-armor" label="Light Armor"></prof-container>
@@ -260,7 +240,7 @@
                 <div id="saves-area">
                     <span id="defenses-notes-container" class="basic-input-container secondary">
                         <span class="assistive-text">Defenses Notes</span>
-                        <input type="text">
+                        <input id="defenses-notes" name="defenses-notes" type="text">
                     </span>
 
                     <template id="save-template">
@@ -268,16 +248,19 @@
                             <span>{{label}}</span>
                             <div class="save-and-prof">
                                 <span class="save-input-container">
-                                    <input type="number">
+                                    <input id="{{id}}-total" name="{{id}}-total" data-stat="{{id}}" data-calc="total"
+                                        type="number" readonly>
                                 </span>
                                 <prof-container id="{{id}}"></prof-container>
                             </div>
                             <div class="calc-input-container save">
-                                <input type="number">
+                                <input id="{{id}}-attr" data-stat="{{id}}" data-calc="attr" data-attr="{{attr}}"
+                                    type="number" readonly>
                                 <span class="plus-minus-spacer">+</span>
-                                <input type="number">
+                                <input id="{{id}}-prof" data-stat="{{id}}" data-calc="prof" type="number" readonly>
                                 <span class="plus-minus-spacer">+</span>
-                                <input type="number">
+                                <input id="{{id}}-item" name="{{id}}-item" data-stat="{{id}}" data-calc="item"
+                                    type="number">
                             </div>
                             <div class="calc-labels save">
                                 <label>{{attr}}</label>
@@ -301,30 +284,30 @@
                 <label>Temporary HP</label>
 
                 <span id="max-hp-input-container">
-                    <input type="number">
+                    <input id="max-hp" name="max-hp" data-stat="hp" data-calc="max" type="number">
                 </span>
 
-                <textarea id="current-hp-input"></textarea>
+                <textarea id="current-hp-input" name="current-hp" data-stat="hp" data-calc="current"></textarea>
 
-                <input type="number" id="temporary-hp-input">
+                <input type="number" id="temporary-hp-input" name="temporary-hp" data-stat="hp" data-calc="temp">
 
                 <span id="dying-block">
                     <label>Dying</label>
                     <span id="dying-fields">
                         <span class="dying-skull">
-                            <input type="checkbox" id="dying-1">
+                            <input type="checkbox" id="dying-1" name="dying" value="1" data-stat="dying" data-index="1">
                             <label for="dying-1"></label>
                         </span>
                         <span class="dying-skull">
-                            <input type="checkbox" id="dying-2">
+                            <input type="checkbox" id="dying-2" name="dying" value="2" data-stat="dying" data-index="2">
                             <label for="dying-2"></label>
                         </span>
                         <span class="dying-skull">
-                            <input type="checkbox" id="dying-3">
+                            <input type="checkbox" id="dying-3" name="dying" value="3" data-stat="dying" data-index="3">
                             <label for="dying-3"></label>
                         </span>
                         <span class="dying-skull">
-                            <input type="checkbox" id="dying-4">
+                            <input type="checkbox" id="dying-4" name="dying" value="4" data-stat="dying" data-index="4">
                             <label for="dying-4"></label>
                         </span>
                     </span>
@@ -332,17 +315,17 @@
 
                 <span id="wounded-block">
                     <label>Wounded</label>
-                    <input type="number">
+                    <input id="wounded" name="wounded" data-stat="wounded" type="number" min="0">
                 </span>
 
                 <span class="basic-input-container secondary">
                     <span class="assistive-text">Resistances and Immunities</span>
-                    <input type="text">
+                    <input id="resistances-immunities" name="resistances-immunities" type="text">
                 </span>
 
                 <span class="basic-input-container secondary">
                     <span class="assistive-text">Conditions</span>
-                    <input type="text">
+                    <input id="conditions" name="conditions" type="text">
                 </span>
 
             </div>
@@ -361,16 +344,19 @@
                         <div class="skill-block">
                             <label class="skill-label">{{label}}</label>
                             <span class="skill-total-input-container">
-                                <input type="number">
+                                <input id="{{id}}-total" name="{{id}}-total" data-stat="{{id}}" data-calc="total"
+                                    type="number" readonly>
                             </span>
                             <prof-container id="{{id}}" label="{{label}}"></prof-container>
                             <div class="skill-calc-container">
                                 <div class="calc-input-container skill-3-part">
-                                    <input type="number">
+                                    <input id="{{id}}-attr" data-stat="{{id}}" data-calc="attr" data-attr="{{attr}}"
+                                        type="number" readonly>
                                     <span class="plus-minus-spacer">+</span>
-                                    <input type="number">
+                                    <input id="{{id}}-prof" data-stat="{{id}}" data-calc="prof" type="number" readonly>
                                     <span class="plus-minus-spacer">+</span>
-                                    <input type="number">
+                                    <input id="{{id}}-item" name="{{id}}-item" data-stat="{{id}}" data-calc="item"
+                                        type="number">
                                 </div>
                                 <div class="calc-labels">
                                     <label>{{attr}}</label>
@@ -385,7 +371,7 @@
                 </div>
                 <span id="skill-notes" class="basic-input-container secondary">
                     <span class="assistive-text">Skill Notes</span>
-                    <textarea></textarea>
+                    <textarea id="skill-notes-input" name="skill-notes"></textarea>
                 </span>
             </div>
             <div id="combat-column">
@@ -397,7 +383,7 @@
                         <span class="header-line"></span>
                     </span>
                     <span class="basic-input-container languages">
-                        <textarea></textarea>
+                        <textarea id="languages" name="languages"></textarea>
                     </span>
                     <!-- #endregion -->
 
@@ -410,18 +396,22 @@
                     <div id="perception-inputs" class="perception">
 
                         <span id="perception-total-input-container">
-                            <input type="number">
+                            <input id="perception-total" name="perception-total" data-stat="perception"
+                                data-calc="total" type="number" readonly>
                         </span>
 
                         <prof-container id="perception"></prof-container>
 
                         <div class="calc-container">
                             <div class="calc-input-container">
-                                <input type="number">
+                                <input id="perception-attr" data-stat="perception" data-calc="attr" data-attr="wis"
+                                    type="number" readonly>
                                 <span class="plus-minus-spacer">+</span>
-                                <input type="number">
+                                <input id="perception-prof" data-stat="perception" data-calc="prof" type="number"
+                                    readonly>
                                 <span class="plus-minus-spacer">+</span>
-                                <input type="number">
+                                <input id="perception-item" name="perception-item" data-stat="perception"
+                                    data-calc="item" type="number">
                             </div>
 
                             <div class="calc-labels">
@@ -435,7 +425,7 @@
 
                     <span id="perception-notes" class="basic-input-container secondary perception">
                         <span class="assistive-text">Senses and Notes</span>
-                        <textarea></textarea>
+                        <textarea id="perception-notes-input" name="perception-notes"></textarea>
                     </span>
                     <!-- #endregion -->
 
@@ -446,13 +436,13 @@
                     </span>
 
                     <span id="speed-input-container" class="speed">
-                        <input type="number">
+                        <input id="speed" name="speed" data-stat="speed" type="number">
                         <span id="speed-label" class="speed">feet</span>
                     </span>
 
                     <span id="speed-notes" class="basic-input-container secondary speed">
                         <span class="assistive-text">Special Movement</span>
-                        <textarea></textarea>
+                        <textarea id="speed-notes-input" name="speed-notes"></textarea>
                     </span>
                     <!-- #endregion -->
                 </div>
@@ -468,20 +458,24 @@
 
                             <!-- Weapon Name -->
                             <label>Weapon</label>
-                            <input class="weapon-name" type="text" />
+                            <input id="{{id}}-name" name="{{id}}-name" class="weapon-name" type="text" />
 
                             <!-- Attack Modifier & Breakdown -->
                             <div class="attack-total">
-                                <input type="text" name="{{id}}-attack_total" class="attack-total-input" />
+                                <input id="{{id}}-attack-total" name="{{id}}-attack_total" data-stat="{{id}}"
+                                    data-calc="total" class="attack-total-input" type="text" readonly />
                             </div>
 
                             <div class="calc-container">
                                 <div class="calc-input-container">
-                                    <input type="number">
+                                    <input id="{{id}}-attack-attr" data-stat="{{id}}" data-calc="attr"
+                                        data-attr="{{attr}}" type="number" readonly>
                                     <span class="plus-minus-spacer">+</span>
-                                    <input type="number">
+                                    <input id="{{id}}-attack-prof" data-stat="{{id}}" data-calc="prof" type="number"
+                                        readonly>
                                     <span class="plus-minus-spacer">+</span>
-                                    <input type="number">
+                                    <input id="{{id}}-attack-item" name="{{id}}-attack-item" data-stat="{{id}}"
+                                        data-calc="item" type="number">
                                 </div>
 
                                 <div class="calc-labels">
@@ -494,19 +488,23 @@
                             <!-- Damage & Damage Type -->
                             <label for="weapon-damage">Damage</label>
                             <div class="weapon-damage">
-                                <input type="text" name="{{id}}-weapon_damage" class="weapon-damage-input" />
+                                <input id="{{id}}-damage" name="{{id}}-weapon_damage" class="weapon-damage-input"
+                                    type="text" />
 
                                 <div class="damage-types">
                                     <label class="type-check">
-                                        <input type="radio" name="{{id}}-damage-type" value="B" />
+                                        <input type="radio" id="{{id}}-damage-type-b" name="{{id}}-damage-type"
+                                            value="B" />
                                         <span>B</span>
                                     </label>
                                     <label class="type-check">
-                                        <input type="radio" name="{{id}}-damage-type" value="P" />
+                                        <input type="radio" id="{{id}}-damage-type-p" name="{{id}}-damage-type"
+                                            value="P" />
                                         <span>P</span>
                                     </label>
                                     <label class="type-check">
-                                        <input type="radio" name="{{id}}-damage-type" value="S" />
+                                        <input type="radio" id="{{id}}-damage-type-s" name="{{id}}-damage-type"
+                                            value="S" />
                                         <span>S</span>
                                     </label>
                                 </div>
@@ -515,7 +513,7 @@
                             <!-- Bottom Row: Traits and Notes -->
                             <span class="basic-input-container secondary weapon-notes">
                                 <span class="assistive-text">Traits and Notes</span>
-                                <input type="text" />
+                                <input id="{{id}}-notes" name="{{id}}-notes" type="text" />
                             </span>
                         </div>
                     </template>
@@ -534,13 +532,14 @@
                     </div>
 
                     <span id="weapon-other-notes" class="basic-input-container secondary">
-                        <textarea></textarea>
+                        <textarea id="weapon-other-notes-input" name="weapon-other-notes"></textarea>
                     </span>
 
                     <span class="section-heading critical-title">Critical Specializations</span>
 
                     <span id="critical-specializations-notes" class="basic-input-container secondary">
-                        <textarea></textarea>
+                        <textarea id="critical-specializations-notes-input"
+                            name="critical-specializations-notes"></textarea>
                     </span>
                 </div>
                 <div id="class-dc-and-reminders">
@@ -552,17 +551,20 @@
                         </span>
 
                         <div class="class-dc-total">
-                            <input type="number" />
+                            <input id="class-dc-total" name="class-dc-total" data-stat="class-dc" data-calc="total"
+                                type="number" readonly />
                         </div>
 
                         <div class="calc-input-container class-dc-calc">
-                            <input type="number" value="10" readonly />
+                            <input id="class-dc-base" data-stat="class-dc" data-calc="base" type="number" value="10"
+                                readonly />
                             <span class="plus-minus-spacer">+</span>
-                            <input type="number" />
+                            <input id="class-dc-key" data-stat="class-dc" data-calc="attr" type="number" readonly />
                             <span class="plus-minus-spacer">+</span>
-                            <input type="number" />
+                            <input id="class-dc-prof" data-stat="class-dc" data-calc="prof" type="number" readonly />
                             <span class="plus-minus-spacer">+</span>
-                            <input type="number" />
+                            <input id="class-dc-item" name="class-dc-item" data-stat="class-dc" data-calc="item"
+                                type="number" />
                         </div>
                         <div class="calc-labels class-dc-calc">
                             <label>Base</label>
@@ -649,22 +651,26 @@
                         <div class="feat-cell-group ancestry-group">
                             <div class="feat-subcell">
                                 <span class="feat-type-label">Ancestry and Heritage Abilities</span>
-                                <textarea class="feat-input-multi"></textarea>
+                                <textarea id="level-1-ancestry-abilities" name="level-1-ancestry-abilities"
+                                    class="feat-input-multi"></textarea>
                             </div>
                             <div class="feat-subcell">
                                 <span class="feat-type-label">Ancestry Feat</span>
-                                <textarea class="feat-input-multi"></textarea>
+                                <textarea id="level-1-ancestry-feat" name="level-1-ancestry-feat"
+                                    class="feat-input-multi"></textarea>
                             </div>
                             <div class="feat-subcell">
                                 <span class="feat-type-label">Background Skill Feat</span>
-                                <textarea class="feat-input-multi"></textarea>
+                                <textarea id="level-1-background-feat" name="level-1-background-feat"
+                                    class="feat-input-multi"></textarea>
                             </div>
                         </div>
 
                         <div class="feat-cell-group class-group">
                             <div class="feat-subcell full-height">
                                 <span class="feat-type-label">Class Feats and Features</span>
-                                <textarea class="feat-input-multi"></textarea>
+                                <textarea id="level-1-class-feat" name="level-1-class-feat"
+                                    class="feat-input-multi"></textarea>
                             </div>
                         </div>
                     </div>
@@ -675,11 +681,13 @@
                             <div class="feat-cell">
                                 <span class="feat-type-label">{{featType}}</span>
                                 <span class="boost-tag">Boosts</span>
-                                <textarea class="feat-input-multi"></textarea>
+                                <textarea id="level-{{level}}-general-feat" name="level-{{level}}-general-feat"
+                                    class="feat-input-multi"></textarea>
                             </div>
                             <div class="feat-cell">
                                 <span class="feat-type-label">{{classFeatType}}</span>
-                                <textarea class="feat-input-multi"></textarea>
+                                <textarea id="level-{{level}}-class-feat" name="level-{{level}}-class-feat"
+                                    class="feat-input-multi"></textarea>
                             </div>
                         </div>
                     </template>
@@ -736,7 +744,8 @@
                     <div class="bulk-content">
                         <div class="bulk-badge-container">
                             <span class="bulk-badge-title">Bulk</span>
-                            <input type="number" class="bulk-total-input" min="0" />
+                            <input id="bulk-total" name="bulk-total" data-stat="bulk" data-calc="total" type="number"
+                                class="bulk-total-input" min="0" readonly />
                         </div>
                         <div class="bulk-reminders">
                             <p><strong>Light Items</strong> 10 light Bulk items = 1 Bulk</p>
@@ -757,25 +766,29 @@
                         <div class="coin-block">
                             <label>CP</label>
                             <span class="coin-input-circle copper">
-                                <input type="number" min="0" />
+                                <input id="coin-cp" name="coin-cp" data-stat="wealth" data-currency="cp" type="number"
+                                    min="0" />
                             </span>
                         </div>
                         <div class="coin-block">
                             <label>SP</label>
                             <span class="coin-input-circle silver">
-                                <input type="number" min="0" />
+                                <input id="coin-sp" name="coin-sp" data-stat="wealth" data-currency="sp" type="number"
+                                    min="0" />
                             </span>
                         </div>
                         <div class="coin-block">
                             <label>GP</label>
                             <span class="coin-input-circle gold">
-                                <input type="number" min="0" />
+                                <input id="coin-gp" name="coin-gp" data-stat="wealth" data-currency="gp" type="number"
+                                    min="0" />
                             </span>
                         </div>
                         <div class="coin-block">
                             <label>PP</label>
                             <span class="coin-input-circle platinum">
-                                <input type="number" min="0" />
+                                <input id="coin-pp" name="coin-pp" data-stat="wealth" data-currency="pp" type="number"
+                                    min="0" />
                             </span>
                         </div>
                     </div>
@@ -795,24 +808,27 @@
 
                 <template id="inventory-row-template">
                     <div class="inventory-row held-consumables">
-                        <input type="text" id="{{id}}-description" class="item-desc-input" />
-                        <input type="text" id="{{id}}-bulk" class="item-bulk-input" />
+                        <input type="text" id="{{id}}-description" name="{{id}}-description" class="item-desc-input" />
+                        <input type="text" id="{{id}}-bulk" name="{{id}}-bulk" data-calc="bulk"
+                            class="item-bulk-input" />
                     </div>
                 </template>
                 <template id="inventory-row-template-worn">
                     <div class="inventory-row worn">
-                        <input type="text" id="{{id}}-description" class="item-desc-input" />
+                        <input type="text" id="{{id}}-description" name="{{id}}-description" class="item-desc-input" />
                         <span class="invested-cell">
-                            <input id="{{id}}-invested" type="checkbox" />
+                            <input id="{{id}}-invested" name="{{id}}-invested" data-calc="invested" type="checkbox" />
                         </span>
-                        <input type="text" id="{{id}}-bulk" class="item-bulk-input" />
+                        <input type="text" id="{{id}}-bulk" name="{{id}}-bulk" data-calc="bulk"
+                            class="item-bulk-input" />
                     </div>
                 </template>
                 <template id="inventory-row-template-gems">
                     <div class="inventory-row gems">
-                        <input type="text" id="{{id}}-description" class="item-desc-input" />
-                        <input type="text" id="{{id}}-price" class="item-price-input" />
-                        <input type="text" id="{{id}}-bulk" class="item-bulk-input" />
+                        <input type="text" id="{{id}}-description" name="{{id}}-description" class="item-desc-input" />
+                        <input type="text" id="{{id}}-price" name="{{id}}-price" class="item-price-input" />
+                        <input type="text" id="{{id}}-bulk" name="{{id}}-bulk" data-calc="bulk"
+                            class="item-bulk-input" />
                     </div>
                 </template>
                 <script type="module" src="./modules/inventory.js"></script>
@@ -845,37 +861,37 @@
                     <div class="origin-table">
                         <div class="table-cell">
                             <label class="cell-label">Ethnicity</label>
-                            <input type="text" />
+                            <input id="bio-ethnicity" name="bio-ethnicity" type="text" />
                         </div>
                         <div class="table-cell">
                             <label class="cell-label">Nationality</label>
-                            <input type="text" />
+                            <input id="bio-nationality" name="bio-nationality" type="text" />
                         </div>
                         <div class="table-cell">
                             <label class="cell-label">Birthplace</label>
-                            <input type="text" />
+                            <input id="bio-birthplace" name="bio-birthplace" type="text" />
                         </div>
                         <div class="table-cell">
                             <label class="cell-label">Age</label>
-                            <input type="text" />
+                            <input id="bio-age" name="bio-age" type="text" />
                         </div>
                         <div class="table-cell">
                             <label class="cell-label">Gender & Pronouns</label>
-                            <input type="text" />
+                            <input id="bio-gender" name="bio-gender" type="text" />
                         </div>
                         <div class="table-cell">
                             <label class="cell-label">Height</label>
-                            <input type="text" />
+                            <input id="bio-height" name="bio-height" type="text" />
                         </div>
                         <div class="table-cell">
                             <label class="cell-label">Weight</label>
-                            <input type="text" />
+                            <input id="bio-weight" name="bio-weight" type="text" />
                         </div>
                     </div>
                     <div class="appearance-table">
                         <div class="table-cell">
                             <label class="cell-label">Appearance</label>
-                            <textarea class="cell-textarea"></textarea>
+                            <textarea id="bio-appearance" name="bio-appearance" class="cell-textarea"></textarea>
                         </div>
                     </div>
                 </div>
@@ -889,31 +905,31 @@
                     <div class="personality-table">
                         <div class="table-cell span-half">
                             <label class="cell-label">Attitude</label>
-                            <input type="text" />
+                            <input id="bio-attitude" name="bio-attitude" type="text" />
                         </div>
                         <div class="table-cell span-half">
                             <label class="cell-label">Deity or Philosophy</label>
-                            <input type="text" />
+                            <input id="bio-deity" name="bio-deity" type="text" />
                         </div>
                         <div class="table-cell span-half edicts-cell">
                             <label class="cell-label">Edicts</label>
-                            <textarea class="cell-textarea" rows="6"></textarea>
+                            <textarea id="bio-edicts" name="bio-edicts" class="cell-textarea" rows="6"></textarea>
                         </div>
                         <div class="table-cell span-half anathema-cell">
                             <label class="cell-label">Anathema</label>
-                            <textarea class="cell-textarea" rows="6"></textarea>
+                            <textarea id="bio-anathema" name="bio-anathema" class="cell-textarea" rows="6"></textarea>
                         </div>
                         <div class="table-cell full-width single-line-cell">
                             <label class="cell-label">Likes</label>
-                            <input type="text" />
+                            <input id="bio-likes" name="bio-likes" type="text" />
                         </div>
                         <div class="table-cell full-width single-line-cell">
                             <label class="cell-label">Dislikes</label>
-                            <input type="text" />
+                            <input id="bio-dislikes" name="bio-dislikes" type="text" />
                         </div>
                         <div class="table-cell full-width single-line-cell">
                             <label class="cell-label">Catchphrases</label>
-                            <input type="text" />
+                            <input id="bio-catchphrases" name="bio-catchphrases" type="text" />
                         </div>
                     </div>
                 </div>
@@ -930,21 +946,23 @@
                 <div class="details-table general-notes-table">
                     <div class="table-cell full-width full-height">
                         <label class="cell-label">Notes</label>
-                        <textarea class="cell-textarea notes-textarea"></textarea>
+                        <textarea id="campaign-notes" name="campaign-notes"
+                            class="cell-textarea notes-textarea"></textarea>
                     </div>
                 </div>
                 <div class="details-table social-notes-table">
                     <div class="table-cell full-width social-cell">
                         <label class="cell-label">Allies</label>
-                        <textarea class="cell-textarea"></textarea>
+                        <textarea id="campaign-allies" name="campaign-allies" class="cell-textarea"></textarea>
                     </div>
                     <div class="table-cell full-width social-cell">
                         <label class="cell-label">Enemies</label>
-                        <textarea class="cell-textarea"></textarea>
+                        <textarea id="campaign-enemies" name="campaign-enemies" class="cell-textarea"></textarea>
                     </div>
                     <div class="table-cell full-width social-cell">
                         <label class="cell-label">Organizations</label>
-                        <textarea class="cell-textarea"></textarea>
+                        <textarea id="campaign-organizations" name="campaign-organizations"
+                            class="cell-textarea"></textarea>
                     </div>
                 </div>
             </div>
@@ -981,24 +999,24 @@
                 <div class="action-card-header">
                     <div class="table-cell action-name-cell">
                         <label class="cell-label" for="{{id}}-name">Name</label>
-                        <input type="text" id="{{id}}-name" />
+                        <input type="text" id="{{id}}-name" name="{{id}}-name" />
                     </div>
                     <div class="table-cell action-cost-cell">
                         <label class="cell-label">Actions</label>
-                        <input type="text" id="{{id}}-actions" />
+                        <input type="text" id="{{id}}-actions" name="{{id}}-actions" />
                     </div>
                     <div class="table-cell action-traits-cell">
                         <label class="cell-label">Traits</label>
-                        <input type="text" id="{{id}}-traits" />
+                        <input type="text" id="{{id}}-traits" name="{{id}}-traits" />
                     </div>
                     <div class="table-cell action-page-cell">
                         <label class="cell-label">Page #</label>
-                        <input type="text" id="{{id}}-page" />
+                        <input type="text" id="{{id}}-page" name="{{id}}-page" />
                     </div>
                 </div>
                 <div class="table-cell action-effects-cell">
                     <label class="cell-label">Effects</label>
-                    <textarea id="{{id}}-effects" class="cell-textarea"></textarea>
+                    <textarea id="{{id}}-effects" name="{{id}}-effects" class="cell-textarea"></textarea>
                 </div>
             </div>
         </template>
@@ -1008,17 +1026,17 @@
                 <div class="action-card-header reaction-header">
                     <div class="table-cell action-name-cell">
                         <label class="cell-label">Name</label>
-                        <input type="text" id="{{id}}-name" />
+                        <input type="text" id="{{id}}-name" name="{{id}}-name" />
                     </div>
                     <div class="table-cell reaction-icon-cell">
                         <div class="reaction-selector">
                             <label class="action-type-option">
-                                <input type="radio" name="{{id}}-type" value="free" />
+                                <input type="radio" id="{{id}}-type-free" name="{{id}}-type" value="free" />
                                 <span class="radio-marker"></span>
                                 <span class="action-icon free-action-symbol">[free-action]</span>
                             </label>
                             <label class="action-type-option">
-                                <input type="radio" name="{{id}}-type" value="reaction" />
+                                <input type="radio" id="{{id}}-type-reaction" name="{{id}}-type" value="reaction" />
                                 <span class="radio-marker"></span>
                                 <span class="action-icon reaction-symbol">[reaction]</span>
                             </label>
@@ -1026,20 +1044,20 @@
                     </div>
                     <div class="table-cell action-traits-cell">
                         <label class="cell-label">Traits</label>
-                        <input type="text" id="{{id}}-traits" />
+                        <input type="text" id="{{id}}-traits" name="{{id}}-traits" />
                     </div>
                     <div class="table-cell action-page-cell">
                         <label class="cell-label">Page #</label>
-                        <input type="text" id="{{id}}-page" />
+                        <input type="text" id="{{id}}-page" name="{{id}}-page" />
                     </div>
                 </div>
                 <div class="table-cell full-width reaction-trigger-cell">
                     <label class="cell-label">Trigger</label>
-                    <input type="text" id="{{id}}-trigger" />
+                    <input type="text" id="{{id}}-trigger" name="{{id}}-trigger" />
                 </div>
                 <div class="table-cell full-width action-effects-cell reaction-effects-cell">
                     <label class="cell-label">Effects</label>
-                    <textarea id="{{id}}-effects" class="cell-textarea"></textarea>
+                    <textarea id="{{id}}-effects" name="{{id}}-effects" class="cell-textarea"></textarea>
                 </div>
             </div>
         </template>
@@ -1074,22 +1092,22 @@
                             <div class="tradition-wheel">
                                 <!-- Arcane (Top-Left) -->
                                 <input type="checkbox" id="tradition-arcane" class="quadrant-input"
-                                    name="tradition-arcane">
+                                    name="tradition-arcane" value="arcane">
                                 <label for="tradition-arcane" class="quadrant-zone top-left" title="Arcane"></label>
 
                                 <!-- Occult (Top-Right) -->
                                 <input type="checkbox" id="tradition-occult" class="quadrant-input"
-                                    name="tradition-occult">
+                                    name="tradition-occult" value="occult">
                                 <label for="tradition-occult" class="quadrant-zone top-right" title="Occult"></label>
 
                                 <!-- Primal (Bottom-Left) -->
                                 <input type="checkbox" id="tradition-primal" class="quadrant-input"
-                                    name="tradition-primal">
+                                    name="tradition-primal" value="primal">
                                 <label for="tradition-primal" class="quadrant-zone bottom-left" title="Primal"></label>
 
                                 <!-- Divine (Bottom-Right) -->
                                 <input type="checkbox" id="tradition-divine" class="quadrant-input"
-                                    name="tradition-divine">
+                                    name="tradition-divine" value="divine">
                                 <label for="tradition-divine" class="quadrant-zone bottom-right" title="Divine"></label>
 
                                 <!-- Crosshair Dividers -->
@@ -1107,12 +1125,12 @@
                         <!-- Caster Type Radio Selection -->
                         <div class="caster-type-selector">
                             <label class="caster-radio-option">
-                                <input type="radio" name="caster-type" value="prepared">
+                                <input type="radio" id="caster-type-prepared" name="caster-type" value="prepared">
                                 <span class="radio-marker"></span>
                                 <span>Prepared Caster</span>
                             </label>
                             <label class="caster-radio-option">
-                                <input type="radio" name="caster-type" value="spontaneous">
+                                <input type="radio" id="caster-type-spontaneous" name="caster-type" value="spontaneous">
                                 <span class="radio-marker"></span>
                                 <span>Spontaneous Caster</span>
                             </label>
@@ -1133,14 +1151,17 @@
                             <span class="stat-title">Spell Attack</span>
                             <div class="stat-calc-row">
                                 <div class="star-badge-container">
-                                    <input type="number" class="stat-total-input">
+                                    <input id="spell-attack-total" name="spell-attack-total" data-stat="spell-attack"
+                                        data-calc="total" type="number" class="stat-total-input" readonly>
                                 </div>
                                 <prof-container id="spell-attack" label=""></prof-container>
                                 <div class="stat-math-group">
                                     <div class="calc-input-container">
-                                        <input type="number">
+                                        <input id="spell-attack-key" data-stat="spell-attack" data-calc="attr"
+                                            type="number" readonly>
                                         <span class="plus-minus-spacer">+</span>
-                                        <input type="number">
+                                        <input id="spell-attack-prof" data-stat="spell-attack" data-calc="prof"
+                                            type="number" readonly>
                                     </div>
                                     <div class="calc-labels">
                                         <label>Key</label>
@@ -1155,16 +1176,20 @@
                             <span class="stat-title">Spell DC</span>
                             <div class="stat-calc-row">
                                 <div class="dc-badge-container">
-                                    <input type="number" class="stat-total-input">
+                                    <input id="spell-dc-total" name="spell-dc-total" data-stat="spell-dc"
+                                        data-calc="total" type="number" class="stat-total-input" readonly>
                                 </div>
                                 <prof-container id="spell-dc" label=""></prof-container>
                                 <div class="stat-math-group">
                                     <div class="calc-input-container">
-                                        <input type="number" value="10" readonly>
+                                        <input id="spell-dc-base" data-stat="spell-dc" data-calc="base" type="number"
+                                            value="10" readonly>
                                         <span class="plus-minus-spacer">+</span>
-                                        <input type="number">
+                                        <input id="spell-dc-key" data-stat="spell-dc" data-calc="attr" type="number"
+                                            readonly>
                                         <span class="plus-minus-spacer">+</span>
-                                        <input type="number">
+                                        <input id="spell-dc-prof" data-stat="spell-dc" data-calc="prof" type="number"
+                                            readonly>
                                     </div>
                                     <div class="calc-labels">
                                         <label>Base</label>
@@ -1188,7 +1213,7 @@
                         <div class="meta-field per-day">
                             <label>Cantrips per Day</label>
                             <div class="spells-per-day-container">
-                                <input type="number" min="0">
+                                <input id="cantrips-per-day" name="cantrips-per-day" type="number" min="0">
                             </div>
                         </div>
 
@@ -1198,7 +1223,8 @@
                                 <span class="meta-assistive-text">1/2 your level rounded up</span>
                             </div>
                             <div class="rank-input-container">
-                                <input type="number" min="1" max="10">
+                                <input id="cantrip-rank" name="cantrip-rank" data-stat="cantrips" data-calc="rank"
+                                    type="number" min="1" max="10" readonly>
                             </div>
                         </div>
                     </div>
@@ -1227,15 +1253,15 @@
                             <label>Focus Points</label>
                             <div class="focus-points-bubbles">
                                 <label class="point-bubble">
-                                    <input type="checkbox" id="focus-pt-1">
+                                    <input type="checkbox" id="focus-pt-1" name="focus-points" value="1">
                                     <span class="bubble-marker"></span>
                                 </label>
                                 <label class="point-bubble">
-                                    <input type="checkbox" id="focus-pt-2">
+                                    <input type="checkbox" id="focus-pt-2" name="focus-points" value="2">
                                     <span class="bubble-marker"></span>
                                 </label>
                                 <label class="point-bubble">
-                                    <input type="checkbox" id="focus-pt-3">
+                                    <input type="checkbox" id="focus-pt-3" name="focus-points" value="3">
                                     <span class="bubble-marker"></span>
                                 </label>
                             </div>
@@ -1246,7 +1272,8 @@
                                 <span class="meta-assistive-text">1/2 your level rounded up</span>
                             </div>
                             <div class="rank-input-container focus">
-                                <input type="number" min="1" max="10">
+                                <input id="focus-spell-rank" name="focus-spell-rank" data-stat="focus" data-calc="rank"
+                                    type="number" min="1" max="10" readonly>
                             </div>
                         </div>
                     </div>
@@ -1390,43 +1417,43 @@
         <!-- Templates for Dynamic Injection -->
         <template id="cantrip-row-template">
             <div class="spell-row cantrips-row">
-                <input type="text" id="{{id}}-name" class="spell-cell-name">
-                <input type="text" id="{{id}}-actions" class="spell-cell-actions">
+                <input type="text" id="{{id}}-name" name="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-actions" name="{{id}}-actions" class="spell-cell-actions">
                 <span class="prep-cell">
-                    <input type="checkbox" id="{{id}}-prep">
+                    <input type="checkbox" id="{{id}}-prep" name="{{id}}-prep">
                 </span>
             </div>
         </template>
 
         <template id="focus-spell-row-template">
             <div class="spell-row focus-row">
-                <input type="text" id="{{id}}-name" class="spell-cell-name">
-                <input type="text" id="{{id}}-actions" class="spell-cell-actions">
+                <input type="text" id="{{id}}-name" name="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-actions" name="{{id}}-actions" class="spell-cell-actions">
             </div>
         </template>
 
         <template id="innate-spell-row-template">
             <div class="spell-row innate-row">
-                <input type="text" id="{{id}}-name" class="spell-cell-name">
-                <input type="text" id="{{id}}-actions" class="spell-cell-actions">
-                <input type="text" id="{{id}}-freq" class="spell-cell-freq">
+                <input type="text" id="{{id}}-name" name="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-actions" name="{{id}}-actions" class="spell-cell-actions">
+                <input type="text" id="{{id}}-freq" name="{{id}}-freq" class="spell-cell-freq">
             </div>
         </template>
 
         <template id="main-spell-row-template">
             <div class="spell-row main-spell-row">
-                <input type="text" id="{{id}}-name" class="spell-cell-name">
-                <input type="text" id="{{id}}-actions" class="spell-cell-actions">
-                <input type="text" id="{{id}}-rank" class="spell-cell-rank">
-                <input type="number" id="{{id}}-prep">
+                <input type="text" id="{{id}}-name" name="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-actions" name="{{id}}-actions" class="spell-cell-actions">
+                <input type="text" id="{{id}}-rank" name="{{id}}-rank" class="spell-cell-rank">
+                <input type="number" id="{{id}}-prep" name="{{id}}-prep">
             </div>
         </template>
 
         <template id="ritual-row-template">
             <div class="spell-row ritual-row">
-                <input type="text" id="{{id}}-name" class="spell-cell-name">
-                <input type="text" id="{{id}}-rank" class="spell-cell-rank">
-                <input type="text" id="{{id}}-cost" class="spell-cell-cost">
+                <input type="text" id="{{id}}-name" name="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-rank" name="{{id}}-rank" class="spell-cell-rank">
+                <input type="text" id="{{id}}-cost" name="{{id}}-cost" class="spell-cell-cost">
             </div>
         </template>
 
