@@ -1,0 +1,1290 @@
+#page-1-statistics {
+
+    > :not(:first-child) {
+        margin-top: 0.1cm;
+    }
+
+    /* #region General Information */
+
+    #general-information {
+        display: grid;
+        column-gap: 0.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto;
+    }
+
+    #general-information>div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.25rem;
+    }
+
+    #sheet-logo {
+        justify-content: center;
+    }
+
+    #sheet-logo>img {
+        width: inherit;
+    }
+
+    #sheet-logo>span {
+        font-family: "Taroca", sans-serif;
+        color: var(--color-base-brown);
+        font-size: 1.2em;
+        text-align: center;
+        margin-top: -0.6em;
+    }
+
+    #name-block #character-name {
+        margin: 8px 0;
+        padding: 0 4px;
+        width: calc(100% - 8px);
+    }
+
+    #name-block> :last-child {
+        grid-template-columns: auto auto;
+    }
+
+    #name-block> :last-child>input {
+        margin: unset;
+        font-size: 0.8em;
+    }
+
+    #player-name-assistive-text {
+        font-size: 0.65em;
+        margin: 2px 2px;
+        align-self: last baseline;
+    }
+
+    #level-and-hero-points {
+        display: flex;
+        flex-direction: row !important;
+        column-gap: 0.5rem;
+    }
+
+    #level-block {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #level-and-xp {
+        display: flex;
+        height: 100%;
+    }
+
+    #level-container {
+        width: 40%;
+        height: 100%;
+        position: relative;
+
+        &::before {
+            content: "";
+            width: 30px;
+            height: 30px;
+            background-color: transparent;
+            border: 1.5px solid black;
+            transform: translate(-50%, -50%) rotate(45deg);
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    }
+
+    #level-container>input {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        text-align: center;
+        position: relative;
+    }
+
+    #xp-container {
+        width: calc(60% - 5px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        margin-left: 5px;
+
+        &::before {
+            content: "XP";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 0.8em;
+            margin-top: 15%;
+        }
+    }
+
+    #xp-container>input {
+        width: calc(100% - 3px);
+        padding: 0;
+        border: 1.5px solid black;
+        text-align: center;
+        position: relative;
+    }
+
+    #hero-point-block {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.08cm;
+    }
+
+    #hero-point-description {
+        font-size: 0.4em;
+        margin-top: -0.05cm;
+    }
+
+    #hero-point-description>p {
+        margin: 0;
+        padding-left: 2em;
+        text-indent: -2em;
+    }
+
+    #hero-point-description span.strong {
+        font-weight: 750;
+    }
+
+    #hero-point-fields {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        height: 33%;
+        position: relative;
+    }
+
+    .hero-point-hexagon {
+        position: relative;
+        width: 28%;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-image: url(../assets/images/hexagon.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+        }
+    }
+
+    .hero-point-hexagon>input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .hero-point-hexagon>input[type="checkbox"]+label {
+        position: relative;
+        cursor: pointer;
+        display: block;
+        height: 100%;
+
+        &::after {
+            content: "✕";
+            position: absolute;
+            text-align: center;
+            line-height: 0;
+            width: 100%;
+            top: 50%;
+            opacity: 0;
+        }
+    }
+
+    .hero-point-hexagon>input[type="checkbox"]:checked+label::after {
+        opacity: 1;
+    }
+
+    #ancestry-block #heritage-traits-size {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        column-gap: 0.05cm;
+    }
+
+    #ancestry-block #heritage-traits-size> :last-child {
+        width: 16%;
+    }
+
+    #heritage-traits-size> :last-child input {
+        text-align: center;
+    }
+
+    /* #endregion */
+
+    /* #region Attributes */
+
+    #attributes {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: auto auto;
+        column-gap: 0.5rem;
+        row-gap: 0.25rem;
+    }
+
+    #attributes>.block-heading {
+        grid-column: span 6;
+    }
+
+    #attributes>div {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        column-gap: 1px;
+    }
+
+    .attribute-label-and-partial {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .attribute-label {
+        font-weight: bold;
+        line-height: 1em;
+        font-size: 0.9em;
+    }
+
+    .attribute-container {
+        width: 28px;
+        height: 24px;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 1.5px solid black;
+            border-radius: 0 0 8px 8px;
+            box-shadow: inset 0 0 0 1.5px var(--color-base-brown);
+            box-sizing: border-box;
+        }
+    }
+
+    .attribute-container>input {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: none;
+        text-align: center;
+        padding: 0;
+    }
+
+    .partial-boost-container {
+        position: relative;
+    }
+
+    .partial-boost-container>input[type="checkbox"] {
+        opacity: 0;
+        position: absolute;
+    }
+
+    .partial-boost-container>input[type="checkbox"]+label {
+        position: relative;
+        cursor: pointer;
+        display: block;
+        padding-left: calc(2 * 4px + 0.7em);
+        font-size: 0.6em;
+
+        &::before,
+        &::after {
+            content: "";
+            left: 4px;
+            bottom: 0.2em;
+            width: 0.7em;
+            height: 0.7em;
+            border: 0.7px solid black;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        &::after {
+            background-color: var(--color-base-brown);
+            opacity: 0;
+        }
+    }
+
+    .partial-boost-container>input[type="checkbox"]:checked+label::after {
+        opacity: 1;
+    }
+
+    /* #endregion */
+
+    /* #region Defenses & Hit Points */
+
+    #defenses-and-hitpoints {
+        display: grid;
+        grid-template-columns: 66fr 33fr;
+        column-gap: 0.2cm;
+    }
+
+    #defenses-block {
+        display: grid;
+        grid-template-columns: 50fr 50fr;
+    }
+
+    #defenses-block>span.block-heading {
+        grid-column: span 2;
+    }
+
+    #armor-class-area {
+        display: flex;
+        flex-direction: row;
+        padding-right: 0.1cm;
+        position: relative;
+    }
+
+    #armor-container {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+    }
+
+    #armor-container>span:first-child {
+        font-weight: bold;
+        text-align: center;
+        font-size: 0.9em;
+    }
+
+    #armor-container>span:last-child {
+        font-size: 0.4em;
+    }
+
+    #armor-class-input-container {
+        position: relative;
+        height: 50%;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-image: url(../assets/images/armor-bg.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+        }
+    }
+
+    #armor-class-input-container>input {
+        width: calc(100% - 16px);
+        height: calc(100% - 4px);
+        border: none;
+        background: none;
+        position: relative;
+        text-align: center;
+        font-size: 1.3em;
+        padding: 0 0 0 8px;
+    }
+
+    .calc-input-container.armor>input,
+    .calc-labels.armor>label {
+        width: 25%;
+    }
+
+    #shield-container {
+        display: flex;
+        flex-direction: column;
+        width: calc(60% + 4px);
+        margin-left: -4px;
+    }
+
+    #shield-container>span:first-child {
+        font-weight: bold;
+        font-size: 0.8em;
+        padding-top: 0.2em;
+    }
+
+    #shield-stats {
+        display: grid;
+        grid-template-columns: 25fr 15fr 15fr 15fr 18fr;
+        grid-template-rows: 25fr 75fr;
+        column-gap: 2px;
+        height: 35%;
+    }
+
+    #ac-shield-input-container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        grid-row: span 2;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-image: url(../assets/images/shield.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+        }
+    }
+
+    #ac-shield-input-container>input {
+        width: 100%;
+        height: calc(100% - 4px);
+        border: none;
+        background: none;
+        position: relative;
+        padding: 0 0 0 1px;
+        text-align: center;
+        font-size: 1.2em;
+    }
+
+    .shield-stat-label {
+        font-size: 0.35em;
+        align-content: end;
+        text-align: center;
+    }
+
+    #shield-hardness-container,
+    #shield-hp-container {
+        width: calc(100% - 3px);
+        position: relative;
+        border: 1.5px solid black;
+        display: flex;
+        height: fit-content;
+    }
+
+    #shield-hardness-container>input,
+    #shield-hp-container>input {
+        width: 100%;
+        border: none;
+        padding: 0;
+        text-align: center;
+        font-size: 0.7em;
+    }
+
+    #shield-max-hp-bt-container {
+        width: calc(100% - 3px);
+        position: relative;
+        border: 1.5px solid black;
+        display: flex;
+        grid-column: span 2;
+        height: fit-content;
+
+        &::after {
+            content: "/";
+            position: absolute;
+            color: var(--color-base-brown-50pct);
+            line-height: 0;
+            top: 50%;
+            left: calc(50% - 2.5px);
+        }
+    }
+
+    #shield-max-hp-bt-container>input {
+        width: 50%;
+        border: none;
+        padding: 0;
+        text-align: center;
+        font-size: 0.7em;
+    }
+
+    #armor-proficiency-container {
+        position: absolute;
+        bottom: 14%;
+        right: 6%;
+    }
+
+    #armor-proficiency-container>span {
+        font-size: 0.6em;
+        font-weight: bold;
+    }
+
+    #armor-proficiencies {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        gap: 0.1cm;
+    }
+
+    #armor-proficiencies .prof-container {
+        display: inline-flex;
+        flex-direction: column;
+    }
+
+    #armor-proficiencies .ac-prof-label {
+        font-size: 0.4em;
+        font-weight: normal;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2px;
+    }
+
+    #armor-proficiencies .prof-check-container {
+        margin-left: 10%;
+    }
+
+    #saves-area {
+        display: grid;
+        grid-template-columns: repeat(3, 33fr);
+        grid-template-rows: auto auto;
+        grid-row-gap: 0.1cm;
+        column-gap: 0.1cm;
+        border-left: 1px solid var(--color-base-brown-50pct);
+        margin-top: 0.15cm;
+        padding-left: 0.1cm;
+    }
+
+    #saves-area>span.basic-input-container {
+        grid-column: span 3;
+    }
+
+    .save-container {
+        display: flex;
+        flex-direction: column;
+
+        &:not(:first-child) {
+            border-left: 1px solid var(--color-base-brown-50pct);
+            padding-left: 0.1cm;
+        }
+    }
+
+    .save-container>span:first-child {
+        font-weight: bold;
+        text-align: center;
+        line-height: 1em;
+    }
+
+    .save-and-prof {
+        display: flex;
+    }
+
+    .save-input-container {
+        position: relative;
+        width: 80%;
+        height: 100%;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-image: url(../assets/images/save-container.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+        }
+    }
+
+    .save-input-container>input {
+        width: 80%;
+        height: 100%;
+        border: none;
+        background: none;
+        position: relative;
+        text-align: center;
+        padding: 0 10%;
+    }
+
+    .calc-input-container.save>input,
+    .calc-labels.save>label {
+        width: 33%;
+    }
+
+    #hit-points-block {
+        display: grid;
+        grid-template-columns: 25fr 50fr 25fr;
+        column-gap: 0.1cm;
+    }
+
+    #hit-points-block>span.block-heading {
+        grid-column: span 3;
+    }
+
+    #hit-points-block>label {
+        font-size: 0.55em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    #hit-points-block>span.basic-input-container {
+        grid-column: span 3;
+        margin-top: 0.1cm;
+    }
+
+    #max-hp-input-container {
+        grid-row: span 3;
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-image: url(../assets/images/hp-bg.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+        }
+    }
+
+    #max-hp-input-container>input {
+        width: 100%;
+        height: 95%;
+        border: none;
+        position: relative;
+        text-align: center;
+        background: none;
+        padding: 0;
+    }
+
+    #current-hp-input {
+        grid-row: span 3;
+        border: 1.5px solid black;
+        width: calc(100% - 3px);
+        height: calc(100% - 5px);
+        padding-right: 0;
+        font-family: "Open Sans", sans-serif;
+        font-size: 0.7em;
+        resize: none;
+        margin: 0;
+    }
+
+    #temporary-hp-input {
+        border: 1.5px solid black;
+        width: calc(100% - 3px);
+        height: calc(100% - 3px);
+        padding: 1px 0;
+        text-align: center;
+        font-size: 0.5em;
+    }
+
+    #dying-block {
+        display: flex;
+        flex-direction: row;
+        margin-top: 2px;
+    }
+
+    #dying-block>label {
+        font-size: 0.5em;
+        font-weight: bold;
+    }
+
+    #dying-fields {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+    }
+
+    .dying-skull {
+        position: relative;
+        width: 24%;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-image: url(../assets/images/skull.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+        }
+    }
+
+    .dying-skull>input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .dying-skull>input[type="checkbox"]+label {
+        position: relative;
+        cursor: pointer;
+        display: block;
+        height: 100%;
+
+        &::after {
+            content: "✕";
+            color: red;
+            position: absolute;
+            text-align: center;
+            line-height: 0;
+            width: 100%;
+            top: 45%;
+            left: -0.3px;
+            font-size: 0.7em;
+            opacity: 0;
+        }
+    }
+
+    .dying-skull>input[type="checkbox"]:checked+label::after {
+        opacity: 1;
+    }
+
+    #wounded-block {
+        display: flex;
+        gap: 0.1cm;
+    }
+
+    #wounded-block>label {
+        font-size: 0.5em;
+        font-weight: bold;
+        align-self: end;
+    }
+
+    #wounded-block>input {
+        border: 1.5px solid black;
+        width: calc(100% - 3px);
+        height: calc(100% - 3px);
+        font-size: 0.5em;
+        text-align: center;
+    }
+
+    /* #endregion */
+
+    /* #region Skills */
+
+    #statistics-2-columns {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 0.1cm;
+    }
+
+    #skills {
+        display: grid;
+        grid-template-columns: 7fr 3fr;
+        grid-template-rows: min-content auto;
+        column-gap: 0.1cm;
+        row-gap: 0.1cm;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #skills>.block-heading {
+        grid-column: 1 / -1;
+    }
+
+    #skills-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+    }
+
+    .skill-block {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+        column-gap: 0.1cm;
+        align-items: center;
+    }
+
+    .skill-label {
+        font-size: 0.8em;
+        font-weight: bold;
+        text-align: right;
+        align-content: center;
+    }
+
+    #skills .prof-container {
+        align-self: center;
+    }
+
+    .skill-total-input-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("../assets/images/skill-bg.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            pointer-events: none;
+        }
+    }
+
+    .skill-total-input-container>input {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: none;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .skill-calc-container input {
+        box-sizing: border-box;
+    }
+
+    .calc-input-container.skill-3-part,
+    .calc-input-container.skill-3-part+.calc-labels {
+        margin-right: 25%;
+    }
+
+    .calc-input-container.skill-3-part>input,
+    .calc-input-container.skill-3-part+.calc-labels>label {
+        width: 33%;
+    }
+
+    .calc-input-container.skill-4-part>input,
+    .calc-input-container.skill-4-part+.calc-labels>label {
+        width: 25%;
+    }
+
+    #skill-notes {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #skill-notes>textarea {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: none;
+        resize: none;
+        box-sizing: border-box;
+    }
+
+    /* #endregion */
+
+    /* #region Combat Column */
+
+    #combat-column {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1cm;
+    }
+
+    #languages-perception-and-speed {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, auto);
+        gap: 0.1cm;
+        grid-auto-flow: dense;
+    }
+
+    .languages {
+        grid-column: 1;
+    }
+
+    .languages.basic-input-container {
+        grid-row: span 2;
+    }
+
+    .languages textarea {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: none;
+        resize: none;
+        box-sizing: border-box;
+    }
+
+    .perception {
+        grid-column: 2;
+    }
+
+    #perception-inputs {
+        display: grid;
+        grid-template-columns: 2fr 1fr 4fr;
+    }
+
+    #perception-inputs prof-container {
+        align-self: center;
+    }
+
+    #perception-inputs .calc-container input,
+    #perception-inputs .calc-container label {
+        width: 33%;
+    }
+
+    #perception-total-input-container {
+        display: flex;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 1.5px solid black;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 1.5px var(--color-base-brown);
+            pointer-events: none;
+        }
+    }
+
+    #perception-total-input-container input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: none;
+        text-align: center;
+        position: relative;
+    }
+
+    #perception-notes {
+        display: flex;
+        height: fit-content;
+    }
+
+    #perception-notes textarea {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: none;
+        resize: none;
+        box-sizing: border-box;
+    }
+
+    .speed {
+        grid-column: 3;
+    }
+
+    #speed-input-container {
+        display: flex;
+        position: relative;
+    }
+
+    #speed-input-container input {
+        width: 65%;
+        height: 100%;
+        border: 1.5px solid black;
+        box-shadow: inset 0 0 0 1.5px var(--color-base-brown);
+        background: none;
+        position: relative;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    #speed-label {
+        align-self: end;
+        margin-left: 0.1cm;
+        font-weight: bold;
+        font-size: 0.7rem;
+    }
+
+    #speed-notes {
+        display: flex;
+        height: fit-content;
+    }
+
+    #speed-notes textarea {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: none;
+        resize: none;
+        box-sizing: border-box;
+    }
+
+    /* #endregion */
+
+    /* #region Strikes */
+
+    #strikes {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1cm;
+    }
+
+    .weapon-block {
+        display: grid;
+        grid-template-columns: 5fr 2fr 3fr 5fr;
+        grid-template-rows: repeat(3, auto);
+        gap: 0.1cm;
+    }
+
+    .weapon-block label {
+        font-size: 0.85em;
+        font-weight: bold;
+        margin-bottom: -3px;
+        align-self: end;
+    }
+
+    .weapon-block .calc-input-container {
+        margin-top: 0;
+    }
+
+    .weapon-block label:has(~ .weapon-name) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .weapon-name {
+        width: 100%;
+        border: 2px solid black;
+        box-sizing: border-box;
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .attack-total {
+        height: 100%;
+        width: 110%;
+        margin-left: -5%;
+        position: relative;
+        grid-column: 2;
+        grid-row: 1 / 3;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 1.5px solid black;
+            border-radius: 10%;
+            box-shadow: inset 0 0 0 1.5px var(--color-base-brown);
+            pointer-events: none;
+        }
+    }
+
+    .attack-total input {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        border: none;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    .weapon-block .calc-container {
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    .weapon-block .calc-container input,
+    .weapon-block .calc-container label {
+        width: 33%;
+    }
+
+    label[for='weapon-damage'] {
+        grid-column: 4;
+        grid-row: 1;
+    }
+
+    .weapon-damage {
+        display: flex;
+        grid-column: 4;
+        grid-row: 2;
+    }
+
+    .weapon-damage input[type="text"] {
+        width: 100%;
+        border: 2px solid black;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .damage-types {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .damage-types input[type="radio"] {
+        opacity: 0;
+        position: absolute;
+    }
+
+    .damage-types label {
+        position: relative;
+        cursor: pointer;
+        display: block;
+        padding-left: calc(2 * 2px + 0.6em);
+        font-size: 0.5em;
+        font-weight: bold;
+
+        &::before,
+        &::after {
+            content: "";
+            left: 1px;
+            top: 50%;
+            width: 0.7em;
+            height: 0.7em;
+            border: 0.7px solid black;
+            border-radius: 50%;
+            position: absolute;
+            transform: translateY(-50%);
+        }
+
+        &::after {
+            background-color: var(--color-base-brown);
+            opacity: 0;
+        }
+
+        &:has(input:checked)::after {
+            opacity: 1;
+        }
+    }
+
+    .weapon-notes {
+        grid-row: 3;
+        grid-column: 1 / -1;
+        display: flex;
+    }
+
+    .weapon-notes .assistive-text {
+        position: relative !important;
+        align-self: center;
+    }
+
+    .weapon-notes input {
+        margin: unset !important;
+    }
+
+    /* #endregion */
+
+    /* #region Weapon Proficiencies & Critical Spec */
+
+    #weapon-statistics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, auto);
+        column-gap: 0.1cm;
+        grid-template-areas:
+            "prof-title prof-title crit-title"
+            "prof-cols weapon-other crit-spec";
+    }
+
+    .section-heading {
+        font-size: 0.6rem;
+    }
+
+    .prof-title {
+        font-weight: bold;
+        grid-area: prof-title;
+    }
+
+    .critical-title {
+        grid-area: crit-title;
+    }
+
+    .proficiency-columns {
+        display: flex;
+        gap: 6px;
+        grid-area: prof-cols;
+    }
+
+    #weapon-other-notes {
+        grid-area: weapon-other;
+    }
+
+    #weapon-other-notes>textarea {
+        margin: unset;
+        border: none;
+        resize: none;
+        box-sizing: border-box;
+    }
+
+    #critical-specializations-notes {
+        grid-area: crit-spec;
+    }
+
+    #critical-specializations-notes>textarea {
+        margin: unset;
+        border: none;
+        resize: none;
+        box-sizing: border-box;
+    }
+
+    /* #endregion */
+
+    /* #region Class DC & Reminders */
+
+    #class-dc-and-reminders {
+        display: grid;
+        grid-template-columns: 3fr 7fr;
+        column-gap: 0.5rem;
+    }
+
+    #class-dc-block {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .class-dc-total {
+        position: relative;
+        padding: 0.5em 0;
+        margin-top: 0.1cm;
+        width: 90%;
+        align-self: center;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 2px solid black;
+            border-radius: 8px;
+            box-shadow: inset 0 0 0 1.5px var(--color-base-brown);
+            pointer-events: none;
+        }
+    }
+
+    .class-dc-total>input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        text-align: center;
+        font-size: 1.4em;
+        box-sizing: border-box;
+    }
+
+    .calc-input-container.class-dc-calc {
+        width: 90%;
+        align-self: center;
+    }
+
+    .calc-input-container.class-dc-calc>input,
+    .calc-input-container.class-dc-calc+.calc-labels.class-dc-calc>label {
+        width: 25%;
+    }
+
+    #reminders-block {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .reminders-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 0.25cm;
+        margin-top: 0.1cm;
+    }
+
+    .reminder-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .reminder-title {
+        margin-bottom: 0.15rem;
+        font-size: 0.85em;
+        font-weight: bold;
+    }
+
+    .reminder-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        font-size: 0.6em;
+        line-height: 1.25;
+    }
+
+    .reminder-list strong {
+        font-weight: bold;
+    }
+
+    /* #endregion */
+
+}

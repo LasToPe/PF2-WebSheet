@@ -1,7 +1,7 @@
 :host {
     --prof-color-base-brown: rgb(111, 71, 62);
     --clip-path: polygon(0% 0%, 100% 0%, 100% 66%, 50% 100%, 0% 66%);
-    --check-side-length: 6px;
+    --check-side-length: 8px;
     display: flex;
 }
 
@@ -39,7 +39,7 @@
     cursor: pointer;
     display: block;
     padding-left: calc(var(--check-side-length) + 2.5px);
-    font-size: 0.4em;
+    font-size: 0.5em;
     font-weight: bold;
     line-height: calc(var(--check-side-length) + 2px);
 }

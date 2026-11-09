@@ -27,6 +27,35 @@
         box-sizing: border-box;
     }
 
+    .spells-per-day-container {
+        position: relative;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .spells-per-day-container::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 1.5px solid black;
+        border-radius: 6px;
+        box-shadow: inset 0 0 0 1.5px var(--color-spell-inner);
+        pointer-events: none;
+    }
+
+    .spells-per-day-container input {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        text-align: center;
+        font-size: 0.85rem;
+    }
+
     .tradition-content {
         display: flex;
         align-items: center;
@@ -449,35 +478,8 @@
         margin-top: 0.8rem;
     }
 
-    .spells-per-day-container {
-        position: relative;
+    .meta-field .spells-per-day-container {
         width: 44px;
-        height: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-
-    .spells-per-day-container::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border: 1.5px solid black;
-        border-radius: 6px;
-        box-shadow: inset 0 0 0 1.5px var(--color-spell-inner);
-        pointer-events: none;
-    }
-
-    .spells-per-day-container input {
-        position: relative;
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-        border: none;
-        background: transparent;
-        text-align: center;
-        font-size: 0.85rem;
     }
 
     .rank-labels {
