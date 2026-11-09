@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="./styles/font-import.css" />
+    <!-- <link rel="stylesheet" href="./styles/page.css" /> -->
+    <link rel="stylesheet" href="./styles/main.css" />
+
+    <link rel="stylesheet" href="./styles/page-1.css" />
+    <link rel="stylesheet" href="./styles/page-2.css" />
+    <link rel="stylesheet" href="./styles/page-3.css" />
+    <link rel="stylesheet" href="./styles/page-4.css" />
+
+    <script type="module" src="./modules/proficiency-container.js"></script>
+
+    <title>title</title>
+</head>
+
+<body>
+    <page id="page-1-statistics">
+        <!--General information section-->
+        <div id="general-information">
+            <div id="sheet-logo">
+                <img src="./assets/images/PF2Logo.png" alt="pathfinder second edition logo." />
+                <span>Character Sheet</span>
+            </div>
+
+            <div id="name-block">
+                <span class="block-heading">
+                    <span class="header-text">Character Name</span>
+                    <span class="header-line"></span>
+                </span>
+                <span class="basic-input-container">
+                    <input id="character-name" type="text">
+                </span>
+                <span class="basic-input-container secondary">
+                    <span id="player-name-assistive-text">Player Name</span>
+                    <input type="text">
+                </span>
+            </div>
+
+            <div id="level-and-hero-points">
+                <div id="level-block">
+                    <span class="block-heading">
+                        <span class="header-text">Level</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <div id="level-and-xp">
+                        <span id="level-container">
+                            <input type="number" min="1" max="20">
+                        </span>
+                        <span id="xp-container">
+                            <input type="number">
+                        </span>
+                    </div>
+                </div>
+
+                <div id="hero-point-block">
+                    <span class="block-heading">
+                        <span class="header-text">Hero Points</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <div id="hero-point-fields">
+                        <span class="hero-point-hexagon">
+                            <input type="checkbox" id="hero-point-1">
+                            <label for="hero-point-1"></label>
+                        </span>
+                        <span class="hero-point-hexagon">
+                            <input type="checkbox" id="hero-point-2">
+                            <label for="hero-point-2"></label>
+                        </span>
+                        <span class="hero-point-hexagon">
+                            <input type="checkbox" id="hero-point-3">
+                            <label for="hero-point-3"></label>
+                        </span>
+                    </div>
+                    <div id="hero-point-description">
+                        <p>
+                            <span class="strong">Gain 1</span> at the start of each session and when granted by the GM.
+                        </p>
+                        <p><span class="strong">Spend 1</span> to reroll a check.</p>
+                        <p><span class="strong">Spend All</span> to avoid death.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ancestry-block">
+                <span class="block-heading">
+                    <span class="header-text">Ancestry</span>
+                    <span class="header-line"></span>
+                </span>
+                <span class="basic-input-container">
+                    <input type="text">
+                </span>
+                <span id="heritage-traits-size">
+                    <span class="basic-input-container secondary">
+                        <span class="assistive-text">Heritage and Traits</span>
+                        <input type="text">
+                    </span>
+                    <span class="basic-input-container secondary">
+                        <span class="assistive-text">Size</span>
+                        <input type="text">
+                    </span>
+                </span>
+            </div>
+
+            <div id="background-block">
+                <span class="block-heading">
+                    <span class="header-text">Background</span>
+                    <span class="header-line"></span>
+                </span>
+                <span class="basic-input-container">
+                    <input type="text">
+                </span>
+                <span class="basic-input-container secondary">
+                    <span class="assistive-text">Background Notes</span>
+                    <input type="text">
+                </span>
+            </div>
+
+            <div id="class-block">
+                <span class="block-heading">
+                    <span class="header-text">Class</span>
+                    <span class="header-line"></span>
+                </span>
+                <span class="basic-input-container">
+                    <input type="text">
+                </span>
+                <span class="basic-input-container secondary">
+                    <span class="assistive-text">Class Notes</span>
+                    <input type="text">
+                </span>
+            </div>
+        </div>
+
+        <!--Attributes section-->
+        <div id="attributes">
+            <span class="block-heading">
+                <span class="header-text">Attributes</span>
+                <span class="header-line"></span>
+            </span>
+
+            <template id="attribute-template">
+                <div id="{{id}}-block">
+                    <span class="attribute-container">
+                        <input type="number">
+                    </span>
+                    <div class="attribute-label-and-partial">
+                        <label class="attribute-label">{{label}}</label>
+                        <span class="partial-boost-container">
+                            <input type="checkbox" id="{{id}}-partial-boost">
+                            <label for="{{id}}-partial-boost">Partial Boost</label>
+                        </span>
+                    </div>
+                </div>
+            </template>
+
+            <script type="module" src="modules/attributes.js"></script>
+        </div>
+
+        <!--Defenses and Hit Points sections-->
+        <div id="defenses-and-hitpoints">
+            <div id="defenses-block">
+                <span class="block-heading">
+                    <span class="header-text">Defenses</span>
+                    <span class="header-line"></span>
+                </span>
+
+                <div id="armor-class-area">
+                    <div id="armor-container">
+                        <span>Armor Class</span>
+                        <span id="armor-class-input-container">
+                            <input type="number">
+                        </span>
+                        <div class="calc-input-container armor">
+                            <input type="number" value="10" readonly>
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number">
+                        </div>
+                        <div class="calc-labels armor">
+                            <label>Base</label>
+                            <label>Dex*</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                        <span>* Use armor's Dex cap if lower</span>
+                    </div>
+
+                    <div id="shield-container">
+                        <span>Shield</span>
+                        <div id="shield-stats">
+                            <span id="ac-shield-input-container">
+                                <input type="number">
+                            </span>
+
+                            <span class="shield-stat-label hardness">Hardness</span>
+                            <span class="shield-stat-label max-hp">Max HP</span>
+                            <span class="shield-stat-label bt">BT</span>
+                            <span class="shield-stat-label hp">HP</span>
+
+                            <span id="shield-hardness-container">
+                                <input type="number">
+                            </span>
+
+                            <span id="shield-max-hp-bt-container">
+                                <input type="number">
+                                <input type="number">
+                            </span>
+
+                            <span id="shield-hp-container">
+                                <input type="number">
+                            </span>
+                        </div>
+                    </div>
+
+                    <div id="armor-proficiency-container">
+                        <span>Armor Proficiencies</span>
+
+                        <div id="armor-proficiencies">
+                            <template id="armor-prof-template">
+                                <span class="prof-container">
+                                    <span class="ac-prof-label">{{label}}</span>
+                                    <span class="prof-check-container">
+                                        <input type="checkbox" id="{{id}}-prof-trained">
+                                        <label for="{{id}}-prof-trained">T</label>
+                                    </span>
+
+                                    <span class="prof-check-container">
+                                        <input type="checkbox" id="{{id}}-prof-expert">
+                                        <label for="{{id}}-prof-expert">E</label>
+                                    </span>
+
+                                    <span class="prof-check-container">
+                                        <input type="checkbox" id="{{id}}-prof-master">
+                                        <label for="{{id}}-prof-master">M</label>
+                                    </span>
+
+                                    <span class="prof-check-container">
+                                        <input type="checkbox" id="{{id}}-prof-legendary">
+                                        <label for="{{id}}-prof-legendary">L</label>
+                                    </span>
+                                </span>
+                            </template>
+
+                            <!-- <span class="ac-prof-label">{{label}}</span> -->
+                            <prof-container id="unarmored" label="Unarmored"></prof-container>
+                            <prof-container id="light-armor" label="Light Armor"></prof-container>
+                            <prof-container id="medium-armor" label="Medium Armor"></prof-container>
+                            <prof-container id="heavy-armor" label="Heavy Armor"></prof-container>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="saves-area">
+                    <span id="defenses-notes-container" class="basic-input-container secondary">
+                        <span class="assistive-text">Defenses Notes</span>
+                        <input type="text">
+                    </span>
+
+                    <template id="save-template">
+                        <div class="save-container">
+                            <span>{{label}}</span>
+                            <div class="save-and-prof">
+                                <span class="save-input-container">
+                                    <input type="number">
+                                </span>
+                                <prof-container id="{{id}}"></prof-container>
+                            </div>
+                            <div class="calc-input-container save">
+                                <input type="number">
+                                <span class="plus-minus-spacer">+</span>
+                                <input type="number">
+                                <span class="plus-minus-spacer">+</span>
+                                <input type="number">
+                            </div>
+                            <div class="calc-labels save">
+                                <label>{{attr}}</label>
+                                <label>Prof</label>
+                                <label>Item</label>
+                            </div>
+                        </div>
+                    </template>
+
+                    <script type="module" src="modules/saves.js"></script>
+                </div>
+            </div>
+            <div id="hit-points-block">
+                <span class="block-heading">
+                    <span class="header-text">Hit Points</span>
+                    <span class="header-line"></span>
+                </span>
+
+                <label>Maximum</label>
+                <label>Current HP</label>
+                <label>Temporary HP</label>
+
+                <span id="max-hp-input-container">
+                    <input type="number">
+                </span>
+
+                <textarea id="current-hp-input"></textarea>
+
+                <input type="number" id="temporary-hp-input">
+
+                <span id="dying-block">
+                    <label>Dying</label>
+                    <span id="dying-fields">
+                        <span class="dying-skull">
+                            <input type="checkbox" id="dying-1">
+                            <label for="dying-1"></label>
+                        </span>
+                        <span class="dying-skull">
+                            <input type="checkbox" id="dying-2">
+                            <label for="dying-2"></label>
+                        </span>
+                        <span class="dying-skull">
+                            <input type="checkbox" id="dying-3">
+                            <label for="dying-3"></label>
+                        </span>
+                        <span class="dying-skull">
+                            <input type="checkbox" id="dying-4">
+                            <label for="dying-4"></label>
+                        </span>
+                    </span>
+                </span>
+
+                <span id="wounded-block">
+                    <label>Wounded</label>
+                    <input type="number">
+                </span>
+
+                <span class="basic-input-container secondary">
+                    <span class="assistive-text">Resistances and Immunities</span>
+                    <input type="text">
+                </span>
+
+                <span class="basic-input-container secondary">
+                    <span class="assistive-text">Conditions</span>
+                    <input type="text">
+                </span>
+
+            </div>
+        </div>
+
+        <div id="statistics-2-columns">
+            <div id="skills">
+                <span class="block-heading">
+                    <span class="header-text">Skills</span>
+                    <span class="header-line"></span>
+                </span>
+                <div id="skills-container">
+
+                    <!-- Template for skill elements -->
+                    <template id="skill-template">
+                        <div class="skill-block">
+                            <label class="skill-label">{{label}}</label>
+                            <span class="skill-total-input-container">
+                                <input type="number">
+                            </span>
+                            <prof-container id="{{id}}" label="{{label}}"></prof-container>
+                            <div class="skill-calc-container">
+                                <div class="calc-input-container skill-3-part">
+                                    <input type="number">
+                                    <span class="plus-minus-spacer">+</span>
+                                    <input type="number">
+                                    <span class="plus-minus-spacer">+</span>
+                                    <input type="number">
+                                </div>
+                                <div class="calc-labels">
+                                    <label>{{attr}}</label>
+                                    <label>Prof</label>
+                                    <label>Item</label>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+
+                    <script type="module" src="modules/skills.js"></script>
+                </div>
+                <span id="skill-notes" class="basic-input-container secondary">
+                    <span class="assistive-text">Skill Notes</span>
+                    <textarea></textarea>
+                </span>
+            </div>
+            <div id="combat-column">
+                <div id="languages-perception-and-speed">
+
+                    <!-- #region Languages -->
+                    <span class="block-heading languages">
+                        <span class="header-text">Languages</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <span class="basic-input-container languages">
+                        <textarea></textarea>
+                    </span>
+                    <!-- #endregion -->
+
+                    <!-- #region Perception -->
+                    <span class="block-heading perception">
+                        <span class="header-text">Perception</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div id="perception-inputs" class="perception">
+
+                        <span id="perception-total-input-container">
+                            <input type="number">
+                        </span>
+
+                        <prof-container id="perception"></prof-container>
+
+                        <div class="calc-container">
+                            <div class="calc-input-container">
+                                <input type="number">
+                                <span class="plus-minus-spacer">+</span>
+                                <input type="number">
+                                <span class="plus-minus-spacer">+</span>
+                                <input type="number">
+                            </div>
+
+                            <div class="calc-labels">
+                                <label>Wis</label>
+                                <label>Prof</label>
+                                <label>Item</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <span id="perception-notes" class="basic-input-container secondary perception">
+                        <span class="assistive-text">Senses and Notes</span>
+                        <textarea></textarea>
+                    </span>
+                    <!-- #endregion -->
+
+                    <!-- #region Speed -->
+                    <span class="block-heading speed">
+                        <span class="header-text">Speed</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <span id="speed-input-container" class="speed">
+                        <input type="number">
+                        <span id="speed-label" class="speed">feet</span>
+                    </span>
+
+                    <span id="speed-notes" class="basic-input-container secondary speed">
+                        <span class="assistive-text">Special Movement</span>
+                        <textarea></textarea>
+                    </span>
+                    <!-- #endregion -->
+                </div>
+                <div id="strikes">
+
+                    <span class="block-heading strikes">
+                        <span class="header-text">Strikes</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <template id="weapon-block-template">
+                        <div class="weapon-block">
+
+                            <!-- Weapon Name -->
+                            <label>Weapon</label>
+                            <input class="weapon-name" type="text" />
+
+                            <!-- Attack Modifier & Breakdown -->
+                            <div class="attack-total">
+                                <input type="text" name="{{id}}-attack_total" class="attack-total-input" />
+                            </div>
+
+                            <div class="calc-container">
+                                <div class="calc-input-container">
+                                    <input type="number">
+                                    <span class="plus-minus-spacer">+</span>
+                                    <input type="number">
+                                    <span class="plus-minus-spacer">+</span>
+                                    <input type="number">
+                                </div>
+
+                                <div class="calc-labels">
+                                    <label>{{attr}}</label>
+                                    <label>Prof</label>
+                                    <label>Item</label>
+                                </div>
+                            </div>
+
+                            <!-- Damage & Damage Type -->
+                            <label for="weapon-damage">Damage</label>
+                            <div class="weapon-damage">
+                                <input type="text" name="{{id}}-weapon_damage" class="weapon-damage-input" />
+
+                                <div class="damage-types">
+                                    <label class="type-check">
+                                        <input type="radio" name="{{id}}-damage-type" value="B" />
+                                        <span>B</span>
+                                    </label>
+                                    <label class="type-check">
+                                        <input type="radio" name="{{id}}-damage-type" value="P" />
+                                        <span>P</span>
+                                    </label>
+                                    <label class="type-check">
+                                        <input type="radio" name="{{id}}-damage-type" value="S" />
+                                        <span>S</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Row: Traits and Notes -->
+                            <span class="basic-input-container secondary weapon-notes">
+                                <span class="assistive-text">Traits and Notes</span>
+                                <input type="text" />
+                            </span>
+                        </div>
+                    </template>
+
+                    <script type="module" src="modules/weapons.js"></script>
+                </div>
+                <div id="weapon-statistics">
+                    <span class="section-heading prof-title">Weapon Proficiencies</span>
+
+                    <div class="proficiency-columns">
+                        <prof-container id="prof-unarmed" label="Unarmed"></prof-container>
+                        <prof-container id="prof-simple" label="Simple"></prof-container>
+                        <prof-container id="prof-martial" label="Martial"></prof-container>
+                        <prof-container id="prof-advanced" label="Advanced"></prof-container>
+                        <prof-container id="prof-other" label="Other"></prof-container>
+                    </div>
+
+                    <span id="weapon-other-notes" class="basic-input-container secondary">
+                        <textarea></textarea>
+                    </span>
+
+                    <span class="section-heading critical-title">Critical Specializations</span>
+
+                    <span id="critical-specializations-notes" class="basic-input-container secondary">
+                        <textarea></textarea>
+                    </span>
+                </div>
+                <div id="class-dc-and-reminders">
+
+                    <div id="class-dc-block">
+                        <span class="block-heading">
+                            <span class="header-text">Class DC</span>
+                            <span class="header-line"></span>
+                        </span>
+
+                        <div class="class-dc-total">
+                            <input type="number" />
+                        </div>
+
+                        <div class="calc-input-container class-dc-calc">
+                            <input type="number" value="10" readonly />
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number" />
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number" />
+                            <span class="plus-minus-spacer">+</span>
+                            <input type="number" />
+                        </div>
+                        <div class="calc-labels class-dc-calc">
+                            <label>Base</label>
+                            <label>Key</label>
+                            <label>Prof</label>
+                            <label>Item</label>
+                        </div>
+                    </div>
+
+                    <div id="reminders-block">
+                        <span class="block-heading">
+                            <span class="header-text">REMINDERS</span>
+                            <span class="header-line"></span>
+                        </span>
+
+                        <div class="reminders-content">
+
+                            <div class="reminder-column">
+                                <span class="reminder-title">Proficiency</span>
+                                <ul class="reminder-list">
+                                    <li><strong>Untrained</strong> +0</li>
+                                    <li><strong>Trained</strong> 2 + level</li>
+                                    <li><strong>Expert</strong> 4 + level</li>
+                                    <li><strong>Master</strong> 6 + level</li>
+                                    <li><strong>Legendary</strong> 8 + level</li>
+                                </ul>
+                            </div>
+
+                            <div class="reminder-column">
+                                <span class="reminder-title">Action Icons</span>
+                                <ul class="reminder-list action-icons-list">
+                                    <li>
+                                        <span class="action-icon">[one-action]</span>
+                                        <span>Single Action</span>
+                                    </li>
+                                    <li>
+                                        <span class="action-icon">[two-actions]</span>
+                                        <span>Two-Action Activity</span>
+                                    </li>
+                                    <li>
+                                        <span class="action-icon">[three-actions]</span>
+                                        <span>Three-Action Activity</span>
+                                    </li>
+                                    <li>
+                                        <span class="action-icon">[free-action]</span>
+                                        <span>Free Action</span>
+                                    </li>
+                                    <li>
+                                        <span class="action-icon">[reaction]</span>
+                                        <span>Reaction</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </page>
+
+    <page id="page-2-abilities-inventory">
+
+        <div id="page-2-container">
+            <section id="feats-and-abilities">
+                <header class="abilities-headers">
+                    <span class="block-heading">
+                        <span class="header-text">Ancestry and General Feats</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <span class="block-heading">
+                        <span class="header-text">Class Abilities</span>
+                        <span class="header-line"></span>
+                    </span>
+                </header>
+
+                <div class="abilities-table">
+                    <!-- Level 1 (Multi-row container) -->
+                    <div class="feat-row level-1-row">
+                        <div class="level-indicator">
+                            <span class="level-label">Level</span>
+                            <span class="rhombus-badge"><span>1</span></span>
+                        </div>
+
+                        <div class="feat-cell-group ancestry-group">
+                            <div class="feat-subcell">
+                                <span class="feat-type-label">Ancestry and Heritage Abilities</span>
+                                <textarea class="feat-input-multi"></textarea>
+                            </div>
+                            <div class="feat-subcell">
+                                <span class="feat-type-label">Ancestry Feat</span>
+                                <textarea class="feat-input-multi"></textarea>
+                            </div>
+                            <div class="feat-subcell">
+                                <span class="feat-type-label">Background Skill Feat</span>
+                                <textarea class="feat-input-multi"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="feat-cell-group class-group">
+                            <div class="feat-subcell full-height">
+                                <span class="feat-type-label">Class Feats and Features</span>
+                                <textarea class="feat-input-multi"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <template id="feat-row-template">
+                        <div class="feat-row">
+                            <span class="rhombus-badge"><span>{{level}}</span></span>
+                            <div class="feat-cell">
+                                <span class="feat-type-label">{{featType}}</span>
+                                <span class="boost-tag">Boosts</span>
+                                <textarea class="feat-input-multi"></textarea>
+                            </div>
+                            <div class="feat-cell">
+                                <span class="feat-type-label">{{classFeatType}}</span>
+                                <textarea class="feat-input-multi"></textarea>
+                            </div>
+                        </div>
+                    </template>
+
+                    <script type="module" src="./modules/feats.js"></script>
+            </section>
+
+            <section id="inventory-and-wealth">
+                <span class="block-heading">
+                    <span class="header-text">Inventory</span>
+                    <span class="header-line"></span>
+                </span>
+
+                <!-- Held Items (10 items) -->
+                <div class="inventory-card">
+                    <div class="inventory-table-header held-consumables">
+                        <span>Held Items</span>
+                        <span>Bulk</span>
+                    </div>
+                    <div id="held-items-container" class="inventory-rows-container">
+                        <!-- Built with template and module script -->
+                    </div>
+                </div>
+
+                <!-- Consumables (10 items) -->
+                <div class="inventory-card">
+                    <div class="inventory-table-header held-consumables">
+                        <span>Consumables</span>
+                        <span>Bulk</span>
+                    </div>
+                    <div id="consumables-container" class="inventory-rows-container">
+                        <!-- Built with template and module script -->
+                    </div>
+                </div>
+
+                <!-- Worn Items (Fills available space, 10 invested slots) -->
+                <div class="inventory-card worn-card">
+                    <div class="inventory-table-header worn">
+                        <span>Worn Items</span>
+                        <span>Invested</span>
+                        <span>Bulk</span>
+                    </div>
+                    <div id="worn-items-container" class="inventory-rows-container worn-container">
+                        <!-- Built with template and module script -->
+                    </div>
+                </div>
+
+                <!-- Bulk Section -->
+                <div id="bulk-section">
+                    <span class="block-heading">
+                        <span class="header-text">Bulk</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <div class="bulk-content">
+                        <div class="bulk-badge-container">
+                            <span class="bulk-badge-title">Bulk</span>
+                            <input type="number" class="bulk-total-input" min="0" />
+                        </div>
+                        <div class="bulk-reminders">
+                            <p><strong>Light Items</strong> 10 light Bulk items = 1 Bulk</p>
+                            <p><strong>Encumbered Bulk</strong> 5 + Str</p>
+                            <p><strong>Maximum Bulk</strong> 10 + Str</p>
+                            <p><strong>Maximum Invested</strong> 10</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wealth Section -->
+                <div id="wealth-section">
+                    <span class="block-heading">
+                        <span class="header-text">Wealth</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <div class="coins-grid">
+                        <div class="coin-block">
+                            <label>CP</label>
+                            <span class="coin-input-circle copper">
+                                <input type="number" min="0" />
+                            </span>
+                        </div>
+                        <div class="coin-block">
+                            <label>SP</label>
+                            <span class="coin-input-circle silver">
+                                <input type="number" min="0" />
+                            </span>
+                        </div>
+                        <div class="coin-block">
+                            <label>GP</label>
+                            <span class="coin-input-circle gold">
+                                <input type="number" min="0" />
+                            </span>
+                        </div>
+                        <div class="coin-block">
+                            <label>PP</label>
+                            <span class="coin-input-circle platinum">
+                                <input type="number" min="0" />
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Gems and Artwork (5 items) -->
+                    <div class="inventory-card gems-card">
+                        <div class="inventory-table-header gems">
+                            <span>Gems and Artwork</span>
+                            <span>Price</span>
+                            <span>Bulk</span>
+                        </div>
+                        <div id="gems-container" class="inventory-rows-container">
+                            <!-- Built with template and module script -->
+                        </div>
+                    </div>
+                </div>
+
+                <template id="inventory-row-template">
+                    <div class="inventory-row held-consumables">
+                        <input type="text" id="{{id}}-description" class="item-desc-input" />
+                        <input type="text" id="{{id}}-bulk" class="item-bulk-input" />
+                    </div>
+                </template>
+                <template id="inventory-row-template-worn">
+                    <div class="inventory-row worn">
+                        <input type="text" id="{{id}}-description" class="item-desc-input" />
+                        <span class="invested-cell">
+                            <input id="{{id}}-invested" type="checkbox" />
+                        </span>
+                        <input type="text" id="{{id}}-bulk" class="item-bulk-input" />
+                    </div>
+                </template>
+                <template id="inventory-row-template-gems">
+                    <div class="inventory-row gems">
+                        <input type="text" id="{{id}}-description" class="item-desc-input" />
+                        <input type="text" id="{{id}}-price" class="item-price-input" />
+                        <input type="text" id="{{id}}-bulk" class="item-bulk-input" />
+                    </div>
+                </template>
+                <script type="module" src="./modules/inventory.js"></script>
+            </section>
+        </div>
+    </page>
+
+    <page id="page-3-notes-and-actions">
+        <!-- Top Section: Sketch & Character Biography -->
+        <div id="character-identity-grid">
+            <!-- Character Sketch -->
+            <section id="character-sketch-section">
+                <span class="block-heading">
+                    <span class="header-text">Character Sketch</span>
+                    <span class="header-line"></span>
+                </span>
+                <div class="sketch-frame">
+                    <!-- Image area for later... -->
+                </div>
+            </section>
+
+            <!-- Origin, Appearance & Personality -->
+            <section id="character-bio-section">
+                <!-- Origin and Appearance -->
+                <div id="origin-appearance-block">
+                    <span class="block-heading">
+                        <span class="header-text">Origin and Appearance</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <div class="origin-table">
+                        <div class="table-cell">
+                            <label class="cell-label">Ethnicity</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell">
+                            <label class="cell-label">Nationality</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell">
+                            <label class="cell-label">Birthplace</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell">
+                            <label class="cell-label">Age</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell">
+                            <label class="cell-label">Gender & Pronouns</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell">
+                            <label class="cell-label">Height</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell">
+                            <label class="cell-label">Weight</label>
+                            <input type="text" />
+                        </div>
+                    </div>
+                    <div class="appearance-table">
+                        <div class="table-cell">
+                            <label class="cell-label">Appearance</label>
+                            <textarea class="cell-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personality -->
+                <div id="personality-block">
+                    <span class="block-heading">
+                        <span class="header-text">Personality</span>
+                        <span class="header-line"></span>
+                    </span>
+                    <div class="personality-table">
+                        <div class="table-cell span-half">
+                            <label class="cell-label">Attitude</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell span-half">
+                            <label class="cell-label">Deity or Philosophy</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell span-half edicts-cell">
+                            <label class="cell-label">Edicts</label>
+                            <textarea class="cell-textarea" rows="6"></textarea>
+                        </div>
+                        <div class="table-cell span-half anathema-cell">
+                            <label class="cell-label">Anathema</label>
+                            <textarea class="cell-textarea" rows="6"></textarea>
+                        </div>
+                        <div class="table-cell full-width single-line-cell">
+                            <label class="cell-label">Likes</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell full-width single-line-cell">
+                            <label class="cell-label">Dislikes</label>
+                            <input type="text" />
+                        </div>
+                        <div class="table-cell full-width single-line-cell">
+                            <label class="cell-label">Catchphrases</label>
+                            <input type="text" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Middle Section: Campaign Notes -->
+        <section id="campaign-notes-section">
+            <span class="block-heading">
+                <span class="header-text">Campaign Notes</span>
+                <span class="header-line"></span>
+            </span>
+            <div id="campaign-notes-grid">
+                <div class="details-table general-notes-table">
+                    <div class="table-cell full-width full-height">
+                        <label class="cell-label">Notes</label>
+                        <textarea class="cell-textarea notes-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="details-table social-notes-table">
+                    <div class="table-cell full-width social-cell">
+                        <label class="cell-label">Allies</label>
+                        <textarea class="cell-textarea"></textarea>
+                    </div>
+                    <div class="table-cell full-width social-cell">
+                        <label class="cell-label">Enemies</label>
+                        <textarea class="cell-textarea"></textarea>
+                    </div>
+                    <div class="table-cell full-width social-cell">
+                        <label class="cell-label">Organizations</label>
+                        <textarea class="cell-textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Section: Actions & Reactions -->
+        <div id="actions-and-reactions-grid">
+            <!-- Actions and Activities -->
+            <section id="actions-activities-section">
+                <span class="block-heading">
+                    <span class="header-text">Actions and Activities</span>
+                    <span class="header-line"></span>
+                </span>
+                <div id="actions-cards-container" class="action-card-stack">
+                    <!-- Injected via actions.js template -->
+                </div>
+            </section>
+
+            <!-- Free Actions and Reactions -->
+            <section id="free-reactions-section">
+                <span class="block-heading">
+                    <span class="header-text">Free Actions and Reactions</span>
+                    <span class="header-line"></span>
+                </span>
+                <div id="reactions-cards-container" class="action-card-stack">
+                    <!-- Injected via actions.js template -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Templates -->
+        <template id="action-activity-card-template">
+            <div class="action-card">
+                <div class="action-card-header">
+                    <div class="table-cell action-name-cell">
+                        <label class="cell-label" for="{{id}}-name">Name</label>
+                        <input type="text" id="{{id}}-name" />
+                    </div>
+                    <div class="table-cell action-cost-cell">
+                        <label class="cell-label">Actions</label>
+                        <input type="text" id="{{id}}-actions" />
+                    </div>
+                    <div class="table-cell action-traits-cell">
+                        <label class="cell-label">Traits</label>
+                        <input type="text" id="{{id}}-traits" />
+                    </div>
+                    <div class="table-cell action-page-cell">
+                        <label class="cell-label">Page #</label>
+                        <input type="text" id="{{id}}-page" />
+                    </div>
+                </div>
+                <div class="table-cell action-effects-cell">
+                    <label class="cell-label">Effects</label>
+                    <textarea id="{{id}}-effects" class="cell-textarea"></textarea>
+                </div>
+            </div>
+        </template>
+
+        <template id="free-reaction-card-template">
+            <div class="details-table action-card reaction-card">
+                <div class="action-card-header reaction-header">
+                    <div class="table-cell action-name-cell">
+                        <label class="cell-label">Name</label>
+                        <input type="text" id="{{id}}-name" />
+                    </div>
+                    <div class="table-cell reaction-icon-cell">
+                        <div class="reaction-selector">
+                            <label class="action-type-option">
+                                <input type="radio" name="{{id}}-type" value="free" />
+                                <span class="radio-marker"></span>
+                                <span class="action-icon free-action-symbol">[free-action]</span>
+                            </label>
+                            <label class="action-type-option">
+                                <input type="radio" name="{{id}}-type" value="reaction" />
+                                <span class="radio-marker"></span>
+                                <span class="action-icon reaction-symbol">[reaction]</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="table-cell action-traits-cell">
+                        <label class="cell-label">Traits</label>
+                        <input type="text" id="{{id}}-traits" />
+                    </div>
+                    <div class="table-cell action-page-cell">
+                        <label class="cell-label">Page #</label>
+                        <input type="text" id="{{id}}-page" />
+                    </div>
+                </div>
+                <div class="table-cell full-width reaction-trigger-cell">
+                    <label class="cell-label">Trigger</label>
+                    <input type="text" id="{{id}}-trigger" />
+                </div>
+                <div class="table-cell full-width action-effects-cell reaction-effects-cell">
+                    <label class="cell-label">Effects</label>
+                    <textarea id="{{id}}-effects" class="cell-textarea"></textarea>
+                </div>
+            </div>
+        </template>
+
+        <script type="module" src="./modules/actions.js"></script>
+    </page>
+
+    <page id="page-4-spells">
+        <div id="spells-layout">
+            <!-- ================================================================== -->
+            <!-- LEFT COLUMN: Traditions, Statistics, Cantrips, Focus, Innate Spells -->
+            <!-- ================================================================== -->
+            <div id="spells-left-column">
+
+                <!-- Magical Tradition Section -->
+                <section id="tradition-section">
+                    <span class="block-heading">
+                        <span class="header-text">Magical Tradition</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="tradition-content">
+                        <!-- Compass & Tradition Checkboxes -->
+                        <div class="tradition-compass-cluster">
+                            <!-- Left Labels (Arcane & Primal) -->
+                            <div class="tradition-labels-col left-labels">
+                                <label for="tradition-arcane" class="tradition-text-label">Arcane</label>
+                                <label for="tradition-primal" class="tradition-text-label">Primal</label>
+                            </div>
+
+                            <!-- Interactive 4-Quadrant Wheel -->
+                            <div class="tradition-wheel">
+                                <!-- Arcane (Top-Left) -->
+                                <input type="checkbox" id="tradition-arcane" class="quadrant-input"
+                                    name="tradition-arcane">
+                                <label for="tradition-arcane" class="quadrant-zone top-left" title="Arcane"></label>
+
+                                <!-- Occult (Top-Right) -->
+                                <input type="checkbox" id="tradition-occult" class="quadrant-input"
+                                    name="tradition-occult">
+                                <label for="tradition-occult" class="quadrant-zone top-right" title="Occult"></label>
+
+                                <!-- Primal (Bottom-Left) -->
+                                <input type="checkbox" id="tradition-primal" class="quadrant-input"
+                                    name="tradition-primal">
+                                <label for="tradition-primal" class="quadrant-zone bottom-left" title="Primal"></label>
+
+                                <!-- Divine (Bottom-Right) -->
+                                <input type="checkbox" id="tradition-divine" class="quadrant-input"
+                                    name="tradition-divine">
+                                <label for="tradition-divine" class="quadrant-zone bottom-right" title="Divine"></label>
+
+                                <!-- Crosshair Dividers -->
+                                <div class="wheel-divider-h" aria-hidden="true"></div>
+                                <div class="wheel-divider-v" aria-hidden="true"></div>
+                            </div>
+
+                            <!-- Right Labels (Occult & Divine) -->
+                            <div class="tradition-labels-col right-labels">
+                                <label for="tradition-occult" class="tradition-text-label">Occult</label>
+                                <label for="tradition-divine" class="tradition-text-label">Divine</label>
+                            </div>
+                        </div>
+
+                        <!-- Caster Type Radio Selection -->
+                        <div class="caster-type-selector">
+                            <label class="caster-radio-option">
+                                <input type="radio" name="caster-type" value="prepared">
+                                <span class="radio-marker"></span>
+                                <span>Prepared Caster</span>
+                            </label>
+                            <label class="caster-radio-option">
+                                <input type="radio" name="caster-type" value="spontaneous">
+                                <span class="radio-marker"></span>
+                                <span>Spontaneous Caster</span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Spell Statistics Section -->
+                <section id="spell-statistics-section">
+                    <span class="block-heading">
+                        <span class="header-text">Spell Statistics</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="statistics-grid">
+                        <!-- Spell Attack -->
+                        <div class="stat-calc-block spell-attack-block">
+                            <span class="stat-title">Spell Attack</span>
+                            <div class="stat-calc-row">
+                                <div class="star-badge-container">
+                                    <input type="number" class="stat-total-input">
+                                </div>
+                                <prof-container id="spell-attack" label=""></prof-container>
+                                <div class="stat-math-group">
+                                    <div class="calc-input-container">
+                                        <input type="number">
+                                        <span class="plus-minus-spacer">+</span>
+                                        <input type="number">
+                                    </div>
+                                    <div class="calc-labels">
+                                        <label>Key</label>
+                                        <label>Prof</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Spell DC -->
+                        <div class="stat-calc-block spell-dc-block">
+                            <span class="stat-title">Spell DC</span>
+                            <div class="stat-calc-row">
+                                <div class="dc-badge-container">
+                                    <input type="number" class="stat-total-input">
+                                </div>
+                                <prof-container id="spell-dc" label=""></prof-container>
+                                <div class="stat-math-group">
+                                    <div class="calc-input-container">
+                                        <input type="number" value="10" readonly>
+                                        <span class="plus-minus-spacer">+</span>
+                                        <input type="number">
+                                        <span class="plus-minus-spacer">+</span>
+                                        <input type="number">
+                                    </div>
+                                    <div class="calc-labels">
+                                        <label>Base</label>
+                                        <label>Key</label>
+                                        <label>Prof</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Cantrips Section -->
+                <section id="cantrips-section">
+                    <span class="block-heading">
+                        <span class="header-text">Cantrips</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="cantrips-meta-row">
+                        <div class="meta-field per-day">
+                            <label>Cantrips per Day</label>
+                            <div class="spells-per-day-container">
+                                <input type="number" min="0">
+                            </div>
+                        </div>
+
+                        <div class="meta-field rank">
+                            <div class="rank-labels">
+                                <label>Cantrip Rank</label>
+                                <span class="meta-assistive-text">1/2 your level rounded up</span>
+                            </div>
+                            <div class="rank-input-container">
+                                <input type="number" min="1" max="10">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spell-table cantrips-table">
+                        <div class="spell-table-header cantrips-header">
+                            <span>Name</span>
+                            <span>Actions</span>
+                            <span>Prep</span>
+                        </div>
+                        <div id="cantrips-rows-container" class="spell-rows-container">
+                            <!-- Rendered via JS Module -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Focus Spells Section -->
+                <section id="focus-spells-section">
+                    <span class="block-heading">
+                        <span class="header-text">Focus Spells</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="focus-meta-row">
+                        <div class="meta-field focus-points-field">
+                            <label>Focus Points</label>
+                            <div class="focus-points-bubbles">
+                                <label class="point-bubble">
+                                    <input type="checkbox" id="focus-pt-1">
+                                    <span class="bubble-marker"></span>
+                                </label>
+                                <label class="point-bubble">
+                                    <input type="checkbox" id="focus-pt-2">
+                                    <span class="bubble-marker"></span>
+                                </label>
+                                <label class="point-bubble">
+                                    <input type="checkbox" id="focus-pt-3">
+                                    <span class="bubble-marker"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="meta-field rank">
+                            <div class="rank-labels">
+                                <label>Focus Spell Rank</label>
+                                <span class="meta-assistive-text">1/2 your level rounded up</span>
+                            </div>
+                            <div class="rank-input-container focus">
+                                <input type="number" min="1" max="10">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="focus-rules-text">
+                        <p><span class="strong">Focus Pool</span> Equals the number of focus spells you have (maximum
+                            3).</p>
+                        <p><span class="strong">Refocus</span> Spend 10 minutes to regain 1 Focus Point.</p>
+                    </div>
+
+                    <div class="spell-table focus-table">
+                        <div class="spell-table-header focus-header">
+                            <span>Name</span>
+                            <span>Actions</span>
+                        </div>
+                        <div id="focus-rows-container" class="spell-rows-container">
+                            <!-- Rendered via JS Module -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Innate Spells Section -->
+                <section id="innate-spells-section">
+                    <span class="block-heading">
+                        <span class="header-text">Innate Spells</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="spell-table innate-table">
+                        <div class="spell-table-header innate-header">
+                            <span>Name</span>
+                            <span>Actions</span>
+                            <span>Freq</span>
+                        </div>
+                        <div id="innate-rows-container" class="spell-rows-container">
+                            <!-- Rendered via JS Module -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ================================================================== -->
+            <!-- RIGHT COLUMN: Spell Slots Tracker, Spells Columns, Rituals         -->
+            <!-- ================================================================== -->
+            <div id="spells-right-column">
+
+                <!-- Spell Slots Tracker -->
+                <section id="spell-slots-section">
+                    <span class="block-heading">
+                        <span class="header-text">Spell Slots</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="spell-slots-grid">
+                        <span class="slot-row-label">Spells per Day</span>
+                        <div class="slots-track books-track" id="spells-per-day-slots">
+                            <!-- 10 book inputs (Ranks 1 to 10) -->
+                        </div>
+
+                        <span class="slot-row-label">Spell Rank</span>
+                        <div class="slots-track rank-numbers-track">
+                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                        </div>
+
+                        <span class="slot-row-label">Spells Remaining</span>
+                        <div class="slots-track remaining-track" id="spells-remaining-slots">
+                            <!-- 10 box inputs (Ranks 1 to 10) -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Main Spells List (2 Columns) -->
+                <section id="main-spells-section">
+                    <span class="block-heading">
+                        <span class="header-text">Spells</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="spells-dual-container">
+                        <div class="spell-table main-spell-table">
+                            <div class="spell-table-header main-spell-header">
+                                <span>Name</span>
+                                <span>Actions</span>
+                                <span>Rank</span>
+                                <span>Prep</span>
+                            </div>
+                            <div id="spells-left-subcolumn" class="spell-rows-container">
+                                <!-- Rendered via JS Module -->
+                            </div>
+                        </div>
+
+                        <div class="spell-table main-spell-table">
+                            <div class="spell-table-header main-spell-header">
+                                <span>Name</span>
+                                <span>Actions</span>
+                                <span>Rank</span>
+                                <span>Prep</span>
+                            </div>
+                            <div id="spells-right-subcolumn" class="spell-rows-container">
+                                <!-- Rendered via JS Module -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Rituals Section (Bottom 2 Columns) -->
+                <section id="rituals-section">
+                    <span class="block-heading">
+                        <span class="header-text">Rituals</span>
+                        <span class="header-line"></span>
+                    </span>
+
+                    <div class="rituals-dual-container">
+                        <div class="spell-table ritual-table">
+                            <div class="spell-table-header ritual-header">
+                                <span>Name</span>
+                                <span>Rank</span>
+                                <span>Cost</span>
+                            </div>
+                            <div id="rituals-left-subcolumn" class="spell-rows-container">
+                                <!-- Rendered via JS Module -->
+                            </div>
+                        </div>
+
+                        <div class="spell-table ritual-table">
+                            <div class="spell-table-header ritual-header">
+                                <span>Name</span>
+                                <span>Rank</span>
+                                <span>Cost</span>
+                            </div>
+                            <div id="rituals-right-subcolumn" class="spell-rows-container">
+                                <!-- Rendered via JS Module -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Templates for Dynamic Injection -->
+        <template id="cantrip-row-template">
+            <div class="spell-row cantrips-row">
+                <input type="text" id="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-actions" class="spell-cell-actions">
+                <span class="prep-cell">
+                    <input type="checkbox" id="{{id}}-prep">
+                </span>
+            </div>
+        </template>
+
+        <template id="focus-spell-row-template">
+            <div class="spell-row focus-row">
+                <input type="text" id="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-actions" class="spell-cell-actions">
+            </div>
+        </template>
+
+        <template id="innate-spell-row-template">
+            <div class="spell-row innate-row">
+                <input type="text" id="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-actions" class="spell-cell-actions">
+                <input type="text" id="{{id}}-freq" class="spell-cell-freq">
+            </div>
+        </template>
+
+        <template id="main-spell-row-template">
+            <div class="spell-row main-spell-row">
+                <input type="text" id="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-actions" class="spell-cell-actions">
+                <input type="text" id="{{id}}-rank" class="spell-cell-rank">
+                <input type="number" id="{{id}}-prep">
+            </div>
+        </template>
+
+        <template id="ritual-row-template">
+            <div class="spell-row ritual-row">
+                <input type="text" id="{{id}}-name" class="spell-cell-name">
+                <input type="text" id="{{id}}-rank" class="spell-cell-rank">
+                <input type="text" id="{{id}}-cost" class="spell-cell-cost">
+            </div>
+        </template>
+
+        <script type="module" src="./modules/spells.js"></script>
+    </page>
+</body>
+
+</html>

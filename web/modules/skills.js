@@ -46,8 +46,12 @@ function injectSkills() {
             spacer.textContent = "-";
 
             const armorInput = document.createElement('input');
-            armorInput.type = "text";
             armorInput.value = "";
+            armorInput.id = `${skill.id}-armor`;
+            armorInput.name = `${skill.id}-armor`;
+            armorInput.dataset.stat = skill.id;
+            armorInput.dataset.calc = "armor";
+            armorInput.type = "number";
 
             // Insert the new elements in correct order: attr, prof, item, armor
             calcContainer.appendChild(spacer);
