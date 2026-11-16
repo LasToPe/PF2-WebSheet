@@ -27,6 +27,7 @@ class ProficiencyContainer extends HTMLElement {
             { id: 'legendary', label: 'L', tier: 4, bonus: 8 }
         ];
 
+        this._lastCheckedRadio = null;
         this.attachShadow({ mode: 'open' });
     }
 
@@ -59,19 +60,25 @@ class ProficiencyContainer extends HTMLElement {
         this.dataset.prof = levelId;
     }
 
-    connectedCallback() {
-        // Tag the host custom element for document-level event delegation
-        this.dataset.stat = this.componentId;
-        this.dataset.calc = 'prof';
-        this.dataset.prof = this.value;
+    get rank() {
+        const checked = this.shadowRoot.querySelector('input[type="radio"]:checked');
+        return checked ? Number(checked.dataset.bonus) : 0;
+    }
 
+    connectedCallback() {
         this._renderTemplate();
         this._attachEventListeners();
+
+        // Tag the host custom element for document-level event delegation
+        this.dataset.stat = this.componentId;
+        this.dataset.calc = 'rank';
+        this.dataset.prof = this.value;
+        this.dataset.rank = this.rank;
     }
 
     _attachEventListeners() {
         const radios = this.shadowRoot.querySelectorAll('input[type="radio"]');
-        
+
         radios.forEach(radio => {
             // Allows unchecking an active radio to return to "Untrained"
             radio.addEventListener('click', (e) => {
@@ -79,12 +86,22 @@ class ProficiencyContainer extends HTMLElement {
                     radio.checked = false;
                     this._lastCheckedRadio = null;
                     this.dataset.prof = 'untrained';
-                    this.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
-                    this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+                    this.dataset.rank = 0;
                 } else {
                     this._lastCheckedRadio = radio;
                     this.dataset.prof = radio.value;
+                    this.dataset.rank = radio.dataset.bonus;
                 }
+                
+                this.dispatchEvent(new CustomEvent('prof-change', {
+                    bubbles: true,
+                    composed: true,
+                    detail: {
+                        id: this.componentId,
+                        rank: this.rank,
+                        level: this.value
+                    }
+                }));
             });
         });
     }
@@ -96,7 +113,7 @@ class ProficiencyContainer extends HTMLElement {
             <link rel="stylesheet" href="./styles/proficiency-container.css" />
             <span class="prof-container">
                 ${this.profLevels.map((level, index) => {
-                    return `
+            return `
                         <span class="prof-check-container" style="z-index: ${4 - index}">
                             <input type="radio" 
                                    name="${idAttribute}-proficiency"
@@ -109,7 +126,7 @@ class ProficiencyContainer extends HTMLElement {
                             <label for="prof-${idAttribute}-${level.id}">${level.label}</label>
                         </span>
                     `;
-                }).join('')}
+        }).join('')}
             </span>
         `;
     }

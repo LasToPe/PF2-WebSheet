@@ -15,6 +15,8 @@
 
     <script type="module" src="./modules/proficiency-container.js"></script>
 
+    <script type="module" src="./modules/app.js"></script>
+
     <title>title</title>
 </head>
 
@@ -145,20 +147,18 @@
             <template id="attribute-template">
                 <div id="{{id}}-block">
                     <span class="attribute-container">
-                        <input id="{{id}}-modifier" name="{{id}}" data-stat="{{id}}" data-calc="attr" type="number">
+                        <input id="{{id}}" name="{{id}}" data-stat="{{key}}" data-calc="attr" type="number">
                     </span>
                     <div class="attribute-label-and-partial">
                         <label class="attribute-label">{{label}}</label>
                         <span class="partial-boost-container">
                             <input type="checkbox" id="{{id}}-partial-boost" name="{{id}}-partial-boost"
-                                data-stat="{{id}}" data-calc="partial-boost">
+                                data-stat="{{key}}" data-calc="partial-boost">
                             <label for="{{id}}-partial-boost">Partial Boost</label>
                         </span>
                     </div>
                 </div>
             </template>
-
-            <script type="module" src="modules/attributes.js"></script>
         </div>
 
         <!--Defenses and Hit Points sections-->
@@ -179,7 +179,7 @@
                         <div class="calc-input-container armor">
                             <input id="ac-base" data-stat="ac" data-calc="base" type="number" value="10" readonly>
                             <span class="plus-minus-spacer">+</span>
-                            <input id="ac-dex" data-stat="ac" data-calc="attr" data-attr="dex" type="number" readonly>
+                            <input id="ac-dex" data-stat="ac" data-calc="dex" type="number"> <!-- IMPORTANT: Dex/cap selector missing, editable for now -->
                             <span class="plus-minus-spacer">+</span>
                             <input id="ac-prof" data-stat="ac" data-calc="prof" type="number" readonly>
                             <span class="plus-minus-spacer">+</span>
@@ -215,7 +215,7 @@
                             <span id="shield-max-hp-bt-container">
                                 <input id="shield-max-hp" name="shield-max-hp" data-stat="shield" data-calc="max-hp"
                                     type="number">
-                                <input id="shield-bt" name="shield-bt" data-stat="shield" data-calc="bt" type="number">
+                                <input id="shield-bt" name="shield-bt" data-stat="shield" data-calc="bt" type="number" readonly>
                             </span>
 
                             <span id="shield-hp-container">
@@ -269,8 +269,6 @@
                             </div>
                         </div>
                     </template>
-
-                    <script type="module" src="modules/saves.js"></script>
                 </div>
             </div>
             <div id="hit-points-block">
@@ -366,8 +364,6 @@
                             </div>
                         </div>
                     </template>
-
-                    <script type="module" src="modules/skills.js"></script>
                 </div>
                 <span id="skill-notes" class="basic-input-container secondary">
                     <span class="assistive-text">Skill Notes</span>
@@ -446,6 +442,7 @@
                     </span>
                     <!-- #endregion -->
                 </div>
+
                 <div id="strikes">
 
                     <span class="block-heading strikes">
@@ -463,7 +460,7 @@
                             <!-- Attack Modifier & Breakdown -->
                             <div class="attack-total">
                                 <input id="{{id}}-attack-total" name="{{id}}-attack_total" data-stat="{{id}}"
-                                    data-calc="total" class="attack-total-input" type="text" readonly />
+                                    data-calc="total" class="attack-total-input" type="number" readonly />
                             </div>
 
                             <div class="calc-container">
@@ -520,6 +517,7 @@
 
                     <script type="module" src="modules/weapons.js"></script>
                 </div>
+
                 <div id="weapon-statistics">
                     <span class="section-heading prof-title">Weapon Proficiencies</span>
 
@@ -542,6 +540,7 @@
                             name="critical-specializations-notes"></textarea>
                     </span>
                 </div>
+
                 <div id="class-dc-and-reminders">
 
                     <div id="class-dc-block">
@@ -551,8 +550,7 @@
                         </span>
 
                         <div class="class-dc-total">
-                            <input id="class-dc-total" name="class-dc-total" data-stat="class-dc" data-calc="total"
-                                type="number" readonly />
+                            <input id="class-dc-total" name="class-dc-total" data-stat="class-dc" data-calc="total" type="number" readonly />
                         </div>
 
                         <div class="calc-input-container class-dc-calc">
@@ -561,10 +559,9 @@
                             <span class="plus-minus-spacer">+</span>
                             <input id="class-dc-key" data-stat="class-dc" data-calc="attr" type="number" readonly />
                             <span class="plus-minus-spacer">+</span>
-                            <input id="class-dc-prof" data-stat="class-dc" data-calc="prof" type="number" readonly />
+                            <input id="class-dc-prof" data-stat="class-dc" data-calc="prof" type="number" /> <!-- IMPORTANT: Add proficiency selector or similar later... -->
                             <span class="plus-minus-spacer">+</span>
-                            <input id="class-dc-item" name="class-dc-item" data-stat="class-dc" data-calc="item"
-                                type="number" />
+                            <input id="class-dc-item" name="class-dc-item" data-stat="class-dc" data-calc="item" type="number" />
                         </div>
                         <div class="calc-labels class-dc-calc">
                             <label>Base</label>
@@ -1158,7 +1155,7 @@
                                 <div class="stat-math-group">
                                     <div class="calc-input-container">
                                         <input id="spell-attack-key" data-stat="spell-attack" data-calc="attr"
-                                            type="number" readonly>
+                                            type="number"> <!-- IMPORTANT: Missing key selector, editable for now -->
                                         <span class="plus-minus-spacer">+</span>
                                         <input id="spell-attack-prof" data-stat="spell-attack" data-calc="prof"
                                             type="number" readonly>
@@ -1185,8 +1182,7 @@
                                         <input id="spell-dc-base" data-stat="spell-dc" data-calc="base" type="number"
                                             value="10" readonly>
                                         <span class="plus-minus-spacer">+</span>
-                                        <input id="spell-dc-key" data-stat="spell-dc" data-calc="attr" type="number"
-                                            readonly>
+                                        <input id="spell-dc-key" data-stat="spell-dc" data-calc="attr" type="number"> <!-- IMPORTANT: Missing key selector, editable for now -->
                                         <span class="plus-minus-spacer">+</span>
                                         <input id="spell-dc-prof" data-stat="spell-dc" data-calc="prof" type="number"
                                             readonly>
