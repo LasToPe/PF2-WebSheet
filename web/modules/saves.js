@@ -1,9 +1,9 @@
 import { renderTemplate } from "../scripts/template-renderer.js";
 
 const SAVES_DATA = [
-    { id: 'fort', label: 'Fortitude', attr: 'con' },
-    { id: 'ref', label: 'Reflex', attr: 'dex' },
-    { id: 'will', label: 'Will', attr: 'wis' }
+    { id: 'fort', label: 'Fortitude', attr: 'Con' },
+    { id: 'ref', label: 'Reflex', attr: 'Dex' },
+    { id: 'will', label: 'Will', attr: 'Wis' }
 ];
 
 export function initSaves(engine) {

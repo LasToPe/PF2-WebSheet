@@ -1,11 +1,11 @@
 import { renderTemplate } from "../scripts/template-renderer.js";
 
 const WEAPONS_DATA = [
-    { id: 'weapon-1', attr: 'str' },
-    { id: 'weapon-2', attr: 'str' },
-    { id: 'weapon-3', attr: 'str' },
-    { id: 'weapon-4', attr: 'dex' },
-    { id: 'weapon-5', attr: 'dex' },
+    { id: 'weapon-1', attr: 'Str' },
+    { id: 'weapon-2', attr: 'Str' },
+    { id: 'weapon-3', attr: 'Str' },
+    { id: 'weapon-4', attr: 'Dex' },
+    { id: 'weapon-5', attr: 'Dex' },
 ];
 
 const WEAPON_PROF_RANKS = [
