@@ -4,6 +4,7 @@ import { initAttributes } from './attributes.js';
 import { initArmorAndShield } from './armor.js';
 import { initSaves } from './saves.js';
 import { initSkills } from './skills.js';
+import { initPerception } from './perception.js';
 
 // Export a single shared instance
 export const engine = new CalculationEngine();
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initArmorAndShield(engine);
     initSaves(engine);
     initSkills(engine);
+    initPerception(engine);
 
     // Step 3: Attach global delegation listener for user edits
     document.addEventListener('input', (e) => {
