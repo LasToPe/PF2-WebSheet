@@ -805,7 +805,7 @@
                 <template id="inventory-row-template">
                     <div class="inventory-row held-consumables">
                         <input type="text" id="{{id}}-description" name="{{id}}-description" class="item-desc-input" />
-                        <input type="text" id="{{id}}-bulk" name="{{id}}-bulk" data-calc="bulk"
+                        <input type="number" id="{{id}}-bulk" name="{{id}}-bulk" data-stat="bulk" data-calc="bulk"
                             class="item-bulk-input" />
                     </div>
                 </template>
@@ -813,9 +813,9 @@
                     <div class="inventory-row worn">
                         <input type="text" id="{{id}}-description" name="{{id}}-description" class="item-desc-input" />
                         <span class="invested-cell">
-                            <input id="{{id}}-invested" name="{{id}}-invested" data-calc="invested" type="checkbox" />
+                            <input id="{{id}}-invested" name="{{id}}-invested" data-stat="invested" data-calc="invested" type="checkbox" />
                         </span>
-                        <input type="text" id="{{id}}-bulk" name="{{id}}-bulk" data-calc="bulk"
+                        <input type="number" id="{{id}}-bulk" name="{{id}}-bulk" data-stat="bulk" data-calc="bulk"
                             class="item-bulk-input" />
                     </div>
                 </template>
@@ -823,11 +823,10 @@
                     <div class="inventory-row gems">
                         <input type="text" id="{{id}}-description" name="{{id}}-description" class="item-desc-input" />
                         <input type="text" id="{{id}}-price" name="{{id}}-price" class="item-price-input" />
-                        <input type="text" id="{{id}}-bulk" name="{{id}}-bulk" data-calc="bulk"
+                        <input type="number" id="{{id}}-bulk" name="{{id}}-bulk" data-stat="bulk" data-calc="bulk"
                             class="item-bulk-input" />
                     </div>
                 </template>
-                <script type="module" src="./modules/inventory.js"></script>
             </section>
         </div>
     </page>
